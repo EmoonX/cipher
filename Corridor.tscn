@@ -30,11 +30,6 @@ material/0 = SubResource( 2 )
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -40, 37.075, 0 )
 
 [node name="OmniLight" parent="Box" index="6" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 5, 35, 60, 0 )
-visible = false
-light_color = Color( 0.894118, 1, 0.952941, 1 )
-
-[node name="OmniLight2" parent="Box" index="7" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 5, -35, 60, 0 )
 light_color = Color( 0.894118, 1, 0.952941, 1 )
 
