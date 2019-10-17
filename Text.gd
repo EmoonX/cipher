@@ -5,11 +5,11 @@ var dialog = [
 	"Gotta find my way out."
 ]
 
-var cont = 120
+var cont = 150
 var index = 0
 
 func _process(delta):
-	if cont == 240:
+	if cont == 300:
 		text = dialog[index] if index < len(dialog) else ""
 		index += 1
 		cont = 0
