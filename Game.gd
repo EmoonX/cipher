@@ -3,6 +3,9 @@ extends Node
 onready var current = $Corridor
 var cont = -60
 
+# List of picked up (used or not) items
+var picked_up = []
+
 # --------------------------------------------------------------------------- #
 
 func play_sfx(sfx):

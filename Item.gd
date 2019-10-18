@@ -1,7 +1,11 @@
 extends "res://Interactable.gd"
 
+onready var game = $"/root/Game"
+
 func _process(delta):
 	if active and Input.is_action_just_pressed("action"):
-		var player = $"/root/Game/Player"
-		player.inventory.append(name)
+		game.get_node("Player").inventory.append(name)
+		game.picked_up.append(name)
+	
+	if name in game.picked_up:
 		queue_free()

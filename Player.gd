@@ -47,8 +47,8 @@ func process_input(delta):
 	
 	# Toogle flashlight
 	if Input.is_action_just_pressed("flashlight"):
-		$Rotation_Helper/FlashLight.visible = \
-			not $Rotation_Helper/FlashLight.visible
+		$Rotation_Helper/Flashlight.visible = \
+			not $Rotation_Helper/Flashlight.visible
 	
 	# ESC quits game
 	if Input.is_action_just_pressed("ui_cancel"):
