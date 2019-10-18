@@ -36,3 +36,5 @@ func _process(delta):
 			game.play_sfx("res://assets/open_door_1.wav")
 		else:
 			game.play_sfx("res://assets/locked-door.wav")
+			if name == "FirstLockedDoor":
+				game.get_node("Subtitles").display("first_locked")
