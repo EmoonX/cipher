@@ -9,7 +9,8 @@ const subtitles = {
 	"first_locked": [ \
 		"Great, a locked door, already.",
 		"Legend says that the dark side holds many things...",
-		"Good thing I have my flashlight with me."
+		"Good thing that I have my flashlight with me.",
+		"(whisper) Press F..."
 	]
 }
 
