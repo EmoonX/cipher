@@ -1,10 +1,12 @@
 extends "res://Interactable.gd"
 
-onready var game = get_tree().root.get_node("Game")
+onready var game = $"/root/Game/"
+onready var player = game.get_node("Player")
 
 export(String) var where_to
 export(Vector3) var coords
 export(float) var angle
+export(String) var key = ""
 
 var exit = false
 
@@ -20,7 +22,7 @@ func _process(delta):
 		game.add_child(game.current)
 		
 		# Position the player accordingly
-		var player = game.get_node("Player")
+		player = game.get_node("Player")
 		player.translation = coords
 		player.rotation_degrees.y = angle
 		
@@ -28,5 +30,6 @@ func _process(delta):
 		game.cont = -60
 		
 	elif active and Input.is_action_just_pressed("action"):
-		exit = true
-		game.cont = 60
+		if not key or key in player.inventory:
+			exit = true
+			game.cont = 60

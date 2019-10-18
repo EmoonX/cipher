@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/TexturesCom_Tiles_PorcelainChevron_1K_albedo.png" type="Texture" id=4]
 [ext_resource path="res://OmniLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://FirstKey.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -26,7 +26,7 @@ albedo_texture = ExtResource( 4 )
 [sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 4 )
 
-[node name="FirstRoom" index="0" instance=ExtResource( 1 )]
+[node name="FirstRoom" instance=ExtResource( 1 )]
 
 [node name="Box" parent="." index="0"]
 transform = Transform( 0.6, 0, 0, 0, 0.4, 0, 0, 0, 0.6, 0, 0, 0 )
@@ -64,7 +64,8 @@ angle = 90.0
 transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0, 24 )
 coords = Vector3( -30, 0, 0 )
 angle = 90.0
+key = "FirstKey"
 
-[node name="Key" parent="." index="4" instance=ExtResource( 7 )]
-transform = Transform( 0.838671, 0, 0.544639, 0, 1, 0, -0.544639, 0, 0.838671, 20, 0, 18 )
+[node name="FirstKey" parent="." index="4" instance=ExtResource( 7 )]
+transform = Transform( 0.469846, 0, 0.17101, 0, 0.5, 0, -0.17101, 0, 0.469846, 20, 0, 18 )
 

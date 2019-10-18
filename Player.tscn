@@ -41,8 +41,8 @@ far = 180.0
 
 [node name="FlashLight" type="SpotLight" parent="Rotation_Helper"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-visible = false
 light_color = Color( 1, 0.996078, 0.94902, 1 )
-light_energy = 0.5
-spot_range = 20.0
+light_energy = 0.2
+shadow_enabled = true
+spot_range = 4096.0
 
