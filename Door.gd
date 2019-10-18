@@ -20,7 +20,7 @@ func _process(delta):
 		game.add_child(game.current)
 		
 		# Position the player accordingly
-		var player = game.current.get_node("Player")
+		var player = game.get_node("Player")
 		player.translation = coords
 		player.rotation_degrees.y = angle
 		

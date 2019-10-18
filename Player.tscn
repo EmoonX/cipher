@@ -10,7 +10,7 @@ height = 16.6124
 extents = Vector3( 0.8, 0.2, 0.8 )
 
 [sub_resource type="CapsuleShape" id=3]
-height = 8.0
+height = 10.0
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -30,6 +30,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.239, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Rotation_Helper/ActionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="Rotation_Helper"]

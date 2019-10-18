@@ -1,12 +1,14 @@
 extends KinematicBody
 
+onready var camera = $Rotation_Helper/Camera    
+onready var rotation_helper = $Rotation_Helper
+
 const MAX_SPEED = 40
 const ACCEL = 4.5
 const DEACCEL = 16
 const MOUSE_SENSITIVITY = 0.20
 
-onready var camera = $Rotation_Helper/Camera    
-onready var rotation_helper = $Rotation_Helper
+var inventory = []
 
 var vel = Vector3()
 var dir = Vector3()

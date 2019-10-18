@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/TexturesCom_TilesPlain0271_2_seamless_S.jpg" type="Texture" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/music1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/music1.ogg" type="AudioStream" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 80, 80 )
@@ -117,13 +116,11 @@ material/0 = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Box/Wall4/StaticBody"]
 shape = SubResource( 3 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 volume_db = 5.0
 autoplay = true
 

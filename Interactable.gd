@@ -11,13 +11,13 @@ func _on_Area_area_exited(area):
 
 func _process(delta):
 	if active:
-		var value = cont/120.0
+		var value = cont/60.0
 		if value > 0.5:
 			value = 1.0 - value
-		value /= 3
+		value /= 2
 		value = 1.0 - value
 		$MeshInstance.material_override.albedo_color.b = value
-		cont = (cont + 1) % 120
+		cont = (cont + 1) % 60
 	else:
 		cont = 0
 		$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
