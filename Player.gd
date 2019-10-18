@@ -42,6 +42,11 @@ func process_input(delta):
 	dir += cam_xform.basis.x * input_movement_vector.x
 	dir += -cam_xform.basis.z * input_movement_vector.z
 	
+	# Flashlight toggle
+	if Input.is_action_just_pressed("flashlight"):
+		$Rotation_Helper/FlashLight.visible = \
+			not $Rotation_Helper/FlashLight.visible
+	
 	# ESC quits game
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -60,7 +65,7 @@ func process_movement(delta):
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
 
 func _input(event):
-	# If mouse movement...
+	# If mouse is moved...
 	if event is InputEventMouseMotion:
 		# Rotate player camera
 		rotation_helper.rotate_x(deg2rad(event.relative.y * MOUSE_SENSITIVITY))

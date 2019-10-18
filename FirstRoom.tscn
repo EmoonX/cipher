@@ -51,11 +51,16 @@ material/0 = SubResource( 6 )
 
 [node name="OmniLight" parent="Box" index="6" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 70, 0 )
-omni_range = 50.0
+omni_range = 35.0
 
-[node name="Door" parent="." index="2" instance=ExtResource( 6 )]
+[node name="EntryDoor" parent="." index="2" instance=ExtResource( 6 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -23 )
 where_to = "Corridor"
+coords = Vector3( -30, 0, 0 )
+angle = 90.0
+
+[node name="ExitDoor" parent="." index="3" instance=ExtResource( 6 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0, 24 )
 coords = Vector3( -30, 0, 0 )
 angle = 90.0
 

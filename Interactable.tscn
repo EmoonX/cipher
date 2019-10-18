@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Interactive.gd" type="Script" id=1]
+[ext_resource path="res://Interactable.gd" type="Script" id=1]
 [ext_resource path="res://assets/Room-Door/Door.material" type="Material" id=2]
 [ext_resource path="res://assets/Room-Door/Door_Component_BI3.obj" type="ArrayMesh" id=3]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Interactive.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.gd" type="Script" id=2]
 
 [node name="Door" instance=ExtResource( 1 )]
