@@ -22,7 +22,6 @@ func _ready():
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
-	print(inventory)
 
 func process_input(delta):
 	# Get movement vector

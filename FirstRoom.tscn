@@ -57,13 +57,9 @@ omni_range = 35.0
 [node name="EntryDoor" parent="." index="2" instance=ExtResource( 6 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -23 )
 where_to = "Corridor"
-coords = Vector3( -30, 0, 0 )
-angle = 90.0
 
-[node name="FirstLockedDoor" parent="." index="3" instance=ExtResource( 6 )]
+[node name="LockedDoor" parent="." index="3" instance=ExtResource( 6 )]
 transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0, 24 )
-coords = Vector3( -30, 0, 0 )
-angle = 90.0
 key = "FirstKey"
 
 [node name="FirstKey" parent="." index="4" instance=ExtResource( 7 )]

@@ -33,7 +33,7 @@ transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 5, -35, 60, 0 )
 light_color = Color( 0.894118, 1, 0.952941, 1 )
 omni_attenuation = 1.07177
 
-[node name="Door" parent="." index="2" instance=ExtResource( 6 )]
+[node name="EntryDoor" parent="." index="2" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -40, 0, 0 )
 where_to = "FirstRoom"
 

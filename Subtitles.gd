@@ -3,11 +3,11 @@ extends Label
 # Dictionary containing subtitles to be displayed
 const subtitles = {
 	"start": [ \
-		"I find myself stuck again at the same dark corridor...",
-		"Gotta find my way out"
+		"I find myself again stuck at the same dark corridor...",
+		"Gotta find my way out."
 	],
 	"first_locked": [ \
-		"Great, a locked door already.",
+		"Great, a locked door, already.",
 		"Legend says that the dark side holds many things...",
 		"Good thing I have my flashlight with me."
 	]
