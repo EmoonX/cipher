@@ -26,10 +26,13 @@ func _process(delta):
 		player.translation = coords
 		player.rotation_degrees.y = angle
 		
-		exit = false
 		game.cont = -60
+		game.play_sfx("res://assets/close_door_1.wav")
 		
 	elif active and Input.is_action_just_pressed("action"):
 		if not key or key in player.inventory:
 			exit = true
 			game.cont = 60
+			game.play_sfx("res://assets/open_door_1.wav")
+		else:
+			game.play_sfx("res://assets/locked-door.wav")

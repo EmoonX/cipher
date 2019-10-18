@@ -45,7 +45,7 @@ func process_input(delta):
 	dir += cam_xform.basis.x * input_movement_vector.x
 	dir += -cam_xform.basis.z * input_movement_vector.z
 	
-	# Flashlight toggle
+	# Toogle flashlight
 	if Input.is_action_just_pressed("flashlight"):
 		$Rotation_Helper/FlashLight.visible = \
 			not $Rotation_Helper/FlashLight.visible
