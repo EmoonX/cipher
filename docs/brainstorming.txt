@@ -1,0 +1,6 @@
+- 50% new puzzles, 50% based on Cipher
+- Player ports a cell phone and a laptop
+- Phone would function as flashlight and camera
+- QR codes hidden in various corners, containing puzzle descriptions
+- Interaction with various objects throughout the house
+- Laptop could have basic programs like sound or image editing

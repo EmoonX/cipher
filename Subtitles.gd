@@ -3,7 +3,7 @@ extends Label
 # Dictionary containing subtitles to be displayed
 const subtitles = {
 	"start": [ \
-		"I find myself again stuck at the same dark corridor...",
+		"I find myself once again stuck at the same dark corridor...",
 		"Gotta find my way out."
 	],
 	"first_locked": [ \
@@ -24,14 +24,16 @@ var cont = 0
 # --------------------------------------------------------------------------- #
 
 func display(dialog):
-	if not dialog in displayed:
-		if self.dialog:
-			displayed.append(self.dialog)
-		self.dialog = dialog
-		displayed.append(dialog)
-		index = 0
-		cont = 0
-		text = ""
+	if dialog in displayed:
+		return
+	
+	if self.dialog:
+		displayed.append(self.dialog)
+	self.dialog = dialog
+	displayed.append(dialog)
+	index = 0
+	cont = 0
+	text = ""
 
 func _process(delta):
 	if not dialog:
