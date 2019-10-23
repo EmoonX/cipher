@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Interactable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Item.gd" type="Script" id=2]
+[ext_resource path="res://items/Item.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -9,7 +9,6 @@
 
 [node name="Item" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-action_text = "Pick up"
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = SubResource( 1 )

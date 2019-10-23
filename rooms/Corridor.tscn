@@ -15,7 +15,7 @@ uv1_scale = Vector3( 4, 1, 5 )
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 5, 5, 5 )
 
-[node name="Corridor" index="0" instance=ExtResource( 1 )]
+[node name="Corridor" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Box" parent="." index="0"]
