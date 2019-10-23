@@ -20,10 +20,22 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	process_input(delta)
-	process_movement(delta)
+	_process_input(delta)
+	_process_movement(delta)
 
-func process_input(delta):
+func _input(event):
+	# If mouse is moved...
+	if event is InputEventMouseMotion:
+		# Rotate player camera
+		rotation_helper.rotate_x(deg2rad(event.relative.y * MOUSE_SENSITIVITY))
+		rotate_y(deg2rad(event.relative.x * MOUSE_SENSITIVITY * -1))
+		
+		# Avoid too inclined vertical rotation
+		var camera_rot = rotation_helper.rotation_degrees
+		camera_rot.x = clamp(camera_rot.x, -70, 70)
+		rotation_helper.rotation_degrees = camera_rot
+
+func _process_input(delta):
 	# Get movement vector
 	var input_movement_vector = Vector3()
 	if Input.is_action_pressed("movement_forward"):
@@ -53,7 +65,7 @@ func process_input(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-func process_movement(delta):
+func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction
 	dir.y = 0
 	dir = dir.normalized()
@@ -66,14 +78,3 @@ func process_movement(delta):
 	vel = vel.linear_interpolate(dir, accel * delta)
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
 
-func _input(event):
-	# If mouse is moved...
-	if event is InputEventMouseMotion:
-		# Rotate player camera
-		rotation_helper.rotate_x(deg2rad(event.relative.y * MOUSE_SENSITIVITY))
-		rotate_y(deg2rad(event.relative.x * MOUSE_SENSITIVITY * -1))
-		
-		# Avoid too inclined vertical rotation
-		var camera_rot = rotation_helper.rotation_degrees
-		camera_rot.x = clamp(camera_rot.x, -70, 70)
-		rotation_helper.rotation_degrees = camera_rot

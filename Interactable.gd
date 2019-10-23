@@ -1,15 +1,17 @@
 extends Spatial
 
-# What to show when interacting with
-export(String) var action_text
+# Text to show when interacting with
+export(String) var action_label
 
+# If the object is in player's action range
 var active = false
+
 var cont = 0
 
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	$ActionText.text = action_text
+	$ActionLabel.text = action_label
 
 func _process(delta):
 	if active:
@@ -19,11 +21,11 @@ func _process(delta):
 		value /= 2
 		value = 1.0 - value
 		$MeshInstance.material_override.albedo_color.b = value
-		$ActionText.visible = true
+		$ActionLabel.visible = true
 		cont = (cont + 1) % 60
 	else:
 		$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
-		$ActionText.visible = false
+		$ActionLabel.visible = false
 		cont = 0
 
 func _on_Area_area_entered(area):
