@@ -8,7 +8,7 @@
 [node name="Door" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 script = ExtResource( 2 )
-action_text = "Open"
+action_label = "Open"
 
 [node name="CollisionShape" parent="Area" index="0"]
 transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, -1 )
