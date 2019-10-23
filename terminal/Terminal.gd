@@ -43,25 +43,33 @@ func _on_CommandLine_text_entered(comm):
 	_execute(comm)
 	_enter_command()
 
+func _check(comm):
+	# Check if a single argument is given AND file exists
+	if len(comm) != 2:
+		_print("Usage: " + comm[0] + " [FILE]", true)
+		return false
+	if not comm[1] in files:
+		_print(comm[0] + ": " + comm[1] + ": file not found", true)
+		return false
+	
+	return true
+
 func _execute(s):
 	var comm = s.split(" ")
 	match comm[0]:
 		"cat":
-			if len(comm) != 2:
-				_print("Usage: cat [FILE]", true)
-			elif not comm[1] in files:
-				_print("cat: " + comm[1] + ": file not found", true)
-			else:
-				# Open file and print lines from it
-				var file = File.new()
-				var name = "res://qr/" + str(comm[1])
-				file.open(name, File.READ)
-				while true:
-					var line = file.get_line()
-					if not line:
-						break 
-					_print(line, true)
-				file.close()
+			if not _check(comm):
+				return
+			# Open file and print lines from it
+			var file = File.new()
+			var name = "res://qr/" + str(comm[1])
+			file.open(name, File.READ)
+			while true:
+				var line = file.get_line()
+				if not line:
+					break 
+				_print(line, true)
+			file.close()
 		
 		"exit":
 			visible = false
