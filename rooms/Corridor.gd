@@ -1,4 +1,4 @@
 extends Spatial
 
 func _ready():
-	$"/root/Game/Subtitles".display("start")
+	$"/root/Game".display_subtitles("start")

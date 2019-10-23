@@ -36,6 +36,14 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 
 func _process_input(delta):
+	# ESC quits game
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	
+	# Nothing to do while in terminal
+	if $"/root/Game/Terminal".visible:
+		return
+	
 	# Get movement vector
 	var input_movement_vector = Vector3()
 	if Input.is_action_pressed("movement_forward"):
@@ -60,10 +68,6 @@ func _process_input(delta):
 	if Input.is_action_just_pressed("flashlight"):
 		$Rotation_Helper/Flashlight.visible = \
 			not $Rotation_Helper/Flashlight.visible
-	
-	# ESC quits game
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 
 func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction

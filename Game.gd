@@ -8,6 +8,9 @@ var picked_up = []
 
 # --------------------------------------------------------------------------- #
 
+func display_subtitles(key):
+	$CanvasLayer/Subtitles.display(key)
+
 func play_sfx(sfx):
 	var asp = AudioStreamPlayer.new()
 	add_child(asp)
@@ -19,4 +22,3 @@ func _process(delta):
 		var value = abs(cont) if cont < 0 else 60 - cont
 		$Fade.color.a = value/60.0
 		cont -= sign(cont)
-	
