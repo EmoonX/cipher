@@ -10,11 +10,8 @@ const DY = 30
 var current_pos = Vector2(0, 0)
 var line
 
-var files = {
-	"begin.txt": [ \
-		"The answer is 'braggart'"
-	]
-}
+# List of gotten files (i.e. scanned)
+var files = []
 
 # --------------------------------------------------------------------------- #
 
@@ -55,13 +52,24 @@ func _execute(s):
 			elif not comm[1] in files:
 				_print("cat: " + comm[1] + ": file not found", true)
 			else:
-				for line in files[comm[1]]:
+				# Open file and print lines from it
+				var file = File.new()
+				var name = "res://qr/" + str(comm[1])
+				file.open(name, File.READ)
+				while true:
+					var line = file.get_line()
+					if not line:
+						break 
 					_print(line, true)
+				file.close()
+		
 		"exit":
 			visible = false
+		
 		"ls":
 			for filename in files:
 				_print(filename, true)
+		
 		_:
 			_print(comm[0] + ": command not found", true)
 
