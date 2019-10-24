@@ -1,37 +1,48 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://menus/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://menus/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/cipher.jpg" type="Texture" id=2]
+[ext_resource path="res://menus/Button.tscn" type="PackedScene" id=3]
 
 [node name="MainMenu" type="Control"]
 margin_right = 2560.0
 margin_bottom = 1080.0
 script = ExtResource( 1 )
 
-[node name="Start" parent="." instance=ExtResource( 2 )]
-margin_left = 1030.0
-margin_top = 337.223
-margin_right = -1030.0
-margin_bottom = -642.777
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 856.212, 552.472 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Start" parent="." instance=ExtResource( 3 )]
+margin_left = 1386.36
+margin_top = 308.523
+margin_right = -673.644
+margin_bottom = -671.477
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 text = "Start"
 
-[node name="Options" parent="." instance=ExtResource( 2 )]
-margin_left = 1027.61
-margin_top = 551.605
-margin_right = -1032.39
-margin_bottom = -428.395
+[node name="Options" parent="." instance=ExtResource( 3 )]
+margin_left = 1383.96
+margin_top = 494.205
+margin_right = -676.035
+margin_bottom = -485.795
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 text = "Options"
 
-[node name="Quit" parent="." instance=ExtResource( 2 )]
-margin_left = 1030.0
-margin_top = 782.071
-margin_right = -1030.0
-margin_bottom = -197.929
+[node name="Quit" parent="." instance=ExtResource( 3 )]
+margin_left = 1383.96
+margin_top = 688.796
+margin_right = -676.035
+margin_bottom = -291.204
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Start")
 text = "Quit"
+
+[node name="Fade" type="ColorRect" parent="."]
+margin_right = 2560.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
 
