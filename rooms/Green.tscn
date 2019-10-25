@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://rooms/Green.gd" type="Script" id=1]
 [ext_resource path="res://assets/Material_004.material" type="Material" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://assets/wire_115115115_001.material" type="Material" id=13]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/LightSwitch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/paintings/Grass.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/Interactable.gd" type="Script" id=17]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Floor-col"
@@ -314,21 +316,18 @@ material/0 = null
 
 [node name="Lamp" type="OmniLight" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.7102, 0 )
-visible = false
 light_color = Color( 1, 0.956863, 0.713726, 1 )
 light_energy = 0.25
 omni_range = 4096.0
 
 [node name="Lamp2" type="OmniLight" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.71, 2.5 )
-visible = false
 light_color = Color( 1, 0.956863, 0.713726, 1 )
 light_energy = 0.25
 omni_range = 4096.0
 
 [node name="Lamp3" type="OmniLight" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.71, -2.5 )
-visible = false
 light_color = Color( 1, 0.956863, 0.713726, 1 )
 light_energy = 0.25
 omni_range = 4096.0
@@ -343,4 +342,8 @@ transform = Transform( -2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09
 transform = Transform( 0.0198278, -0.0177555, 0.096393, 0.00357737, 0.0984111, 0.0173914, -0.0979493, -3.6489e-10, 0.0201479, 9.48669, 4.46237, -0.181796 )
 light_energy = 0.2
 shadow_enabled = true
+
+[node name="Grass" parent="." instance=ExtResource( 16 )]
+transform = Transform( -1.18021e-07, 0, -2, 0, 2, 0, 2.7, 0, -8.74228e-08, 0.749179, 1.7, 0 )
+script = ExtResource( 17 )
 

@@ -4,7 +4,7 @@ extends Spatial
 export(String) var action_label
 
 # What the main character say upon examining
-export(String) var flavor_text
+export(String, MULTILINE) var flavor_text
 
 # If the object is in player's action range
 var active = false
@@ -23,11 +23,11 @@ func _process(delta):
 			value = 1.0 - value
 		value /= 2
 		value = 1.0 - value
-		$MeshInstance.material_override.albedo_color.b = value
+		#$MeshInstance.material_override.albedo_color.b = value
 		$ActionLabel.visible = true
 		cont = (cont + 1) % 60
 	else:
-		$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
+		#$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
 		$ActionLabel.visible = false
 		cont = 0
 
