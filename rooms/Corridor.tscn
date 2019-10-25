@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://rooms/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://rooms/Corridor.gd" type="Script" id=2]
 [ext_resource path="res://assets/TexturesCom_FloorsCheckerboard0055_9_seamless_S.png" type="Texture" id=3]
 [ext_resource path="res://assets/TexturesCom_ConcretePlates0211_1_seamless_S.png" type="Texture" id=4]
-[ext_resource path="res://OmniLight.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Door.tscn" type="PackedScene" id=6]
-[ext_resource path="res://qr/QR.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/donut.glb" type="PackedScene" id=8]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/qr/QR.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/donut.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
@@ -21,6 +20,7 @@ uv1_scale = Vector3( 5, 5, 5 )
 script = ExtResource( 2 )
 
 [node name="Box" parent="." index="0"]
+editor/display_folded = false
 transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 0, 0, 0 )
 
 [node name="Floor_plane" parent="Box" index="0"]
@@ -36,25 +36,27 @@ editor/display_folded = false
 [node name="Wall4" parent="Box" index="5"]
 transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569, 37.075, -38 )
 
-[node name="Light" parent="Box" index="6" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 5, -35, 60, 0 )
-light_color = Color( 0.894118, 1, 0.952941, 1 )
-omni_attenuation = 1.07177
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3627, 30.8105, 0.488307 )
+light_color = Color( 1, 0.980392, 0.92549, 1 )
+shadow_enabled = true
+shadow_bias = 1.06
+omni_range = 43.0
 
-[node name="EntryDoor" parent="." index="2" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -40, 0, 0 )
+[node name="EntryDoor" parent="." index="3" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -41, 0, 0 )
 where_to = "FirstRoom"
 
-[node name="FirstQR" parent="." index="3" instance=ExtResource( 7 )]
+[node name="FirstQR" parent="." index="4" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7131, 10, -7.59766 )
 image = "res://qr/first.png"
 file = "res://qr/first.txt"
 
-[node name="BinaryQR" parent="." index="4" instance=ExtResource( 7 )]
+[node name="BinaryQR" parent="." index="5" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.7178, 10.0949, 7.92129 )
 image = "res://qr/binary.png"
 file = "res://qr/binary.bin"
 
-[node name="Scene Root" parent="." index="5" instance=ExtResource( 8 )]
-transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, -28.8185, -0.360117, 0 )
+[node name="Scene Root" parent="." index="7" instance=ExtResource( 7 )]
+transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, -32, -0.311163, 0 )
 
