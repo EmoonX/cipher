@@ -26,7 +26,7 @@ func _process(delta):
 		# Position the player accordingly
 		var door = game.current.get_node(door_name)
 		player = game.get_node("Player")
-		player.rotation_degrees = door.rotation_degrees
+		player.rotation_degrees.y = door.rotation_degrees.y
 		player.translation = door.translation
 		match int(door.rotation_degrees.y):
 			0:
@@ -34,7 +34,7 @@ func _process(delta):
 			90:
 				player.translation.x += 5
 			180, -180:
-				player.translation.z += 5
+				player.translation.z -= 5
 			270, -90:
 				player.translation.x -= 5
 		

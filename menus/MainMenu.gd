@@ -2,7 +2,7 @@ extends Control
 	
 func _process(delta):
 	if $Fade.color.a > 0.0:
-		var value = $Fade.color.a - delta/2
+		var value = $Fade.color.a - delta
 		$Fade.color.a = max(value, 0.0)
 		if $Fade.color.a == 0.0:
 			$Fade.visible = false

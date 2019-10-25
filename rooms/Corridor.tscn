@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://rooms/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://rooms/Corridor.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://OmniLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://qr/QR.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/donut.glb" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
@@ -15,6 +16,36 @@ uv1_scale = Vector3( 4, 1, 5 )
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 5, 5, 5 )
+
+[sub_resource type="ProceduralSky" id=3]
+sky_top_color = Color( 0.472656, 0.704064, 1, 1 )
+sky_horizon_color = Color( 0.24147, 0.469106, 0.824219, 1 )
+sky_curve = 0.25
+ground_bottom_color = Color( 0.0280151, 0.0804138, 0.132812, 1 )
+ground_horizon_color = Color( 0.138657, 0.367696, 0.910156, 1 )
+ground_curve = 0.01
+sun_color = Color( 1, 0.932556, 0.867188, 1 )
+sun_energy = 16.0
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 3 )
+ambient_light_sky_contribution = 0.6
+tonemap_mode = 3
+ssao_enabled = true
+ssao_light_affect = 1.0
+ssao_quality = 1
+dof_blur_far_distance = 24.0
+dof_blur_far_amount = 0.08
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/5 = false
+glow_intensity = 1.0
+glow_strength = 1.1
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+adjustment_enabled = true
 
 [node name="Corridor" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -40,6 +71,9 @@ transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 5, -35, 60, 0 )
 light_color = Color( 0.894118, 1, 0.952941, 1 )
 omni_attenuation = 1.07177
 
+[node name="WorldEnvironment" parent="." index="1"]
+environment = SubResource( 4 )
+
 [node name="EntryDoor" parent="." index="2" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -40, 0, 0 )
 where_to = "FirstRoom"
@@ -53,4 +87,7 @@ file = "res://qr/first.txt"
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.7178, 10.0949, 7.92129 )
 image = "res://qr/binary.png"
 file = "res://qr/binary.bin"
+
+[node name="Scene Root" parent="." index="5" instance=ExtResource( 8 )]
+transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, -28.8185, -0.360117, 0 )
 

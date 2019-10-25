@@ -78,6 +78,9 @@ func _execute(s):
 			for filename in files:
 				_print(filename, true)
 		
+		"":
+			pass
+		
 		_:
 			_print(comm[0] + ": command not found", true)
 
