@@ -1,7 +1,14 @@
 extends Control
 
 # --------------------------------------------------------------------------- #
-	
+
+func _ready():
+	# Create player configuration file (if it doesn't exist)
+	var file = File.new()
+	if not file.file_exists("player.cfg"):
+		var dir = Directory.new()
+		var err = dir.copy("res://etc/base.cfg", "player.cfg")
+
 func _process(delta):
 	if $Fade.color.a > 0.0:
 		var value = $Fade.color.a - delta

@@ -32,7 +32,7 @@ margin_left = 400.0
 margin_right = 1200.0
 margin_bottom = 150.0
 focus_neighbour_top = NodePath("../../Back")
-focus_neighbour_bottom = NodePath("../../Resolution/OptionButton")
+focus_neighbour_bottom = NodePath("../../ScreenMode/OptionButton")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 button_mask = 4
@@ -63,7 +63,7 @@ margin_left = 400.0
 margin_top = 1.85065
 margin_right = 1200.0
 margin_bottom = 151.851
-focus_neighbour_top = NodePath("../../Back")
+focus_neighbour_top = NodePath("../../Language/OptionButton")
 focus_neighbour_bottom = NodePath("../../Resolution/OptionButton")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
@@ -99,13 +99,13 @@ focus_neighbour_bottom = NodePath("../../Back")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 button_mask = 4
-text = "1280x720"
+text = "Screen Adapt"
 flat = true
 align = 1
-items = [ "1280x720", null, false, 0, null, "1600x900", null, false, 1, null, "1920x1080", null, false, 2, null, "2560x1080", null, false, 3, null, "2560x1440", null, false, 4, null, "3440x1440", null, false, 5, null, "3840x2160", null, false, 6, null ]
-selected = 0
+items = [ "1280x720", null, false, 0, null, "1600x900", null, false, 1, null, "1920x1080", null, false, 2, null, "2560x1080", null, false, 3, null, "2560x1440", null, false, 4, null, "3440x1440", null, false, 5, null, "3840x2160", null, false, 6, null, "Screen Adapt", null, false, 7, null ]
+selected = 7
 
-[node name="Back" type="Button" parent="."]
+[node name="Apply" type="Button" parent="."]
 margin_left = 1000.0
 margin_top = 750.0
 margin_right = 1400.0
@@ -114,6 +114,6 @@ focus_neighbour_top = NodePath("../Resolution/OptionButton")
 focus_neighbour_bottom = NodePath("../Language/OptionButton")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-text = "Back"
+text = "Apply"
 flat = true
 
