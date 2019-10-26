@@ -15,40 +15,36 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Items" type="Control" parent="."]
-editor/display_folded = true
-margin_left = 856.212
-margin_top = 552.472
-margin_right = 896.212
-margin_bottom = 592.472
+margin_left = 1200.0
+margin_top = 300.0
+margin_right = 2000.0
+margin_bottom = 900.0
 
 [node name="Start" parent="Items" instance=ExtResource( 3 )]
-margin_left = 494.553
-margin_top = -187.865
-margin_right = 633.553
-margin_bottom = -141.865
+margin_right = 0.0
+margin_bottom = -450.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
-text = "Start"
+text = "MENU_START"
 
 [node name="Options" parent="Items" instance=ExtResource( 3 )]
-margin_left = 441.096
-margin_top = -56.3983
-margin_right = 676.096
-margin_bottom = -10.3983
+margin_top = 150.0
+margin_right = 0.0
+margin_bottom = -300.0
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
-text = "Options"
+text = "MENU_OPTIONS"
 
 [node name="Quit" parent="Items" instance=ExtResource( 3 )]
-margin_left = 497.897
-margin_top = 97.699
-margin_right = 610.897
-margin_bottom = 143.699
+margin_top = 300.0
+margin_right = 0.0
+margin_bottom = -150.0
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Start")
-text = "Quit"
+text = "MENU_QUIT"
 
 [node name="Fade" type="ColorRect" parent="."]
+visible = false
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )

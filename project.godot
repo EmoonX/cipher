@@ -144,6 +144,11 @@ terminal_toggle={
  ]
 }
 
+[locale]
+
+locale_filter=[ 0, [ "en_CA", "pt_BR" ] ]
+translations=PoolStringArray( "res://etc/translation.en.translation", "res://etc/translation.pt_BR.translation" )
+
 [rendering]
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )

@@ -10,10 +10,14 @@ func _ready():
 	for option in Config.file.get_section_keys("base"):
 		var item = option.replace("_", " ").capitalize().replace(" ", "")
 		var value = Config.file.get_value("base", option)
-		var button = get_node(item + "/OptionButton")
-		for id in range(button.get_item_count()):
-			if button.get_item_text(id) == value:
-				button.selected = id
+		for node in get_children():
+			if node.has_node("Label") and \
+					node.get_node("Label").text == option.to_upper():
+				var button = node.get_node("OptionButton")
+				for id in range(button.get_item_count()):
+					if button.get_item_text(id) == value:
+						button.selected = id
+				break
 	
 	$Language/OptionButton.grab_focus()
 

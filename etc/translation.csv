@@ -1,0 +1,13 @@
+,en,pt_BR
+MENU_START,Start,Começar
+MENU_OPTIONS,Options,Opções
+MENU_QUIT,Quit,Sair
+,,
+OPT_LANG,Language,Linguagem
+OPT_SCRMOD,Screen Mode,Modo da Tela
+SCRMOD_WIN,Window,Janela
+SCRMOD_BLWIN,Borderless Window,Janela sem Bordas
+SCRMOD_FULL,Fullscreen,Tela Cheia
+OPT_RES,Resolution,Resolução
+RES_SCR_ADAPT,Screen Adapt,Adaptado à Tela
+OPT_APPLY,Apply,Aplicar
