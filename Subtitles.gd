@@ -1,36 +1,13 @@
 extends Label
 
-# Dictionary containing subtitles to be displayed
-const subtitles = {
-	"start": [ \
-		"I find myself once again stuck at the same dark corridor...",
-		"Gotta find my way out."
-	],
-	"first_locked": [ \
-		"Great, a locked door, already.",
-		"Legend says that the dark side holds many things...",
-		"Good thing that I have my flashlight with me.",
-		"(whisper) Press F..."
-	]
-}
-
-# List of already displayed subtitles
-var displayed = []
-
-var dialog = ""
+var dialog = []
 var index = 0
 var cont = 0
 
 # --------------------------------------------------------------------------- #
 
-func display(dialog):
-	if dialog in displayed:
-		return
-	
-	if self.dialog:
-		displayed.append(self.dialog)
-	self.dialog = dialog
-	displayed.append(dialog)
+func display(dialog):	
+	self.dialog = dialog.split("\n")
 	index = 0
 	cont = 0
 	text = ""
@@ -39,13 +16,13 @@ func _process(delta):
 	if not dialog:
 		return
 	if cont == 0:
-		if index < len(subtitles[dialog]):
-			text = subtitles[dialog][index]
+		if index < len(dialog):
+			text = dialog[index]
 			index += 1
 			cont = 0
 		else:
 			text = ""
-			dialog = ""
+			dialog = []
 			index = 0
 	
-	cont = (cont + 1) % 300
+	cont = (cont + 1) % 240

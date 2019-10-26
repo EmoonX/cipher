@@ -10,38 +10,45 @@ margin_bottom = 1080.0
 script = ExtResource( 1 )
 
 [node name="Logo" type="Sprite" parent="."]
-position = Vector2( 856.212, 552.472 )
+position = Vector2( 892.565, 504.758 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
-[node name="Start" parent="." instance=ExtResource( 3 )]
-margin_left = 1386.36
-margin_top = 308.523
-margin_right = -673.644
-margin_bottom = -671.477
+[node name="Items" type="Control" parent="."]
+margin_left = 856.212
+margin_top = 552.472
+margin_right = 896.212
+margin_bottom = 592.472
+
+[node name="Start" parent="Items" instance=ExtResource( 3 )]
+margin_left = 494.553
+margin_top = -187.865
+margin_right = 633.553
+margin_bottom = -141.865
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 text = "Start"
 
-[node name="Options" parent="." instance=ExtResource( 3 )]
-margin_left = 1383.96
-margin_top = 494.205
-margin_right = -676.035
-margin_bottom = -485.795
+[node name="Options" parent="Items" instance=ExtResource( 3 )]
+margin_left = 441.096
+margin_top = -56.3983
+margin_right = 676.096
+margin_bottom = -10.3983
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 text = "Options"
 
-[node name="Quit" parent="." instance=ExtResource( 3 )]
-margin_left = 1383.96
-margin_top = 688.796
-margin_right = -676.035
-margin_bottom = -291.204
+[node name="Quit" parent="Items" instance=ExtResource( 3 )]
+margin_left = 497.897
+margin_top = 97.699
+margin_right = 610.897
+margin_bottom = 143.699
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Start")
 text = "Quit"
 
 [node name="Fade" type="ColorRect" parent="."]
+visible = false
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )

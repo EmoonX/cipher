@@ -5,6 +5,9 @@
 [ext_resource path="res://assets/Room-Door/Door_Component_BI3.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=4]
 
+
+
+
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 4 )

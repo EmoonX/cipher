@@ -26,6 +26,9 @@ func _process(delta):
 		#$MeshInstance.material_override.albedo_color.b = value
 		$ActionLabel.visible = true
 		cont = (cont + 1) % 60
+		
+		if Input.is_action_just_pressed("action") and flavor_text:
+			$"/root/Game".display_subtitles(flavor_text)
 	else:
 		#$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
 		$ActionLabel.visible = false

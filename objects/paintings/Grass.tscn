@@ -4,6 +4,9 @@
 [ext_resource path="res://assets/pokat.png" type="Texture" id=2]
 [ext_resource path="res://assets/grass.png" type="Texture" id=3]
 
+
+
+
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "01_-_Default"
 albedo_color = Color( 0.588235, 0.588235, 0.588235, 1 )
@@ -44,8 +47,10 @@ surfaces/1 = {
 
 [sub_resource type="BoxShape" id=4]
 
-[node name="GrassPainting" index="0" instance=ExtResource( 1 )]
+[node name="GrassPainting" instance=ExtResource( 1 )]
 transform = Transform( 1.35, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+flavor_text = "This remembers me somehow of a friend of mine...
+Maybe he liked plants a lot."
 
 [node name="MeshInstance" parent="." index="0"]
 mesh = SubResource( 3 )

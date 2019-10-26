@@ -4,6 +4,9 @@
 [ext_resource path="res://assets/Key/21929_Key_v1.obj" type="ArrayMesh" id=2]
 
 
+
+
+
 [sub_resource type="BoxShape" id=1]
 
 [node name="FirstKey" index="0" instance=ExtResource( 1 )]

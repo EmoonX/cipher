@@ -6,9 +6,11 @@ func _process(delta):
 		$Fade.color.a = max(value, 0.0)
 		if $Fade.color.a == 0.0:
 			$Fade.visible = false
-			$Start.grab_focus()
+			$Items/Start.grab_focus()
 	
-	if $Start.pressed:
+	if $Items/Start.pressed:
 		get_tree().change_scene("res://Game.tscn")
-	elif $Quit.pressed:
+	elif $Items/Options.pressed:
+		get_tree().change_scene("res://menus/Options.tscn")
+	elif $Items/Quit.pressed:
 		get_tree().quit()

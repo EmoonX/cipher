@@ -7,6 +7,9 @@
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/items/FirstKey.tscn" type="PackedScene" id=6]
 
+
+
+
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 
