@@ -15,6 +15,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Items" type="Control" parent="."]
+editor/display_folded = true
 margin_left = 856.212
 margin_top = 552.472
 margin_right = 896.212
