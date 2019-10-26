@@ -3,29 +3,17 @@ extends Control
 onready var mode = $ScreenMode/OptionButton
 onready var res = $Resolution/OptionButton
 
-# Configuration file
-var config
-
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	# Load config file for read and (truncated) writing operations
-	config = File.new()
-	config.open("player.cfg", File.READ)
-	
-	# Get options per config file and set the respective buttons
-	while true:
-		var aux = config.get_line()
-		if not aux:
-			break
-		aux = aux.split("=")
-		var item = aux[0]
-		var value = aux[1]
-		var button = get_node(item.replace(" ", "") + "/OptionButton")
+	# Get options from config file and set them on the respective buttons
+	for option in Config.file.get_section_keys("base"):
+		var item = option.replace("_", " ").capitalize().replace(" ", "")
+		var value = Config.file.get_value("base", option)
+		var button = get_node(item + "/OptionButton")
 		for id in range(button.get_item_count()):
 			if button.get_item_text(id) == value:
 				button.selected = id
-				break
 	
 	$Language/OptionButton.grab_focus()
 
@@ -48,36 +36,19 @@ func _process(delta):
 	
 	# It's necessary to not change important options every frame!
 	if change:
-		# Screen mode
-		match mode.get_item_text(mode.selected):
-			"Window":
-				OS.window_fullscreen = false
-				OS.window_borderless = false
-			"Borderless Window":
-				OS.window_fullscreen = false
-				OS.window_borderless = true
-			"Borderless Fullscreen":
-				OS.window_fullscreen = true
-		
-		# Screen resolution
-		var text = res.get_item_text(res.selected)
-		if text == "Screen Adapt":
-			OS.window_size = OS.get_screen_size()
-		else:
-			var aux = text.split("x")
-			OS.window_size = Vector2(int(aux[0]), int(aux[1]))
-	
-	if $Apply.pressed:
-		# Write new config file
-		config.open("player.cfg", File.WRITE)
+		# Update config *in memory*
 		for node in get_children():
 			if node.name == "Apply":
 				continue
-			var item = node.name
+			var item = node.get_node("Label").text.to_lower().replace(" ", "_")
 			var button = node.get_node("OptionButton")
 			var value = button.get_item_text(button.selected)
-			var s = item + "=" + value + "\n"
-			config.store_string(s)
-			
-		config.close()
+			Config.file.set_value("base", item, value)
+		
+		Config.set_options()
+	
+	if $Apply.pressed:
+		# Save pending changes to file
+		Config.file.save(Config.FILE)
+		
 		get_tree().change_scene("res://menus/MainMenu.tscn")
