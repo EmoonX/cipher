@@ -33,10 +33,12 @@ focus_neighbour_top = NodePath("../../Back")
 focus_neighbour_bottom = NodePath("../../Resolution/OptionButton")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-toggle_mode = true
+button_mask = 4
 text = "English"
 flat = true
 align = 1
+items = [ "English", null, false, 0, null, "Português (Brasil)", null, false, 1, null ]
+selected = 0
 
 [node name="Resolution" type="Control" parent="."]
 margin_left = 791.956
@@ -61,7 +63,6 @@ focus_neighbour_top = NodePath("../../Language/OptionButton")
 focus_neighbour_bottom = NodePath("../../Back")
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-toggle_mode = true
 text = "2560x1080"
 flat = true
 align = 1

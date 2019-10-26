@@ -48,7 +48,6 @@ focus_neighbour_bottom = NodePath("../Start")
 text = "Quit"
 
 [node name="Fade" type="ColorRect" parent="."]
-visible = false
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
