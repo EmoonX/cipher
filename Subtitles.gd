@@ -6,8 +6,8 @@ var cont = 0
 
 # --------------------------------------------------------------------------- #
 
-func display(dialog):	
-	self.dialog = dialog.split("\n")
+func display(dialog):
+	self.dialog = TranslationServer.translate(dialog).split("\n")
 	index = 0
 	cont = 0
 	text = ""

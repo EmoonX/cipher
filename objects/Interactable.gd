@@ -4,7 +4,7 @@ extends Spatial
 export(String) var action_label
 
 # What the main character say upon examining
-export(String, MULTILINE) var flavor_text
+export(String) var flavor_text
 
 # If the object is in player's action range
 var active = false

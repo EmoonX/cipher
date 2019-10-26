@@ -11,3 +11,17 @@ SCRMOD_FULL,Fullscreen,Tela Cheia
 OPT_RES,Resolution,Resolução
 RES_SCR_ADAPT,Screen Adapt,Adaptado à Tela
 OPT_APPLY,Apply,Aplicar
+,,
+ACTION_EXAMINE,Examine,Investigar
+ACTION_OPEN,Open,Abrir
+ACTION_PICKUP,Pick up,Coletar
+ACTION_SCAN,Scan,Digitalizar
+ACTION_TURNON,Turn on,Ligar
+ACTION_TURNOFF,Turn off,Desligar
+,,
+SPEECH_START,"I see myself once again stuck at the same dark corridor...
+Gotta find my way out.","Me vejo de novo preso ao mesmo corredor escuro...
+Preciso achar um jeito de sair daqui."
+SPEECH_GRASSPAINT,"This remembers me somehow of a friend of mine...
+Perhaps he was fond of plants.","Isso me lembra, de alguma forma, um amigo meu.
+Talvez ele tivesse algum apego a plantas."
