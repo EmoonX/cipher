@@ -28,7 +28,8 @@ func _print(s, newline=false):
 		current_pos.x += len(s)
 
 func _enter_command():
-	_print(PROMPT)
+	if current_pos.x == 0:
+		_print(PROMPT)
 	line = CommandLine.instance()
 	add_child(line)
 	line.rect_position.x = current_pos.x * DX
@@ -72,7 +73,7 @@ func _execute(s):
 			file.close()
 		
 		"exit":
-			visible = false
+			_exit()
 		
 		"ls":
 			for filename in files:
@@ -84,7 +85,14 @@ func _execute(s):
 		_:
 			_print(comm[0] + ": command not found", true)
 
+func _exit():
+	visible = false
+	get_tree().paused = false
+
 func _process(comm):
 	if not visible and Input.is_action_just_pressed("terminal_toggle"):
 		visible = true
+		get_tree().paused = true
 		_enter_command()
+	elif visible and Input.is_action_just_pressed("ui_cancel"):
+		_exit()

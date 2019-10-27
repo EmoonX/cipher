@@ -25,6 +25,7 @@ visible = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Subtitles" type="Label" parent="CanvasLayer"]
+pause_mode = 2
 margin_top = 960.0
 margin_right = 2560.0
 margin_bottom = 1000.0

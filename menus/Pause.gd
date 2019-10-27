@@ -12,7 +12,7 @@ func _ready():
 	$"/root/Game/Fade".color.a = max(previous_alpha, 0.8)
 
 func _process(delta):
-	if $Resume.pressed :
+	if $Resume.pressed:
 		get_tree().paused = false
 		$"/root/Game/Fade".color.a = previous_alpha
 		queue_free()
