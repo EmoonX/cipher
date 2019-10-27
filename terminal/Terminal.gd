@@ -7,6 +7,8 @@ const PROMPT = "emoon@cipher$ "
 const DX = 12
 const DY = 30
 
+export(Color) var prompt_color
+
 var current_pos = Vector2(0, 0)
 var line
 
@@ -15,20 +17,16 @@ var files = []
 
 # --------------------------------------------------------------------------- #
 
-func _print(s, newline=false):
-	var text = Text.instance()
-	add_child(text)
-	text.text = s
-	text.rect_position.x = current_pos.x * DX
-	text.rect_position.y = current_pos.y * DY
+func _position(box, newline=false):
+	box.rect_position.x = current_pos.x * DX
+	box.rect_position.y = current_pos.y * DY
 	if newline:
 		current_pos.x = 0
 		current_pos.y += 1
 	else:
-		current_pos.x += len(s)
+		current_pos.x += len(box.text)
 	
-	# Flow content if screen limit reached
-	print(current_pos.y * DY)
+	# Flow content when screen limit reached
 	if current_pos.y * DY >= rect_size.y:
 		for node in get_children():
 			if node.name == "ColorRect":
@@ -36,13 +34,19 @@ func _print(s, newline=false):
 			node.rect_position.y -= DY
 		current_pos.y -= 1
 
+func _print_prompt():
+	var text = Text.instance()
+	add_child(text)
+	text.add_color_override("font_color",prompt_color)
+	text.text = PROMPT
+	_position(text)
+	
 func _enter_command():
 	if current_pos.x == 0:
-		_print(PROMPT)
+		_print_prompt()
 	line = CommandLine.instance()
 	add_child(line)
-	line.rect_position.x = current_pos.x * DX
-	line.rect_position.y = current_pos.y * DY
+	_position(line)
 	line.grab_focus()
 	line.connect("text_entered", self, "_on_CommandLine_text_entered")
 
@@ -93,6 +97,12 @@ func _execute(s):
 		
 		_:
 			_print(comm[0] + ": command not found", true)
+
+func _print(s, newline=false):
+	var text = Text.instance()
+	add_child(text)
+	text.text = s
+	_position(text, newline)
 
 func _exit():
 	visible = false
