@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://rooms/Corridor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://terminal/Terminal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://Subtitles.gd" type="Script" id=6]
+[ext_resource path="res://menus/Inventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://terminal/Terminal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Subtitles.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -19,7 +20,10 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 
 
 [node name="Corridor" parent="." instance=ExtResource( 3 )]
 
-[node name="Terminal" parent="." instance=ExtResource( 4 )]
+[node name="Inventory" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Terminal" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -32,7 +36,7 @@ margin_bottom = 1000.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 align = 1
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Fade" type="ColorRect" parent="."]
 margin_right = 2560.0

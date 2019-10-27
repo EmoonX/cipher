@@ -1,15 +1,14 @@
 extends "res://objects/Interactable.gd"
 
-onready var game = $"/root/Game"
+onready var inventory = $"/root/Game/Inventory"
 
 # --------------------------------------------------------------------------- #
 
 func _process(delta):
 	if active and Input.is_action_just_pressed("action"):
-		game.get_node("Player").inventory.append(name)
-		game.picked_up.append(name)
+		inventory.add(name)
 		if "Key" in name:
-			game.play_sfx("res://assets/key_pickup.wav")
+			$"/root/Game".play_sfx("res://assets/key_pickup.wav")
 	
-	if name in game.picked_up:
+	if name in inventory.items or name in inventory.used:
 		queue_free()

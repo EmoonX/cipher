@@ -37,7 +37,7 @@ func _position(box, newline=false):
 func _print_prompt():
 	var text = Text.instance()
 	add_child(text)
-	text.add_color_override("font_color",prompt_color)
+	text.add_color_override("font_color", prompt_color)
 	text.text = PROMPT
 	_position(text)
 	
@@ -108,7 +108,7 @@ func _exit():
 	visible = false
 	get_tree().paused = false
 
-func _process(comm):
+func _process(delta):
 	if not visible and Input.is_action_just_pressed("terminal_toggle"):
 		visible = true
 		get_tree().paused = true

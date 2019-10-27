@@ -2,6 +2,7 @@ extends "res://objects/Interactable.gd"
 
 onready var game = $"/root/Game/"
 onready var player = game.get_node("Player")
+onready var inventory = game.get_node("Inventory")
 
 export(String) var where_to
 export(String) var key = ""
@@ -43,11 +44,12 @@ func _process(delta):
 		game.play_sfx("res://assets/close_door_1.wav")
 		
 	elif active and Input.is_action_just_pressed("action"):
-		if not key or key in player.inventory:
+		if not key or key in inventory.items:
+			if key in inventory.items:
+				inventory.remove(key)
+			
 			exit = true
 			game.cont = 60
 			game.play_sfx("res://assets/open_door_1.wav")
 		else:
 			game.play_sfx("res://assets/locked-door.wav")
-			if name == "LockedDoor":
-				game.display_subtitles("first_locked")

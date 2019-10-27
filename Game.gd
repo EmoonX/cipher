@@ -3,9 +3,6 @@ extends Node
 onready var current = $Corridor
 var cont = -60
 
-# List of picked up (used or not) items
-var picked_up = []
-
 # --------------------------------------------------------------------------- #
 
 func display_subtitles(key):
