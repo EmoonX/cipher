@@ -16,6 +16,12 @@ var cont = 0
 func _ready():
 	$ActionLabel.text = action_label
 
+func _on_Area_area_entered(area):
+	active = true
+
+func _on_Area_area_exited(area):
+	active = false
+
 func _process(delta):
 	if active:
 		var value = cont/60.0
@@ -33,9 +39,3 @@ func _process(delta):
 		#$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
 		$ActionLabel.visible = false
 		cont = 0
-
-func _on_Area_area_entered(area):
-	active = true
-
-func _on_Area_area_exited(area):
-	active = false

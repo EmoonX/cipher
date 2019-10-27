@@ -26,6 +26,15 @@ func _print(s, newline=false):
 		current_pos.y += 1
 	else:
 		current_pos.x += len(s)
+	
+	# Flow content if screen limit reached
+	print(current_pos.y * DY)
+	if current_pos.y * DY >= rect_size.y:
+		for node in get_children():
+			if node.name == "ColorRect":
+				continue
+			node.rect_position.y -= DY
+		current_pos.y -= 1
 
 func _enter_command():
 	if current_pos.x == 0:
@@ -80,7 +89,7 @@ func _execute(s):
 				_print(filename, true)
 		
 		"":
-			pass
+			_print("")
 		
 		_:
 			_print(comm[0] + ": command not found", true)
