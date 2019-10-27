@@ -1,17 +1,20 @@
 extends KinematicBody
 
-onready var camera = $Rotation_Helper/Camera    
-onready var rotation_helper = $Rotation_Helper
+const PauseMenu = preload("res://menus/Pause.tscn")
 
 const MAX_SPEED = 30
 const ACCEL = 4.5
 const DEACCEL = 16
 const MOUSE_SENSITIVITY = 0.20
 
+# Items currently in player's possession
 var inventory = []
 
 var vel = Vector3()
 var dir = Vector3()
+
+onready var camera = $Rotation_Helper/Camera    
+onready var rotation_helper = $Rotation_Helper
 
 # --------------------------------------------------------------------------- #
 
@@ -38,7 +41,9 @@ func _input(event):
 func _process_input(delta):
 	# ESC quits game
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		var pause_menu = PauseMenu.instance()
+		$"/root/Game/CanvasLayer".add_child(pause_menu)
+		get_tree().paused = true
 	
 	# Nothing to do while in terminal
 	if $"/root/Game/Terminal".visible:

@@ -25,7 +25,7 @@ func _process(delta):
 	# Enable changing OptionButtons content with <- and -> keys
 	var change = false
 	for node in get_children():
-		if node.name == "Apply":
+		if node.get_child_count() == 0:
 			continue
 		var button = node.get_node("OptionButton")
 		if button.has_focus():
@@ -42,7 +42,7 @@ func _process(delta):
 	if change:
 		# Update config *in memory*
 		for node in get_children():
-			if node.name == "Apply":
+			if node.get_child_count() == 0:
 				continue
 			var item = node.get_node("Label").text.to_lower().replace(" ", "_")
 			var button = node.get_node("OptionButton")
@@ -55,4 +55,11 @@ func _process(delta):
 		# Save pending changes to file
 		Config.file.save(Config.FILE)
 		
-		get_tree().change_scene("res://menus/MainMenu.tscn")
+		# Different procedures in-game and in main menu
+		if $"/root/".has_node("Game"):
+			var pause_menu = $"/root/Game/CanvasLayer/PauseMenu"
+			pause_menu.pause_mode = PAUSE_MODE_PROCESS
+			pause_menu.get_node("Options").grab_focus()
+			queue_free()
+		else:
+			get_tree().change_scene("res://menus/MainMenu.tscn")
