@@ -8,9 +8,6 @@
 [ext_resource path="res://objects/qr/QR.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/donut.tscn" type="PackedScene" id=7]
 
-
-
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 4, 1, 5 )

@@ -1,5 +1,8 @@
 extends Control
 
+const BlurEnv = preload("res://BlurEnv.res")
+const NormalEnv = preload("res://NormalEnv.res")
+
 # Lists of, respectly, picked up and used up items
 var items = []
 var used = []
@@ -41,9 +44,11 @@ func _show(idx):
 	$Viewport/AnimationPlayer.play()
 
 func _process(delta):
+	var env = $"/root/Game".current.get_node("WorldEnvironment")
 	if not visible and Input.is_action_just_pressed("inventory"):
 		visible = true
 		get_tree().paused = true
+		env.environment = BlurEnv
 		_build_list()
 		if items:
 			_show(0)
@@ -52,6 +57,7 @@ func _process(delta):
 				Input.is_action_just_pressed("inventory"):
 			visible = false
 			get_tree().paused = false
+			env.environment = NormalEnv
 		elif $ItemList.get_item_count() > 0:
 			# Enable scrolling through items with \/ and /\ keys
 			var idx = $ItemList.get_selected_items()[0]
