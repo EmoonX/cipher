@@ -7,9 +7,6 @@
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/items/FirstKey.tscn" type="PackedScene" id=6]
 
-
-
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 
@@ -68,6 +65,6 @@ transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0
 where_to = "Green"
 key = "FirstKey"
 
-[node name="FirstKey" parent="." index="5" instance=ExtResource( 6 )]
+[node name="SimpleKey" parent="." index="5" instance=ExtResource( 6 )]
 transform = Transform( 0.469846, 0, 0.17101, 0, 0.5, 0, -0.17101, 0, 0.469846, 20, 0, 18 )
 

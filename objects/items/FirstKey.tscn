@@ -5,8 +5,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-[node name="FirstKey" instance=ExtResource( 1 )]
-action_label = "ACTION_PICKUP"
+[node name="SimpleKey" instance=ExtResource( 1 )]
 
 [node name="MeshInstance" parent="." index="0"]
 mesh = ExtResource( 2 )

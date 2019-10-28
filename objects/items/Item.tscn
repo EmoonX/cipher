@@ -9,6 +9,7 @@
 
 [node name="Item" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+action_label = "ACTION_PICKUP"
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = SubResource( 1 )

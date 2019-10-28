@@ -6,7 +6,7 @@ MENU_RESUME,Resume,Continuar
 MENU_RETURN,Return to Menu,Retornar ao Menu
 ,,
 OPT_LANG,Language,Linguagem
-OPT_SCRMOD,Screen Mode,Modo da Tela
+OPT_SCRMOD,Screen Mode,Modo de Tela
 SCRMOD_WIN,Window,Janela
 SCRMOD_BLWIN,Borderless Window,Janela sem Bordas
 SCRMOD_FULL,Fullscreen,Tela Cheia
@@ -27,3 +27,6 @@ Preciso achar um jeito de sair daqui."
 SPEECH_GRASSPAINT,"This remembers me somehow of a friend of mine...
 Perhaps he was fond of plants.","Isso me lembra, de alguma forma, um amigo meu.
 Talvez ele tivesse algum apego a plantas."
+,,
+SIMPLEKEY_NAME,Simple Key,Chave Simples
+SIMPLEKEY_DESCR,A simple key. Nothing special about it.,Uma simples chave. Não há nada de especial.

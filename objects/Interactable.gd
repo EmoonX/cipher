@@ -4,7 +4,7 @@ extends Spatial
 export(String) var action_label
 
 # What the main character say upon examining
-export(String) var flavor_text
+export(String) var examine_text
 
 # If the object is in player's action range
 var active = false
@@ -33,8 +33,8 @@ func _process(delta):
 		$ActionLabel.visible = true
 		cont = (cont + 1) % 60
 		
-		if Input.is_action_just_pressed("action") and flavor_text:
-			$"/root/Game".display_subtitles(flavor_text)
+		if Input.is_action_just_pressed("action") and examine_text:
+			$"/root/Game".display_subtitles(examine_text)
 	else:
 		#$MeshInstance.material_override.albedo_color = Color(1, 1, 1)
 		$ActionLabel.visible = false

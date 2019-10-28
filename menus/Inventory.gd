@@ -8,23 +8,46 @@ var used = []
 
 func add(item):
 	items.append(item)
-	$ItemList.add_item(item)
-	$ItemList.sort_items_by_text()
 
 func remove(item):
 	items.erase(item)
-	for idx in range($ItemList.get_item_count()):
-		if $ItemList.get_item_text(idx) == item:
-			$ItemList.remove_item(idx)
-			break
-	$ItemList.sort_items_by_text()
 	used.append(item)
+	
+func was_picked_up(item):
+	for x in items:
+		if item.name == x.name:
+			return true
+	for y in used:
+		if item.name == y.name:
+			return true
+	return false
+	
+func _build_list():
+	$ItemList.clear()
+	items.sort()
+	for item in items:
+		var pretty_name = TranslationServer.translate(item.pretty_name)
+		$ItemList.add_item(pretty_name)
+	
+	$ItemList.select(0)
 
 func _process(delta):
 	if not visible and Input.is_action_just_pressed("inventory"):
 		visible = true
 		get_tree().paused = true
-	elif visible and Input.is_action_just_pressed("ui_cancel") or \
-			Input.is_action_just_pressed("inventory"):
-		visible = false
-		get_tree().paused = false
+		_build_list()
+	elif visible:
+		if Input.is_action_just_pressed("ui_cancel") or \
+				Input.is_action_just_pressed("inventory"):
+			visible = false
+			get_tree().paused = false
+		elif $ItemList.get_item_count() > 0:
+			# Enable scrolling through items with \/ and /\ keys
+			var idx = $ItemList.get_selected_items()[0]
+			if Input.is_action_just_pressed("ui_down") and idx > 0:
+				$ItemList.select(idx - 1)
+			elif Input.is_action_just_pressed("ui_up") and \
+					idx < $ItemList.get_item_count() - 1:
+				$ItemList.select(idx + 1)
+		
+			$Description.text = items[idx].description
