@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/TexturesCom_ConcretePlates0211_1_seamless_S.png" type="Texture" id=3]
 [ext_resource path="res://assets/TexturesCom_Tiles_PorcelainChevron_1K_albedo.png" type="Texture" id=4]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/items/FirstKey.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/items/SimpleKey.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
