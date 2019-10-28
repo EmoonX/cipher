@@ -88,9 +88,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 
 
 [node name="Corridor" parent="." instance=ExtResource( 3 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Subtitles" type="Label" parent="CanvasLayer"]
+[node name="Subtitles" type="Label" parent="."]
 pause_mode = 1
 margin_top = 960.0
 margin_right = 2560.0
@@ -100,12 +98,7 @@ custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 align = 1
 script = ExtResource( 5 )
 
-[node name="Blur" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 6 )
-use_parent_material = true
-margin_right = 2560.0
-margin_bottom = 1080.0
-color = Color( 0, 0, 0, 1 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Terminal" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
@@ -116,13 +109,23 @@ visible = false
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
 visible = false
 
-[node name="Fade" type="ColorRect" parent="."]
-margin_right = 2560.0
+[node name="ScreenEffects" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Blur" type="ColorRect" parent="ScreenEffects"]
+material = SubResource( 6 )
+margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Vignette" type="TextureRect" parent="."]
-margin_right = 2560.0
+[node name="Fade" type="ColorRect" parent="ScreenEffects"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Vignette" type="TextureRect" parent="ScreenEffects"]
+margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 9 )
 expand = true
