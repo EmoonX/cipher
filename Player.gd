@@ -38,17 +38,7 @@ func _input(event):
 		camera_rot.x = clamp(camera_rot.x, -70, 70)
 		rotation_helper.rotation_degrees = camera_rot
 
-func _process_input(delta):
-	# ESC quits game
-	if Input.is_action_just_pressed("ui_cancel"):
-		var pause_menu = PauseMenu.instance()
-		$"/root/Game/CanvasLayer".add_child(pause_menu)
-		get_tree().paused = true
-	
-	# Nothing to do while in terminal
-	if $"/root/Game/Terminal".visible:
-		return
-	
+func _process_input(delta):	
 	# Get movement vector
 	var input_movement_vector = Vector3()
 	if Input.is_action_pressed("movement_forward"):

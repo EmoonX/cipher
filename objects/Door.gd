@@ -2,7 +2,7 @@ extends "res://objects/Interactable.gd"
 
 onready var game = $"/root/Game/"
 onready var player = game.get_node("Player")
-onready var inventory = game.get_node("Inventory")
+onready var inventory = game.get_node("CanvasLayer/Inventory")
 
 export(String) var where_to
 export(String) var key = ""
