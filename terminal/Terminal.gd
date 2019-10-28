@@ -105,11 +105,12 @@ func _print(s, newline=false):
 	_position(text, newline)
 
 func _exit():
+	# Exit terminal
 	visible = false
 	get_tree().paused = false
 
 func _process(delta):
-	if not visible and Input.is_action_just_pressed("terminal_toggle"):
+	if not visible and Input.is_action_just_pressed("terminal"):
 		visible = true
 		get_tree().paused = true
 		_enter_command()

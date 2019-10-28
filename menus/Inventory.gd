@@ -43,8 +43,7 @@ func _show(idx):
 func _process(delta):
 	if not visible and Input.is_action_just_pressed("inventory"):
 		visible = true
-		get_tree().paused = true
-		$"/root/Game".tween_blur(self, true)
+		$"/root/Game".pause_toggle()
 		_build_list()
 		if items:
 			_show(0)
@@ -52,8 +51,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_cancel") or \
 				Input.is_action_just_pressed("inventory"):
 			visible = false
-			get_tree().paused = false
-			$"/root/Game".tween_blur(self, false)
+			$"/root/Game".pause_toggle()
 		elif $ItemList.get_item_count() > 0:
 			# Enable scrolling through items with \/ and /\ keys
 			var idx = $ItemList.get_selected_items()[0]
