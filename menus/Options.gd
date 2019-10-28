@@ -59,7 +59,7 @@ func _process(delta):
 		if $"/root/".has_node("Game"):
 			var pause_menu = $"/root/Game/CanvasLayer/PauseMenu"
 			pause_menu.pause_mode = PAUSE_MODE_PROCESS
-			pause_menu.get_node("Options").grab_focus()
+			pause_menu.get_node("Items/Options").grab_focus()
 			queue_free()
 		else:
 			get_tree().change_scene("res://menus/MainMenu.tscn")
