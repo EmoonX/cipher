@@ -34,7 +34,7 @@ func _build_list():
 	$ItemList.select(0)
 
 func _show(idx):
-	$Description.text = items[idx].description
+	$Details/Description.text = items[idx].description
 	$Viewport/Item.remove_child(get_child(0))
 	$Viewport/Item.add_child(items[idx])
 	$Viewport/AnimationPlayer.current_animation = "rotate"

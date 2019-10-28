@@ -1,6 +1,6 @@
 extends Control
 
-const Options = preload("res://menus/Options.tscn")
+const OptionsMenu = preload("res://menus/OptionsMenu.tscn")
 
 # --------------------------------------------------------------------------- #
 
@@ -15,7 +15,7 @@ func _process(delta):
 			$"/root/Game".pause_toggle()
 		elif $Items/Options.pressed:
 			pause_mode = PAUSE_MODE_STOP
-			$"/root/Game/CanvasLayer".add_child(Options.instance())
+			$"/root/Game/CanvasLayer".add_child(OptionsMenu.instance())
 		elif $Items/ReturnToMenu.pressed:
 			$"/root/Game".pause_toggle()
 			get_tree().change_scene("res://menus/MainMenu.tscn")

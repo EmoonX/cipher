@@ -19,12 +19,12 @@ func _ready():
 						button.selected = id
 				break
 	
-	$Language/OptionButton.grab_focus()
+	$Items/Language/OptionButton.grab_focus()
 
 func _process(delta):
 	# Enable changing OptionButtons content with <- and -> keys
 	var change = false
-	for node in get_children():
+	for node in $Items.get_children():
 		if node.get_child_count() == 0:
 			continue
 		var button = node.get_node("OptionButton")
@@ -41,7 +41,7 @@ func _process(delta):
 	# It's necessary to not change important options every frame!
 	if change:
 		# Update config *in memory*
-		for node in get_children():
+		for node in $Items.get_children():
 			if node.get_child_count() == 0:
 				continue
 			var item = node.get_node("Label").text.to_lower().replace(" ", "_")
@@ -51,7 +51,7 @@ func _process(delta):
 		
 		Config.set_options()
 	
-	if $Apply.pressed:
+	if $Items/Apply.pressed:
 		# Save pending changes to file
 		Config.file.save(Config.FILE)
 		

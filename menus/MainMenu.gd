@@ -26,6 +26,6 @@ func _process(delta):
 	if $Items/Start.pressed:
 		get_tree().change_scene("res://Game.tscn")
 	elif $Items/Options.pressed:
-		get_tree().change_scene("res://menus/Options.tscn")
+		get_tree().change_scene("res://menus/OptionsMenu.tscn")
 	elif $Items/Quit.pressed:
 		get_tree().quit()
