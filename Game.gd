@@ -36,15 +36,6 @@ func _tween_blur(increase):
 	remove_child(tween)
 
 func _process(delta):
-	$ScreenEffects.rect_size = OS.window_size
-	for effect in $ScreenEffects.get_children():
-		effect.rect_size = OS.window_size
-	
-	for node in $CanvasLayer.get_children():
-		node.rect_size.y = OS.window_size.y
-		node.rect_size.x = node.rect_size.y * 16.0/9.0
-		node.rect_position.x = (OS.window_size.x - node.rect_size.x) / 2
-	
 	if cont != 0:
 		var value = abs(cont) if cont < 0 else 60 - cont
 		$ScreenEffects/Fade.color.a = value/60.0

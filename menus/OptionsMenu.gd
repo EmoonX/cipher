@@ -1,7 +1,7 @@
 extends Control
 
-onready var mode = $ScreenMode/OptionButton
-onready var res = $Resolution/OptionButton
+onready var mode = $Items/ScreenMode/OptionButton
+onready var res = $Items/Resolution/OptionButton
 
 # --------------------------------------------------------------------------- #
 

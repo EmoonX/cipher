@@ -28,10 +28,12 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
-[node name="ActionLabel" type="Label" parent="."]
+[node name="ActionLabel" type="Label" parent="." groups=[
+"center",
+]]
 visible = false
 margin_top = 540.0
-margin_right = 2560.0
+margin_right = 1920.0
 margin_bottom = 571.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
