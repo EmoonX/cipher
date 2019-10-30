@@ -115,4 +115,5 @@ func _process(delta):
 		get_tree().paused = true
 		_enter_command()
 	elif visible and Input.is_action_just_pressed("ui_cancel"):
+		Input.action_release("ui_cancel")
 		_exit()

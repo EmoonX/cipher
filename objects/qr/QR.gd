@@ -13,6 +13,6 @@ func _ready():
 func _process(delta):
 	if active and Input.is_action_just_pressed("action"):
 		var name = file.split("/")[-1]
-		var files = $"/root/Game/CanvasLayer/Terminal".files
+		var files = $"/root/Game/Interfaces/Terminal".files
 		if not name in files:
 			files.append(name)

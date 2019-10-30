@@ -15,7 +15,8 @@ func _process(delta):
 			$"/root/Game".pause_toggle()
 		elif $Items/Options.pressed:
 			pause_mode = PAUSE_MODE_STOP
-			$"/root/Game/CanvasLayer".add_child(OptionsMenu.instance())
+			var menu = OptionsMenu.instance()
+			$"/root/Game/Interfaces".add_child(menu)
 		elif $Items/ReturnToMenu.pressed:
 			$"/root/Game".pause_toggle()
 			get_tree().change_scene("res://menus/MainMenu.tscn")

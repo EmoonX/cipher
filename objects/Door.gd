@@ -2,7 +2,7 @@ extends "res://objects/Interactable.gd"
 
 onready var game = $"/root/Game"
 onready var player = $"/root/Game/Player"
-onready var inventory = $"/root/Game/Interfaces/Container/Inventory"
+onready var inventory = $"/root/Game/Interfaces/Inventory"
 
 export(String) var where_to
 export(String) var key = ""

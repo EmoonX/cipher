@@ -1,6 +1,6 @@
 extends "res://objects/Interactable.gd"
 
-onready var inventory = $"/root/Game/Interfaces/Container/Inventory"
+onready var inventory = $"/root/Game/Interfaces/Inventory"
 
 # Name and description to show in player's inventory
 onready var pretty_name = name.to_upper() + "_NAME"

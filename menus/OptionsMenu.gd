@@ -10,7 +10,7 @@ func _ready():
 	for option in Config.file.get_section_keys("base"):
 		var item = option.replace("_", " ").capitalize().replace(" ", "")
 		var value = Config.file.get_value("base", option)
-		for node in get_children():
+		for node in $Items.get_children():
 			if node.has_node("Label") and \
 					node.get_node("Label").text == option.to_upper():
 				var button = node.get_node("OptionButton")
@@ -57,7 +57,8 @@ func _process(delta):
 		
 		# Different procedures in-game and in main menu
 		if $"/root/".has_node("Game"):
-			var pause_menu = $"/root/Game/CanvasLayer/PauseMenu"
+			Input.action_release("ui_accept")
+			var pause_menu = $"/root/Game/Interfaces/PauseMenu"
 			pause_menu.pause_mode = PAUSE_MODE_PROCESS
 			pause_menu.get_node("Items/Options").grab_focus()
 			queue_free()

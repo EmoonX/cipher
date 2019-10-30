@@ -13,6 +13,9 @@ func _ready():
 	Config.file.load(Config.FILE)
 	Config.set_options()
 	
+	# Allow mouse interaction
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 func _process(delta):
 	# Apply fade in
 	if $Fade.color.a > 0.0:
