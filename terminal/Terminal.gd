@@ -107,12 +107,14 @@ func _print(s, newline=false):
 func _exit():
 	# Exit terminal
 	visible = false
-	get_tree().paused = false
+	$"/root/Game".pause_toggle()
 
 func _process(delta):
-	if not visible and Input.is_action_just_pressed("terminal"):
+	if not visible and Input.is_action_just_pressed("terminal") and \
+			not get_tree().paused:
 		visible = true
-		get_tree().paused = true
+		$"/root/Game".pause_toggle()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_enter_command()
 	elif visible and Input.is_action_just_pressed("ui_cancel"):
 		Input.action_release("ui_cancel")

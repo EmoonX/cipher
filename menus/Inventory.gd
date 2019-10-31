@@ -41,7 +41,8 @@ func _show(idx):
 	$Viewport/AnimationPlayer.play()
 
 func _process(delta):
-	if not visible and Input.is_action_just_pressed("inventory"):
+	if not visible and Input.is_action_just_pressed("inventory") and \
+			not get_tree().paused:
 		visible = true
 		$"/root/Game".pause_toggle()
 		_build_list()
@@ -50,6 +51,8 @@ func _process(delta):
 	elif visible:
 		if Input.is_action_just_pressed("ui_cancel") or \
 				Input.is_action_just_pressed("inventory"):
+			Input.action_release("ui_cancel")
+			Input.action_release("ui_inventory")
 			visible = false
 			$"/root/Game".pause_toggle()
 		elif $ItemList.get_item_count() > 0:

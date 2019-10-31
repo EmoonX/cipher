@@ -5,7 +5,8 @@ const OptionsMenu = preload("res://menus/OptionsMenu.tscn")
 # --------------------------------------------------------------------------- #
 
 func _process(delta):
-	if not visible and Input.is_action_just_pressed("ui_cancel"):
+	if not visible and Input.is_action_just_pressed("ui_cancel") and \
+			not get_tree().paused:
 		visible = true
 		$"/root/Game".pause_toggle()
 		$Items/Resume.grab_focus()
