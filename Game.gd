@@ -36,7 +36,6 @@ func _tween_blur(increase):
 	remove_child(tween)
 
 func _process(delta):
-	print(get_tree().paused)
 	if cont != 0:
 		var value = abs(cont) if cont < 0 else 60 - cont
 		$ScreenEffects/Fade.color.a = value/60.0

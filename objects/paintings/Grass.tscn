@@ -46,7 +46,7 @@ surfaces/1 = {
 
 [node name="GrassPainting" index="0" instance=ExtResource( 1 )]
 transform = Transform( 1.35, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-flavor_text = "SPEECH_GRASSPAINT"
+examine_text = "SPEECH_GRASSPAINT"
 
 [node name="MeshInstance" parent="." index="0"]
 mesh = SubResource( 3 )

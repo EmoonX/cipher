@@ -44,10 +44,15 @@ func _process(delta):
 		game.play_sfx("res://assets/close_door_1.wav")
 		
 	elif active and Input.is_action_just_pressed("action"):
-		if not key or key in inventory.items:
-			if key in inventory.items:
-				inventory.remove(key)
-			
+		var ok = true
+		if key:
+			ok = false
+			for item in inventory.items:
+				if not key or key == item.name:
+					ok = true
+					break
+		
+		if ok:
 			exit = true
 			game.cont = 60
 			game.play_sfx("res://assets/open_door_1.wav")

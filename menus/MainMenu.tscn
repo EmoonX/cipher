@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/cipher.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
 size = 60
+use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="MainMenu" type="HSplitContainer" groups=[
 "center",
@@ -46,7 +53,8 @@ focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "MENU_START"
 flat = true
@@ -59,7 +67,8 @@ focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "MENU_OPTIONS"
 flat = true
@@ -72,7 +81,8 @@ focus_neighbour_top = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Start")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "MENU_QUIT"
 flat = true
