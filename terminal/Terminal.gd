@@ -7,6 +7,14 @@ const PROMPT = "emoon@cipher$ "
 const DX = 12
 const DY = 30
 
+# Dictionary of command explanation
+const commands = {
+	"cat": "print contents of file",
+	"exit": "quit terminal",
+	"help": "what you are reading right now :)",
+	"ls": "show current folder files"
+}
+
 export(Color) var prompt_color
 
 var current_pos = Vector2(0, 0)
@@ -87,6 +95,11 @@ func _execute(s):
 		
 		"exit":
 			_exit()
+		
+		"help":
+			_print("Available commands:", true)
+			for c in commands:
+				_print("  " + c + ": " + commands[c], true)
 		
 		"ls":
 			for filename in files:
