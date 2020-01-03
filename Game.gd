@@ -1,6 +1,11 @@
 extends Node
 
+# Current area
 onready var current = $Corridor
+
+# Number of pics taken with camera
+var num_pics = 0
+
 var cont = -60
 
 # --------------------------------------------------------------------------- #

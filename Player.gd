@@ -38,7 +38,7 @@ func _input(event):
 		camera_rot.x = clamp(camera_rot.x, -70, 70)
 		rotation_helper.rotation_degrees = camera_rot
 
-func _process_input(delta):	
+func _process_input(delta):
 	# Get movement vector
 	var input_movement_vector = Vector3()
 	if Input.is_action_pressed("movement_forward"):
@@ -63,6 +63,14 @@ func _process_input(delta):
 	if Input.is_action_just_pressed("flashlight"):
 		$Rotation_Helper/Flashlight.visible = \
 			not $Rotation_Helper/Flashlight.visible
+	
+	# Capture screen
+	if Input.is_action_just_pressed("camera"):
+		var img = get_viewport().get_texture().get_data()
+		img.flip_y()
+		var filename = str("%04d" % ($"/root/Game".num_pics + 1)) + ".png"
+		$"/root/Game".num_pics += 1
+		img.save_png(filename)
 
 func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction

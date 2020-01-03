@@ -83,6 +83,12 @@ func _on_CommandLine_text_entered(comm):
 	_execute(comm)
 	_enter_command()
 
+func _print(s, newline=false):
+	var text = Text.instance()
+	add_child(text)
+	text.text = s
+	_position(text, newline)
+
 func _check(comm):
 	# Check if a single argument is given AND file exists
 	if len(comm) != 2:
@@ -141,6 +147,11 @@ func _demorse(filename):
 			code = ""
 	_print(text, true)
 
+func _exit():
+	# Exit terminal
+	visible = false
+	$"/root/Game".pause_toggle()
+
 func _execute(s):
 	var comm = s.split(" ")
 	match comm[0]:
@@ -156,7 +167,7 @@ func _execute(s):
 			_print("Available commands:", true)
 			for c in base_commands:
 				_print("  " + c + ": " + base_commands[c], true)
-			_print("====", true)
+			_print("  ====", true)
 			for c in extra_commands:
 				_print("  " + c + ": " + extra_commands[c], true)
 		
@@ -183,17 +194,6 @@ func _execute(s):
 		
 		_:
 			_print(comm[0] + ": command not found", true)
-
-func _print(s, newline=false):
-	var text = Text.instance()
-	add_child(text)
-	text.text = s
-	_position(text, newline)
-
-func _exit():
-	# Exit terminal
-	visible = false
-	$"/root/Game".pause_toggle()
 
 func _process(delta):
 	if not visible and Input.is_action_just_pressed("terminal") and \
