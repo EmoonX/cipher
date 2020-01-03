@@ -38,10 +38,15 @@ export(Color) var prompt_color
 var current_pos = Vector2(0, 0)
 var line
 
+onready var cwd = Directory.new()
+
 # List of gotten files (i.e. scanned)
 var files = []
 
 # --------------------------------------------------------------------------- #
+
+func _ready():
+	cwd.open("res://files")
 
 func _position(box, newline=false):
 	box.rect_position.x = current_pos.x * DX
@@ -172,8 +177,16 @@ func _execute(s):
 				_print("  " + c + ": " + extra_commands[c], true)
 		
 		"ls":
-			for filename in files:
-				_print(filename, true)
+			cwd.list_dir_begin(true)
+			while true:
+				var filename = cwd.get_next()
+				if filename:
+					if cwd.dir_exists(filename):
+						filename += "/"
+					_print(filename, true)
+				else:
+					break
+			cwd.list_dir_end()
 		
 		# ------------------------------------------------------------------- #
 		
