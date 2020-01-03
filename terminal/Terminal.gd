@@ -15,13 +15,23 @@ const base_commands = {
 	"ls": "show current folder files"
 }
 const extra_commands = {
-	"bintoascii": "convert binary files to ASCII readable representation"
+	"bintoascii": "convert binary files to ASCII readable representation",
+	"demorse": "translate morse code from a file"
 }
 
-# String containing ordered ASCII chars
+# Ordered ASCII chars
 const ascii = "................................ !\"#$%&'()*+,-./0123456789" + \
 		":;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`" + \
 		"abcdefghijklmnopqrstuvwxyz{|}~."
+
+# Dictionary of morse translations
+const morse = {
+	'.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', 
+	'..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J',
+	'-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O',
+	'.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',
+	'..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z'
+}
 
 export(Color) var prompt_color
 
@@ -101,16 +111,34 @@ func _bin_to_ascii(filename):
 	var file = File.new()
 	filename = "res://objects/qr/" + filename
 	file.open(filename, File.READ)
-	var bin = file.get_as_text()
+	var src = file.get_as_text()
 	var text = ""
-	for i in range(0, len(bin) - 1, 8):
-		var s = bin.substr(i, 8)
+	for i in range(0, len(src) - 1, 8):
+		var s = src.substr(i, 8)
 		var index = 0
 		for value in s:
 			value = int(value)
 			index *= 2
 			index += value
 		text += ascii[index]
+	_print(text, true)
+
+func _demorse(filename):
+	# Translate text files containing morse code
+	var file = File.new()
+	filename = "res://objects/qr/" + filename
+	file.open(filename, File.READ)
+	var src = file.get_as_text()
+	var text = ""
+	var code = ""
+	for c in src:
+		if c == "." or c == "-":
+			code += c
+		elif c == "/":
+			text += " "
+		else:
+			text += morse[code]
+			code = ""
 	_print(text, true)
 
 func _execute(s):
@@ -142,6 +170,11 @@ func _execute(s):
 			if not _check(comm):
 				return
 			_bin_to_ascii(comm[1])
+		
+		"demorse":
+			if not _check(comm):
+				return
+			_demorse(comm[1])
 		
 		# ------------------------------------------------------------------- #
 		
