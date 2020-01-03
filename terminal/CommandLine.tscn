@@ -7,11 +7,11 @@
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="CommandLine" type="LineEdit"]
-margin_right = 260.0
+margin_right = 500.0
 margin_bottom = 35.0
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 1 )
-max_length = 20
+max_length = 50
 caret_blink = true
 

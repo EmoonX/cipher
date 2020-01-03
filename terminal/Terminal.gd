@@ -7,13 +7,21 @@ const PROMPT = "emoon@cipher$ "
 const DX = 12
 const DY = 30
 
-# Dictionary of command explanation
-const commands = {
+# Dictionaries of command explanation
+const base_commands = {
 	"cat": "print contents of file",
 	"exit": "quit terminal",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files"
 }
+const extra_commands = {
+	"bintoascii": "convert binary files to ASCII readable representation"
+}
+
+# String containing ordered ASCII chars
+const ascii = "................................ !\"#$%&'()*+,-./0123456789" + \
+		":;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`" + \
+		"abcdefghijklmnopqrstuvwxyz{|}~."
 
 export(Color) var prompt_color
 
@@ -76,34 +84,66 @@ func _check(comm):
 	
 	return true
 
+func _cat(filename):
+	# Open file and print lines from it
+	var file = File.new()
+	filename = "res://objects/qr/" + filename
+	file.open(filename, File.READ)
+	while true:
+		var line = file.get_line()
+		if not line:
+			break 
+		_print(line, true)
+	file.close()
+
+func _bin_to_ascii(filename):
+	# Convert binary string from file to ASCII readable format
+	var file = File.new()
+	filename = "res://objects/qr/" + filename
+	file.open(filename, File.READ)
+	var bin = file.get_as_text()
+	var text = ""
+	for i in range(0, len(bin) - 1, 8):
+		var s = bin.substr(i, 8)
+		var index = 0
+		for value in s:
+			value = int(value)
+			index *= 2
+			index += value
+		text += ascii[index]
+	_print(text, true)
+
 func _execute(s):
 	var comm = s.split(" ")
 	match comm[0]:
 		"cat":
 			if not _check(comm):
 				return
-			# Open file and print lines from it
-			var file = File.new()
-			var name = "res://qr/" + str(comm[1])
-			file.open(name, File.READ)
-			while true:
-				var line = file.get_line()
-				if not line:
-					break 
-				_print(line, true)
-			file.close()
+			_cat(comm[1])
 		
 		"exit":
 			_exit()
 		
 		"help":
 			_print("Available commands:", true)
-			for c in commands:
-				_print("  " + c + ": " + commands[c], true)
+			for c in base_commands:
+				_print("  " + c + ": " + base_commands[c], true)
+			_print("====", true)
+			for c in extra_commands:
+				_print("  " + c + ": " + extra_commands[c], true)
 		
 		"ls":
 			for filename in files:
 				_print(filename, true)
+		
+		# ------------------------------------------------------------------- #
+		
+		"bintoascii":
+			if not _check(comm):
+				return
+			_bin_to_ascii(comm[1])
+		
+		# ------------------------------------------------------------------- #
 		
 		"":
 			_print("")

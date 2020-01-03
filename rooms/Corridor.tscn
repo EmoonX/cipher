@@ -49,13 +49,13 @@ where_to = "FirstRoom"
 
 [node name="FirstQR" parent="." index="4" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7131, 10, -7.59766 )
-image = "res://qr/first.png"
-file = "res://qr/first.txt"
+image = "res://objects/qr/first.png"
+file = "res://objects/qr/first.txt"
 
 [node name="BinaryQR" parent="." index="5" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.7178, 10.0949, 7.92129 )
-image = "res://qr/binary.png"
-file = "res://qr/binary.bin"
+image = "res://objects/qr/binary.png"
+file = "res://objects/qr/binary.bin"
 
 [node name="Scene Root" parent="." index="7" instance=ExtResource( 7 )]
 transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, -32, -0.311163, 0 )
