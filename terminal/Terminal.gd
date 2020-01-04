@@ -3,13 +3,13 @@ extends Control
 const Text = preload("res://terminal/Text.tscn")
 const CommandLine = preload("res://terminal/CommandLine.tscn")
 
-const PROMPT = "emoon@cipher$ "
 const DX = 12
 const DY = 30
 
 # Dictionaries of command explanation
 const base_commands = {
 	"cat": "print contents of file",
+	"cd": "change current working directory",
 	"exit": "quit terminal",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files"
@@ -34,6 +34,7 @@ const morse = {
 }
 
 export(Color) var prompt_color
+export(Color) var cwd_color
 
 var current_pos = Vector2(0, 0)
 var line
@@ -46,7 +47,7 @@ var files = []
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	cwd.open("res://files")
+	cwd.change_dir("files")
 
 func _position(box, newline=false):
 	box.rect_position.x = current_pos.x * DX
@@ -69,7 +70,21 @@ func _print_prompt():
 	var text = Text.instance()
 	add_child(text)
 	text.add_color_override("font_color", prompt_color)
-	text.text = PROMPT
+	text.text = "emoon@cipher:"
+	_position(text)
+	
+	text = Text.instance()
+	add_child(text)
+	text.add_color_override("font_color", cwd_color)
+	var dir = cwd.get_current_dir()
+	dir = dir.replace("res://files", "~")
+	text.text = dir
+	_position(text)
+	
+	text = Text.instance()
+	add_child(text)
+	text.add_color_override("font_color", prompt_color)
+	text.text = "$ "
 	_position(text)
 	
 func _enter_command():
@@ -165,6 +180,18 @@ func _execute(s):
 				return
 			_cat(comm[1])
 		
+		"cd":
+			if cwd.dir_exists(comm[1]):
+				if comm[1] != ".":
+					var dir = cwd.get_current_dir()
+					if comm[1] == "..":
+						dir = dir.substr(0, dir.find_last("/"))
+					else:
+						dir += "/" + comm[1]
+					cwd.change_dir(dir)
+			else:
+				_print("cd: " + comm[1] + ": directory not found", true)
+		
 		"exit":
 			_exit()
 		
@@ -177,16 +204,20 @@ func _execute(s):
 				_print("  " + c + ": " + extra_commands[c], true)
 		
 		"ls":
-			cwd.list_dir_begin(true)
+			cwd.list_dir_begin()
+			var filenames = []
 			while true:
 				var filename = cwd.get_next()
 				if filename:
 					if cwd.dir_exists(filename):
 						filename += "/"
-					_print(filename, true)
+					filenames.append(filename)
 				else:
 					break
 			cwd.list_dir_end()
+			filenames.sort()
+			for filename in filenames:
+				_print(filename, true)
 		
 		# ------------------------------------------------------------------- #
 		
