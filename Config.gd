@@ -2,7 +2,7 @@ extends Node
 
 const BASE = "res://etc/base.cfg"
 #const FILE = "user://player.cfg"
-const FILE = "res://player.cfg"
+const FILE = "res://user/player.cfg"
 
 onready var file = ConfigFile.new()
 

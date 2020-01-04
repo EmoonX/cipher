@@ -42,12 +42,12 @@ var line
 onready var cwd = Directory.new()
 
 # List of gotten files (i.e. scanned)
-var files = []
+#var files = []
 
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	cwd.change_dir("files")
+	cwd.change_dir("res://user/files")
 
 func _position(box, newline=false):
 	box.rect_position.x = current_pos.x * DX
@@ -77,7 +77,7 @@ func _print_prompt():
 	add_child(text)
 	text.add_color_override("font_color", cwd_color)
 	var dir = cwd.get_current_dir()
-	dir = dir.replace("res://files", "~")
+	dir = dir.replace("res://user/files", "~")
 	text.text = dir
 	_position(text)
 	
@@ -114,7 +114,7 @@ func _check(comm):
 	if len(comm) != 2:
 		_print("Usage: " + comm[0] + " [FILE]", true)
 		return false
-	if not comm[1] in files:
+	if not cwd.file_exists(comm[1]):
 		_print(comm[0] + ": " + comm[1] + ": file not found", true)
 		return false
 	
@@ -123,7 +123,7 @@ func _check(comm):
 func _cat(filename):
 	# Open file and print lines from it
 	var file = File.new()
-	filename = "res://objects/qr/" + filename
+	filename = cwd.get_current_dir() + "/" + filename
 	file.open(filename, File.READ)
 	while true:
 		var line = file.get_line()
@@ -135,7 +135,7 @@ func _cat(filename):
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
 	var file = File.new()
-	filename = "res://objects/qr/" + filename
+	filename = cwd.get_current_dir() + "/" + filename
 	file.open(filename, File.READ)
 	var src = file.get_as_text()
 	var text = ""
@@ -152,7 +152,7 @@ func _bin_to_ascii(filename):
 func _demorse(filename):
 	# Translate text files containing morse code
 	var file = File.new()
-	filename = "res://objects/qr/" + filename
+	filename = cwd.get_current_dir() + "/" + filename
 	file.open(filename, File.READ)
 	var src = file.get_as_text()
 	var text = ""
