@@ -70,7 +70,7 @@ func _process_input(delta):
 		img.flip_y()
 		var filename = str("%04d" % ($"/root/Game".num_pics + 1)) + ".png"
 		$"/root/Game".num_pics += 1
-		img.save_png(filename)
+		img.save_png("res://user/files/camera/" + filename)
 
 func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction

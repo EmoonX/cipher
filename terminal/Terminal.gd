@@ -12,7 +12,8 @@ const base_commands = {
 	"cd": "change current working directory",
 	"exit": "quit terminal",
 	"help": "what you are reading right now :)",
-	"ls": "show current folder files"
+	"ls": "show current folder files",
+	"view": "display PNG image"
 }
 const extra_commands = {
 	"bintoascii": "convert binary files to ASCII readable representation",
@@ -132,6 +133,14 @@ func _cat(filename):
 		_print(line, true)
 	file.close()
 
+func _view(filename):
+	# Display PNG image in viewer
+	filename = cwd.get_current_dir() + "/" + filename
+	$ImageViewer.texture = load(filename)
+	$ImageViewer.visible = true
+	$ImageViewer.pause_mode = Node.PAUSE_MODE_PROCESS
+	pause_mode = Node.PAUSE_MODE_STOP
+
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
 	var file = File.new()
@@ -218,6 +227,11 @@ func _execute(s):
 			filenames.sort()
 			for filename in filenames:
 				_print(filename, true)
+		
+		"view":
+			if not _check(comm):
+				return
+			_view(comm[1])
 		
 		# ------------------------------------------------------------------- #
 		
