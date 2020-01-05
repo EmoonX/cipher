@@ -3,6 +3,7 @@ extends Control
 const Text = preload("res://terminal/Text.tscn")
 const CommandLine = preload("res://terminal/CommandLine.tscn")
 const ImageViewer = preload("res://terminal/ImageViewer.tscn")
+const AudioPlayer = preload("res://terminal/audio_player/AudioPlayer.tscn")
 
 const DX = 12
 const DY = 30
@@ -142,7 +143,8 @@ func _cat(filename):
 func _play(filename):
 	# Play audio file
 	filename = cwd.get_current_dir() + "/" + filename
-	$AudioPlayer/GUI/Player.stream = load(filename)
+	add_child(AudioPlayer.instance())
+	$AudioPlayer/Player.stream = load(filename)
 
 func _view(filename):
 	# Display PNG image in viewer

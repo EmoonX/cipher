@@ -35,6 +35,6 @@ func _process(delta):
 					color = Color(1, 1, 1)
 				image.set_pixel(x, y, color)
 		
-		# Swap previous image with new (without needing to reimport)
+		# Swap previous image with new (without having to reimport!)
 		sprite.texture = ImageTexture.new()
 		sprite.texture.image = image
