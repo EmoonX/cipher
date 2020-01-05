@@ -18,7 +18,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="ImageViewer" type="Sprite" parent="."]
 pause_mode = 1
+position = Vector2( 960, 540 )
 z_index = 1
-offset = Vector2( 960, 540 )
 script = ExtResource( 2 )
 

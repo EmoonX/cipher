@@ -106,4 +106,3 @@ func _process_movement(delta):
 	# Produce resulting velocity by applying accel and (possibly) wall slide
 	vel = vel.linear_interpolate(dir, accel * delta)
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
-

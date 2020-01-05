@@ -48,7 +48,12 @@ onready var cwd = Directory.new()
 # --------------------------------------------------------------------------- #
 
 func _ready():
+	# Set up ~ directory
 	cwd.change_dir("res://user/files")
+	
+	# Position ImageViewer at screen center
+	#$ImageViewer.position.x = get_viewport().size.x / 2
+	#$ImageViewer.position.y = get_viewport().size.y / 2
 
 func _position(box, newline=false):
 	box.rect_position.x = current_pos.x * DX
