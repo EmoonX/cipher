@@ -72,9 +72,20 @@ func _process_input(delta):
 		yield(get_tree(), "idle_frame")
 		yield(get_tree(), "idle_frame")
 		
+		# Get, crop, resize, adjust and compress image
 		var img : Image = get_viewport().get_texture().get_data()
+		var ratio = float(img.get_width()) / img.get_height()
+		if ratio > 16.0/9.0:
+			var h = img.get_height()
+			var w = h / 9.0 * 16.0
+			var dx = (img.get_width() - w) / 2.0
+			var rect = Rect2(dx, 0, w, h)
+			img = img.get_rect(rect)
+		img.resize(1280, 720)
 		img.flip_y()
-		#img.crop(1920, 1080)
+		img.convert(Image.FORMAT_RGBA4444)
+		
+		# Save PNG image on camera files
 		var filename = str("%04d" % ($"/root/Game".num_pics + 1)) + ".png"
 		$"/root/Game".num_pics += 1
 		img.save_png("res://user/files/camera/" + filename)
