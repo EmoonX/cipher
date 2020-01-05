@@ -13,6 +13,7 @@ const base_commands = {
 	"exit": "quit terminal",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files",
+	"play": "play audio file",
 	"view": "display PNG image"
 }
 const extra_commands = {
@@ -137,6 +138,14 @@ func _cat(filename):
 		_print(line, true)
 	file.close()
 
+func _play(filename):
+	# Play audio file
+	filename = cwd.get_current_dir() + "/" + filename
+	$AudioPlayer/Player.stream = load(filename)
+	$AudioPlayer/Player.play()
+	$AudioPlayer.pause_mode = PAUSE_MODE_PROCESS
+	pause_mode = PAUSE_MODE_STOP
+
 func _view(filename):
 	# Display PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
@@ -232,6 +241,11 @@ func _execute(s):
 			filenames.sort()
 			for filename in filenames:
 				_print(filename, true)
+		
+		"play":
+			if not _check(comm):
+				return
+			_play(comm[1])
 		
 		"view":
 			if not _check(comm):

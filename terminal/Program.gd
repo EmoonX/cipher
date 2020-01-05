@@ -2,6 +2,9 @@ extends Sprite
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
+		if name == "AudioPlayer":
+			$Player.stop()
+		
 		# Hide from view and return control to terminal
 		visible = false
 		get_parent().pause_mode = PAUSE_MODE_PROCESS

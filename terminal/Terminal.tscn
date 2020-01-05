@@ -22,3 +22,11 @@ position = Vector2( 960, 540 )
 z_index = 1
 script = ExtResource( 2 )
 
+[node name="AudioPlayer" type="Sprite" parent="."]
+pause_mode = 1
+position = Vector2( 960, 540 )
+script = ExtResource( 2 )
+
+[node name="Player" type="AudioStreamPlayer" parent="AudioPlayer"]
+pause_mode = 2
+
