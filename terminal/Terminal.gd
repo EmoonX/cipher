@@ -62,9 +62,8 @@ func _position(box, newline=false):
 	# Flow content when screen limit reached
 	if current_pos.y * DY >= rect_size.y:
 		for node in get_children():
-			if node.name == "ColorRect":
-				continue
-			node.rect_position.y -= DY
+			if not node.name in ["ColorRect", "ImageViewer"]:
+				node.rect_position.y -= DY
 		current_pos.y -= 1
 
 func _print_prompt():
@@ -138,8 +137,8 @@ func _view(filename):
 	filename = cwd.get_current_dir() + "/" + filename
 	$ImageViewer.texture = load(filename)
 	$ImageViewer.visible = true
-	$ImageViewer.pause_mode = Node.PAUSE_MODE_PROCESS
-	pause_mode = Node.PAUSE_MODE_STOP
+	$ImageViewer.pause_mode = PAUSE_MODE_PROCESS
+	pause_mode = PAUSE_MODE_STOP
 
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
@@ -194,7 +193,8 @@ func _execute(s):
 				if comm[1] != ".":
 					var dir = cwd.get_current_dir()
 					if comm[1] == "..":
-						dir = dir.substr(0, dir.find_last("/"))
+						if dir != "res://user/files":
+							dir = dir.substr(0, dir.find_last("/"))
 					else:
 						dir += "/" + comm[1]
 					cwd.change_dir(dir)

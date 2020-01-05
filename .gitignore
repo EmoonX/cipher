@@ -11,4 +11,6 @@ export_presets.cfg
 *~*
 
 # User files
-player.cfg
+user/player.cfg
+user/files/camera/*
+user/files/doc/*

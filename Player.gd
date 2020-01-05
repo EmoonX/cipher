@@ -64,13 +64,24 @@ func _process_input(delta):
 		$Rotation_Helper/Flashlight.visible = \
 			not $Rotation_Helper/Flashlight.visible
 	
-	# Capture screen
+	# Capture screen by camera
 	if Input.is_action_just_pressed("camera"):
-		var img = get_viewport().get_texture().get_data()
+		# Hide unwanted layers from photo
+		$"/root/Game/Subtitles".visible = false
+		$"/root/Game/ScreenEffects".visible = false
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
+		
+		var img : Image = get_viewport().get_texture().get_data()
 		img.flip_y()
+		#img.crop(1920, 1080)
 		var filename = str("%04d" % ($"/root/Game".num_pics + 1)) + ".png"
 		$"/root/Game".num_pics += 1
 		img.save_png("res://user/files/camera/" + filename)
+		
+		# Unhide what has hidden before
+		$"/root/Game/Subtitles".visible = true
+		$"/root/Game/ScreenEffects".visible = true
 
 func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction
