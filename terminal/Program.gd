@@ -1,11 +1,14 @@
-extends Sprite
+extends Panel
+
+# --------------------------------------------------------------------------- #
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_parent().pause_mode = PAUSE_MODE_STOP
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		if name == "AudioPlayer":
-			$Player.stop()
-		
-		# Hide from view and return control to terminal
-		visible = false
+		# Close and return control to terminal
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
-		pause_mode = PAUSE_MODE_STOP
+		queue_free()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://terminal/Terminal.gd" type="Script" id=1]
-[ext_resource path="res://terminal/Program.gd" type="Script" id=2]
 
 [node name="Terminal" type="Control"]
 pause_mode = 2
@@ -15,18 +14,4 @@ cwd_color = Color( 1, 0.823529, 0.407843, 1 )
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
-
-[node name="ImageViewer" type="Sprite" parent="."]
-pause_mode = 1
-position = Vector2( 960, 540 )
-z_index = 1
-script = ExtResource( 2 )
-
-[node name="AudioPlayer" type="Sprite" parent="."]
-pause_mode = 1
-position = Vector2( 960, 540 )
-script = ExtResource( 2 )
-
-[node name="Player" type="AudioStreamPlayer" parent="AudioPlayer"]
-pause_mode = 2
 

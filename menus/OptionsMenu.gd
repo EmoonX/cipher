@@ -38,7 +38,7 @@ func _process(delta):
 					button.selected += 1
 				change = true
 	
-	# It's necessary to not change important options every frame!
+	# It's necessary to don't change important options every frame!
 	if change:
 		# Update config *in memory*
 		for node in $Items.get_children():

@@ -2,6 +2,7 @@ extends Control
 
 const Text = preload("res://terminal/Text.tscn")
 const CommandLine = preload("res://terminal/CommandLine.tscn")
+const ImageViewer = preload("res://terminal/ImageViewer.tscn")
 
 const DX = 12
 const DY = 30
@@ -141,18 +142,13 @@ func _cat(filename):
 func _play(filename):
 	# Play audio file
 	filename = cwd.get_current_dir() + "/" + filename
-	$AudioPlayer/Player.stream = load(filename)
-	$AudioPlayer/Player.play()
-	$AudioPlayer.pause_mode = PAUSE_MODE_PROCESS
-	pause_mode = PAUSE_MODE_STOP
+	$AudioPlayer/GUI/Player.stream = load(filename)
 
 func _view(filename):
 	# Display PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
-	$ImageViewer.texture = load(filename)
-	$ImageViewer.visible = true
-	$ImageViewer.pause_mode = PAUSE_MODE_PROCESS
-	pause_mode = PAUSE_MODE_STOP
+	add_child(ImageViewer.instance())
+	$ImageViewer/GUI/Image/Sprite.texture = load(filename)
 
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
