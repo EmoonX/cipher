@@ -3,7 +3,7 @@ extends Control
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	# Create player configuration file (if it doesn't exist)
+	# Create player configuration file (if non existent)
 	var file = File.new()
 	if not file.file_exists(Config.FILE):
 		var dir = Directory.new()
@@ -15,6 +15,11 @@ func _ready():
 	
 	# Allow mouse interaction
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	# Center window on screen (if applicable)
+	var screen_size = OS.get_screen_size()
+	var window_size = OS.get_window_size()
+	OS.set_window_position(0.5 * screen_size - 0.5 * window_size)
 	
 func _process(delta):
 	# Apply fade in
