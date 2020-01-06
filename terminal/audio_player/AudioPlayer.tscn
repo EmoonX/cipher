@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://terminal/Program.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terminal/audio_player/AudioPlayer.gd" type="Script" id=2]
 [ext_resource path="res://terminal/audio_player/play-button.png" type="Texture" id=3]
 [ext_resource path="res://terminal/audio_player/pause.png" type="Texture" id=4]
 [ext_resource path="res://terminal/audio_player/stop.png" type="Texture" id=5]
+[ext_resource path="res://user/files/audio/a.wav" type="AudioStream" id=6]
 
 [node name="AudioPlayer" index="0" instance=ExtResource( 1 )]
 pause_mode = 2
@@ -21,9 +22,11 @@ script = ExtResource( 2 )
 [node name="GUI" parent="." index="0"]
 margin_right = 600.0
 margin_bottom = 300.0
+alignment = 1
 
 [node name="Main" type="VSplitContainer" parent="GUI" index="0"]
-margin_right = 428.0
+margin_left = 34.0
+margin_right = 462.0
 margin_bottom = 300.0
 split_offset = 200
 
@@ -59,8 +62,8 @@ icon = ExtResource( 5 )
 flat = true
 
 [node name="Volume" type="VSlider" parent="GUI" index="1"]
-margin_left = 432.0
-margin_right = 448.0
+margin_left = 466.0
+margin_right = 482.0
 margin_bottom = 300.0
 min_value = -24.0
 max_value = 24.0
@@ -69,5 +72,18 @@ value = 1.0
 tick_count = 32
 ticks_on_borders = true
 
-[node name="Player" type="AudioStreamPlayer" parent="." index="1"]
+[node name="Extras" type="VBoxContainer" parent="GUI" index="2"]
+margin_left = 486.0
+margin_right = 565.0
+margin_bottom = 300.0
 
+[node name="Reverse" type="CheckBox" parent="GUI/Extras" index="0"]
+margin_right = 79.0
+margin_bottom = 24.0
+text = "Reverse"
+align = 1
+
+[node name="Player" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 6 )
+
+[connection signal="toggled" from="GUI/Extras/Reverse" to="." method="_on_Reverse_toggled"]

@@ -24,3 +24,9 @@ func _process(delta):
 	
 	# Volume
 	$Player.volume_db = $GUI/Volume.value
+
+func _on_Reverse_toggled(button_pressed):
+	if button_pressed:
+		$Player.stream.loop_mode = AudioStreamSample.LOOP_BACKWARD
+	else:
+		$Player.stream.loop_mode = AudioStreamSample.LOOP_DISABLED
