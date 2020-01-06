@@ -14,10 +14,13 @@ func _process(delta):
 	if $GUI/Main/Buttons/Play.pressed:
 		if not $Player.playing or $Player.stream_paused:
 			$Player.playing = true
+			$Player.stream_paused = false
 			$Player.seek($GUI/Main/Slider.value)
-		$Player.stream_paused = false
 	elif $GUI/Main/Buttons/Pause.pressed:
 		$Player.stream_paused = true
 	elif $GUI/Main/Buttons/Stop.pressed:
 		$Player.playing = false
 		$GUI/Main/Slider.value = 0.0
+	
+	# Volume
+	$Player.volume_db = $GUI/Volume.value
