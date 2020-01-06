@@ -22,8 +22,9 @@ func _process(delta):
 		$Player.playing = false
 		$GUI/Main/Slider.value = 0.0
 	
-	# Volume
+	# Volume and speed
 	$Player.volume_db = $GUI/Volume.value
+	$Player.pitch_scale = $GUI/Extras/Speed.value
 
 func _on_Reverse_toggled(button_pressed):
 	if button_pressed:
