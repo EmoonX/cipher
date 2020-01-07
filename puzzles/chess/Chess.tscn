@@ -14,191 +14,266 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="Piece" parent="BoardA" index="0" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "king"
 position = "c1"
 
 [node name="Piece2" parent="BoardA" index="1" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "b2"
 
 [node name="Piece3" parent="BoardA" index="2" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "d2"
 
 [node name="Piece4" parent="BoardA" index="3" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "f2"
 
 [node name="Piece5" parent="BoardA" index="4" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "queen"
 position = "d3"
 
 [node name="Piece6" parent="BoardA" index="5" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "bishop"
 position = "e3"
 
 [node name="Piece7" parent="BoardA" index="6" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "g4"
 
 [node name="Piece8" parent="BoardA" index="7" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "knight"
 position = "b8"
 
 [node name="Piece9" parent="BoardA" index="8" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "h2"
 
 [node name="Piece10" parent="BoardA" index="9" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "b4"
 
 [node name="Piece11" parent="BoardA" index="10" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "rook"
 position = "c5"
 
 [node name="Piece12" parent="BoardA" index="11" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "knight"
 position = "h5"
 
 [node name="Piece13" parent="BoardA" index="12" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "bishop"
 position = "a6"
 
 [node name="Piece14" parent="BoardA" index="13" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "e6"
 
 [node name="Piece15" parent="BoardA" index="14" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "g6"
 
 [node name="Piece16" parent="BoardA" index="15" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "d7"
 
 [node name="Piece17" parent="BoardA" index="16" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "king"
 position = "d8"
 
 [node name="Piece18" parent="BoardA" index="17" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "rook"
 position = "f8"
 
 [node name="BoardB" type="Sprite" parent="." index="1"]
+editor/display_folded = true
 position = Vector2( 1440, 540 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="Piece" parent="BoardB" index="0" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "bishop"
 position = "b1"
 
 [node name="Piece2" parent="BoardB" index="1" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "king"
 position = "f1"
 
 [node name="Piece3" parent="BoardB" index="2" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "rook"
 position = "h1"
 
 [node name="Piece4" parent="BoardB" index="3" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "a2"
 
 [node name="Piece5" parent="BoardB" index="4" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "g2"
 
 [node name="Piece6" parent="BoardB" index="5" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "queen"
 position = "h2"
 
 [node name="Piece7" parent="BoardB" index="6" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "d3"
 
 [node name="Piece8" parent="BoardB" index="7" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "e3"
 
 [node name="Piece9" parent="BoardB" index="8" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "f4"
 
 [node name="Piece10" parent="BoardB" index="9" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "pawn"
 position = "d5"
 
 [node name="Piece11" parent="BoardB" index="10" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "white"
 type = "knight"
 position = "e6"
 
 [node name="Piece12" parent="BoardB" index="11" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "c5"
 
 [node name="Piece13" parent="BoardB" index="12" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "f6"
 
 [node name="Piece14" parent="BoardB" index="13" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "bishop"
 position = "a7"
 
 [node name="Piece15" parent="BoardB" index="14" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "b7"
 
 [node name="Piece16" parent="BoardB" index="15" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "bishop"
 position = "e7"
 
 [node name="Piece17" parent="BoardB" index="16" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "pawn"
 position = "h7"
 
 [node name="Piece18" parent="BoardB" index="17" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "king"
 position = "b8"
 
 [node name="Piece19" parent="BoardB" index="18" instance=ExtResource( 4 )]
+margin_right = -880.0
+margin_bottom = -880.0
 color = "black"
 type = "rook"
 position = "g8"
