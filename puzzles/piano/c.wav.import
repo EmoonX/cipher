@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/c.wav-dd9b12e4cc033b89784e7d59a5c70617.sample"
+
+[deps]
+
+source_file="res://puzzles/piano/c.wav"
+dest_files=[ "res://.import/c.wav-dd9b12e4cc033b89784e7d59a5c70617.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
