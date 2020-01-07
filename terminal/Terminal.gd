@@ -22,7 +22,8 @@ const base_commands = {
 const extra_commands = {
 	"bintoascii": "convert binary files to ASCII readable representation",
 	"decode64": "decode a base64 encoded file and save into a new file",
-	"demorse": "translate morse code from a file"
+	"demorse": "translate morse code from a file",
+	"vigenere": "decode a Vigenère encoded text file based on a keyword"
 }
 
 # Ordered ASCII chars
@@ -38,6 +39,9 @@ const morse = {
 	'.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',
 	'..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z'
 }
+
+# Lowercase english alphabet
+const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 export(Color) var prompt_color
 export(Color) var cwd_color
@@ -222,6 +226,24 @@ func _demorse(filename):
 			code = ""
 	_print(text, true)
 
+func _vigenere(comm):
+	# Decode a Vigenère encoded text file based on a keyword
+	if len(comm) < 3:
+		_print("")
+		return
+	var file = File.new()
+	var filename = cwd.get_current_dir() + "/" + comm[1]
+	file.open(filename, File.READ)
+	var text = file.get_as_text()
+	var keyword = comm[2]
+	for i in range(len(text) - 1):
+		var j = i % len(keyword)
+		var k = alphabet.find(keyword[j])
+		var l = ((alphabet.find(text[i]) - k) - len(alphabet)) % len(alphabet)
+		text[i] = alphabet[l]
+		print(text)
+	_print(text, true)
+
 func _exit():
 	# Exit terminal
 	visible = false
@@ -306,6 +328,9 @@ func _execute(s):
 			if not _check(comm):
 				return
 			_demorse(comm[1])
+		
+		"vigenere":
+			_vigenere(comm)
 		
 		# ------------------------------------------------------------------- #
 		
