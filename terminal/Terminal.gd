@@ -12,11 +12,12 @@ const DY = 30
 const base_commands = {
 	"cat": "print contents of file",
 	"cd": "change current working directory",
-	"exit": "quit terminal",
+	"exif": "display image metadata EXIF information",
 	"file": "show information about file type (based on extension)",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files",
 	"play": "play audio file",
+	"quit": "quit terminal",
 	"view": "display PNG image"
 }
 const extra_commands = {
@@ -146,6 +147,32 @@ func _cat(filename):
 		_print(line, true)
 	file.close()
 
+func _exif(filename):
+	# Display image metadata EXIF information
+	
+	# EXIF data we're interested in mining
+	var good = [ \
+		"File Name", "Make", "Camera Model Name", "Software",
+		"Modify Date", "User Comment", "Location", "Title", "Creator"
+	]
+	
+	# Get output from exiftool application
+	filename = cwd.get_current_dir() + "/" + filename
+	filename = ProjectSettings.globalize_path(filename)
+	var output = []
+	OS.execute("exiftool", [filename], true, output)
+	
+	# Output "good" EXIF information
+	output = output[0].split("\n")
+	for line in output:
+		if not line:
+			continue
+		line = line.split(" : ", true, 1)
+		var key = line[0].strip_edges()
+		var value = line[1]
+		if key in good:
+			_print(key + ": " + value, true)
+
 func _file(filename):
 	# Show information about file type (based on extension)
 	var extension = filename.substr(len(filename) - 3, 3)
@@ -242,11 +269,6 @@ func _vigenere(comm):
 		text[i] = alphabet[l]
 	_print(text, true)
 
-func _exit():
-	# Exit terminal
-	visible = false
-	$"/root/Game".pause_toggle()
-
 func _execute(s):
 	var comm = s.split(" ")
 	match comm[0]:
@@ -268,8 +290,10 @@ func _execute(s):
 			else:
 				_print("cd: " + comm[1] + ": directory not found", true)
 		
-		"exit":
-			_exit()
+		"exif":
+			if not _check(comm):
+				return
+			_exif(comm[1])
 		
 		"file":
 			if not _check(comm):
@@ -304,6 +328,9 @@ func _execute(s):
 			if not _check(comm):
 				return
 			_play(comm[1])
+		
+		"quit":
+			_quit()
 		
 		"view":
 			if not _check(comm):
@@ -347,4 +374,9 @@ func _process(delta):
 		_enter_command()
 	elif visible and Input.is_action_just_pressed("ui_cancel"):
 		Input.action_release("ui_cancel")
-		_exit()
+		_quit()
+
+func _quit():
+	# Quit terminal
+	visible = false
+	$"/root/Game".pause_toggle()

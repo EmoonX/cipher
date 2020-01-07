@@ -27,7 +27,7 @@ func _process(delta):
 		for y in image.get_height():
 			for x in image.get_width():
 				var color = pixels[y][x]
-				var avg = color.gray() * 256
+				var avg = color.get_v() * 256
 				if avg < $GUI/Controls/Threshold.value:
 					color = Color(0, 0, 0)
 				else:
