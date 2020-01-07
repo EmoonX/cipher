@@ -2,7 +2,7 @@ extends Control
 
 const Text = preload("res://terminal/Text.tscn")
 const CommandLine = preload("res://terminal/CommandLine.tscn")
-const ImageViewer = preload("res://terminal/ImageViewer.tscn")
+const ImageViewer = preload("res://terminal/image_viewer/ImageViewer.tscn")
 const AudioPlayer = preload("res://terminal/audio_player/AudioPlayer.tscn")
 
 const DX = 12
@@ -172,7 +172,6 @@ func _view(filename):
 	# Display PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
 	add_child(ImageViewer.instance())
-	print(filename)
 	$ImageViewer/GUI/Image/Sprite.texture = load(filename)
 
 func _bin_to_ascii(filename):
@@ -241,7 +240,6 @@ func _vigenere(comm):
 		var k = alphabet.find(keyword[j])
 		var l = ((alphabet.find(text[i]) - k) - len(alphabet)) % len(alphabet)
 		text[i] = alphabet[l]
-		print(text)
 	_print(text, true)
 
 func _exit():

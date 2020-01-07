@@ -20,7 +20,7 @@ func _process(delta):
 			for x in image.get_width():
 				var color = image.get_pixel(x, y)
 				pixels[y].append(color)
-				
+	
 	elif threshold.value != last_ts:
 		# Apply threshold based on average pixel intensity
 		last_ts = threshold.value
