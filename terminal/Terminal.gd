@@ -13,6 +13,7 @@ const base_commands = {
 	"cat": "print contents of file",
 	"cd": "change current working directory",
 	"exit": "quit terminal",
+	"file": "show information about file type (based on extension)",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files",
 	"play": "play audio file",
@@ -141,6 +142,22 @@ func _cat(filename):
 		_print(line, true)
 	file.close()
 
+func _file(filename):
+	# Show information about file type (based on extension)
+	var extension = filename.substr(len(filename) - 3, 3)
+	var text = extension.to_upper() + ": "
+	match extension:
+		"txt":
+			text += "text file"
+		"jpg", "png":
+			text += "image file"
+		"wav":
+			text += "audio file"
+		_:
+			text += "unknown file type"
+	
+	_print(text, true)
+
 func _play(filename):
 	# Play audio file
 	filename = cwd.get_current_dir() + "/" + filename
@@ -233,6 +250,11 @@ func _execute(s):
 		
 		"exit":
 			_exit()
+		
+		"file":
+			if not _check(comm):
+				return
+			_file(comm[1])
 		
 		"help":
 			_print("Available commands:", true)
