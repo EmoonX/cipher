@@ -24,7 +24,6 @@ func _ready():
 
 func _process(delta):
 	# Check if there are any wrongly active/inactive pieces
-	print(positions)
 	for board in [$BoardA, $BoardB]:
 		for piece in board.get_children():
 			if piece.modulate.a == 1.0 and not piece.position in positions:

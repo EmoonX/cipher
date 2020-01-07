@@ -20,6 +20,7 @@ const base_commands = {
 }
 const extra_commands = {
 	"bintoascii": "convert binary files to ASCII readable representation",
+	"decode64": "decode a base64 encoded file and save into a new file",
 	"demorse": "translate morse code from a file"
 }
 
@@ -150,6 +151,7 @@ func _view(filename):
 	# Display PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
 	add_child(ImageViewer.instance())
+	print(filename)
 	$ImageViewer/GUI/Image/Sprite.texture = load(filename)
 
 func _bin_to_ascii(filename):
@@ -168,6 +170,22 @@ func _bin_to_ascii(filename):
 			index += value
 		text += ascii[index]
 	_print(text, true)
+
+func _decode64(filename):
+	# Open base64 input file
+	var input = File.new()
+	var input_name = cwd.get_current_dir() + "/" + filename
+	input.open(input_name, File.READ)
+	
+	# Open to-be-decoded output file
+	var output = File.new()
+	var output_name = input_name + ".jpg"  # temporary?
+	output.open(output_name, File.WRITE)
+	
+	# Decode buffer from input and store in output
+	var text = input.get_as_text()
+	text = Marshalls.base64_to_raw(text)
+	output.store_buffer(text)
 
 func _demorse(filename):
 	# Translate text files containing morse code
@@ -256,6 +274,11 @@ func _execute(s):
 			if not _check(comm):
 				return
 			_bin_to_ascii(comm[1])
+		
+		"decode64":
+			if not _check(comm):
+				return
+			_decode64(comm[1])
 		
 		"demorse":
 			if not _check(comm):
