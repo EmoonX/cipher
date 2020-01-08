@@ -9,6 +9,7 @@
 [node name="CommandLine" type="LineEdit"]
 margin_right = 500.0
 margin_bottom = 35.0
+focus_neighbour_top = NodePath(".")
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 1 )

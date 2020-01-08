@@ -48,6 +48,10 @@ const alphabet = "abcdefghijklmnopqrstuvwxyz"
 export(Color) var prompt_color
 export(Color) var cwd_color
 
+# List of entered commands for reentering later
+var commands = []
+var selected_id
+
 var current_pos = Vector2(0, 0)
 var line
 
@@ -111,11 +115,14 @@ func _enter_command():
 	_position(line)
 	line.grab_focus()
 	line.connect("text_entered", self, "_on_CommandLine_text_entered")
+	commands.append("")
+	selected_id = len(commands) - 1
 
 func _on_CommandLine_text_entered(comm):
 	current_pos.x = 0
 	current_pos.y += 1
 	line.disconnect("text_entered", self, "_on_CommandLine_text_entered")
+	commands[-1] = comm
 	_execute(comm)
 	_enter_command()
 
@@ -386,6 +393,20 @@ func _process(delta):
 	elif visible and Input.is_action_just_pressed("ui_cancel"):
 		Input.action_release("ui_cancel")
 		_quit()
+	
+	# Allow scrolling through previous commands
+	if line and selected_id == len(commands) - 1:
+		commands[-1] = line.text
+	if Input.is_action_just_pressed("ui_up") and \
+			selected_id > 0:
+		selected_id -= 1
+		line.text = commands[selected_id]
+		line.caret_position = len(line.text)
+	elif Input.is_action_just_pressed("ui_down") and \
+			selected_id < len(commands) - 1:
+		selected_id += 1
+		line.text = commands[selected_id]
+		line.caret_position = len(line.text)
 
 func _quit():
 	# Quit terminal
