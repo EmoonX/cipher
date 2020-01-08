@@ -56,7 +56,7 @@ func check(i, j):
 			if grid[p][q] == number:
 				return false
 	
-	# If all numbers are valid, then we're done!
+	# If all numbers are valid, then the game is won!
 	var ok = true
 	for number in $Grid.get_children():
 		if number.text == " " or \
