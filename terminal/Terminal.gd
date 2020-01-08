@@ -12,6 +12,7 @@ const DY = 30
 const base_commands = {
 	"cat": "print contents of file",
 	"cd": "change current working directory",
+	"clear": "clear terminal screen",
 	"exif": "display image metadata EXIF information",
 	"file": "show information about file type (based on extension)",
 	"help": "what you are reading right now :)",
@@ -77,7 +78,7 @@ func _position(box, newline=false):
 	# Flow content when screen limit reached
 	if current_pos.y * DY >= rect_size.y:
 		for node in get_children():
-			if not node.name in ["ColorRect", "ImageViewer"]:
+			if node.name != "ColorRect":
 				node.rect_position.y -= DY
 		current_pos.y -= 1
 
@@ -146,6 +147,13 @@ func _cat(filename):
 			break 
 		_print(line, true)
 	file.close()
+
+func _clear():
+	# Clear terminal screen by flowing content upwards
+	for node in get_children():
+		if node.name != "ColorRect":
+			node.rect_position.y -= DY * (current_pos.y + 1)
+	current_pos.y = 0
 
 func _exif(filename):
 	# Display image metadata EXIF information
@@ -289,6 +297,9 @@ func _execute(s):
 					cwd.change_dir(dir)
 			else:
 				_print("cd: " + comm[1] + ": directory not found", true)
+		
+		"clear":
+			_clear()
 		
 		"exif":
 			if not _check(comm):
