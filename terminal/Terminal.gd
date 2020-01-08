@@ -19,7 +19,7 @@ const base_commands = {
 	"ls": "show current folder files",
 	"play": "play audio file",
 	"quit": "quit terminal",
-	"view": "display PNG image"
+	"view": "display image"
 }
 const extra_commands = {
 	"bintoascii": "convert binary files to ASCII readable representation",
@@ -49,7 +49,7 @@ export(Color) var prompt_color
 export(Color) var cwd_color
 
 # List of entered commands for reentering later
-var commands = []
+var prev_commands = []
 var selected_id
 
 var current_pos = Vector2(0, 0)
@@ -115,14 +115,14 @@ func _enter_command():
 	_position(line)
 	line.grab_focus()
 	line.connect("text_entered", self, "_on_CommandLine_text_entered")
-	commands.append("")
-	selected_id = len(commands) - 1
+	prev_commands.append("")
+	selected_id = len(prev_commands) - 1
 
 func _on_CommandLine_text_entered(comm):
 	current_pos.x = 0
 	current_pos.y += 1
 	line.disconnect("text_entered", self, "_on_CommandLine_text_entered")
-	commands[-1] = comm
+	prev_commands[-1] = comm
 	_execute(comm)
 	_enter_command()
 
@@ -131,6 +131,53 @@ func _print(s, newline=false):
 	add_child(text)
 	text.text = s
 	_position(text, newline)
+
+func _autocomplete():
+	# Autocomplete commands or filenames
+	var words = line.text.split(" ", false)
+	var s = words[-1]
+	var list = []
+	var min_size = INF
+	if len(words) <= 1:
+		# Search for commands
+		for commands in [base_commands, extra_commands]:
+			for comm in commands:
+				if comm.left(len(s)) == s:
+					list.append(comm)
+					min_size = min(min_size, len(comm))
+	else:
+		# Search for filenames
+		cwd.list_dir_begin(false)
+		while true:
+			var filename = cwd.get_next()
+			if filename:
+				if filename.left(len(s)) == s:
+					list.append(filename)
+					min_size = min(min_size, len(filename))
+			else:
+				break
+	if list:
+		# Find the largest common prefix of all encountered words
+		var k = len(s)
+		for j in range(len(s), min_size):
+			var c = list[0][j]
+			var ok = true
+			for i in range(1, len(list)):
+				if list[i][j] != c:
+					ok = false
+					break
+			if not ok:
+				break
+			k += 1
+		
+		# Update command line with new completed word
+		words[-1] = list[0].substr(0, k)
+		line.text = ""
+		for word in words:
+			line.text += word + " "
+		if len(list) > 1:
+			line.text = line.text.substr(0, len(line.text) - 1)
+		line.caret_position = len(line.text)
 
 func _check(comm):
 	# Check if a single argument is given AND file exists
@@ -285,7 +332,7 @@ func _vigenere(comm):
 	_print(text, true)
 
 func _execute(s):
-	var comm = s.split(" ")
+	var comm = s.split(" ", false)
 	match comm[0]:
 		"cat":
 			if not _check(comm):
@@ -384,6 +431,7 @@ func _execute(s):
 			_print(comm[0] + ": command not found", true)
 
 func _process(delta):
+	# Enter or exit terminal
 	if not visible and Input.is_action_just_pressed("terminal") and \
 			not get_tree().paused:
 		visible = true
@@ -395,18 +443,22 @@ func _process(delta):
 		_quit()
 	
 	# Allow scrolling through previous commands
-	if line and selected_id == len(commands) - 1:
-		commands[-1] = line.text
+	if line and selected_id == len(prev_commands) - 1:
+		prev_commands[-1] = line.text
 	if Input.is_action_just_pressed("ui_up") and \
 			selected_id > 0:
 		selected_id -= 1
-		line.text = commands[selected_id]
+		line.text = prev_commands[selected_id]
 		line.caret_position = len(line.text)
 	elif Input.is_action_just_pressed("ui_down") and \
-			selected_id < len(commands) - 1:
+			selected_id < len(prev_commands) - 1:
 		selected_id += 1
-		line.text = commands[selected_id]
+		line.text = prev_commands[selected_id]
 		line.caret_position = len(line.text)
+	
+	# Autocomplete commands or filenames
+	if Input.is_key_pressed(KEY_TAB):
+		_autocomplete()
 
 func _quit():
 	# Quit terminal
