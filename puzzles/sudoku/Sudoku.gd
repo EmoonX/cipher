@@ -36,7 +36,7 @@ func _ready():
 				# Disallow changing original numbers
 				number.focus_mode = Control.FOCUS_NONE
 	
-	_solve()
+	#_solve()
 
 func check(i, j):
 	# Check if number just entered is valid
