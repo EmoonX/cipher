@@ -22,12 +22,12 @@ func _process(delta):
 				pixels[y].append(color)
 	
 	elif threshold.value != last_ts:
-		# Apply threshold based on average pixel intensity
+		# Apply threshold based on average pixel color channel values
 		last_ts = threshold.value
 		for y in image.get_height():
 			for x in image.get_width():
 				var color = pixels[y][x]
-				var avg = color.get_v() * 256
+				var avg = color.gray() * 256
 				if avg < $GUI/Controls/Threshold.value:
 					color = Color(0, 0, 0)
 				else:

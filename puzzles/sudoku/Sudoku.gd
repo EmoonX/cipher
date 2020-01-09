@@ -65,5 +65,5 @@ func check(i, j):
 			break
 	if ok:
 		get_tree().quit()
-			
+	
 	return true

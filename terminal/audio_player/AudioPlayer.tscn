@@ -7,7 +7,7 @@
 [ext_resource path="res://terminal/audio_player/stop.png" type="Texture" id=5]
 [ext_resource path="res://user/files/audio/a.wav" type="AudioStream" id=6]
 
-[node name="AudioPlayer" index="0" instance=ExtResource( 1 )]
+[node name="AudioPlayer" instance=ExtResource( 1 )]
 pause_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
@@ -20,6 +20,7 @@ margin_bottom = 150.0
 script = ExtResource( 2 )
 
 [node name="GUI" parent="." index="0"]
+editor/display_folded = true
 margin_right = 600.0
 margin_bottom = 300.0
 
@@ -92,6 +93,7 @@ step = 0.0
 value = 1.0
 exp_edit = true
 tick_count = 16
+ticks_on_borders = true
 
 [node name="Player" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 6 )

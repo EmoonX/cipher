@@ -28,11 +28,12 @@ func _ready():
 			piece.texture.region.position = Vector2(j * w, i * h)
 			piece.texture.region.size = Vector2(w, h)
 			piece.rect_pivot_offset = Vector2(w/2, h/2)
-			piece.rect_rotation = (randi() % 16) * 360 / 16
+			piece.rect_rotation = round((randi() % 16) * 360 / 16.0)
 			$Grid.add_child(piece)
 			grid[i].append(piece)
 
 func _solved():
+	# Check if all pieces are rotated correctly
 	for i in range(height):
 		for j in range(width):
 			if grid[i][j].rect_rotation != 0.0:
