@@ -15,15 +15,11 @@ func _process(delta):
 	if has_focus():
 		set("custom_styles/normal", box)
 		
-		for number in range(KEY_1, KEY_9 + 1):
+		for key in range(KEY_1, KEY_9 + 1):
 			# Ckeck number presses
-			if Input.is_key_pressed(number):
-				text = str(number - KEY_0)
-				$"../..".grid[i][j] = text
-				
-				# Color it acordingly
-				var color = ColorN("green" if $"../..".check(i, j) else "red")
-				set("custom_colors/font_color", color)
+			if Input.is_key_pressed(key):
+				var number = key - KEY_0
+				$"../..".mark_number(i, j, number)
 			
 			# Check also for delete/backspace presses
 			elif Input.is_key_pressed(KEY_DELETE) or \

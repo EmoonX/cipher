@@ -8,7 +8,7 @@ var j
 onready var rotation = rect_rotation
 
 # Last mouse position
-var last_pos = Vector2()
+var last_pos
 
 # --------------------------------------------------------------------------- #
 
@@ -22,4 +22,3 @@ func _input(event):
 		rotation = fmod(rotation + 0.5 * delta.x, 360)
 		self.rect_rotation = round(round(rotation / 360 * 16) * 360/16)
 		self.rect_rotation = int(self.rect_rotation) % 360
-		print(self.rect_rotation)

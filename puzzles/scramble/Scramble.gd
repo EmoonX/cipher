@@ -15,6 +15,7 @@ var grid = []
 
 func _ready():
 	# Fill grid with width x height randomly rotated pieces
+	randomize()
 	for i in range(height):
 		grid.append([])
 		for j in range(width):
