@@ -9,13 +9,13 @@ export(int) var width = 5
 # How many random clicks are done before playing
 export(int) var clicks = 5
 
-# Boolean matrix representing grid state
+# Matrix containing grid buttons
 var grid = []
 
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	# Fill grid with WIDTH x HEIGHT buttons
+	# Fill grid with width x height buttons
 	$Grid.columns = width
 	for i in range(height):
 		grid.append([])
