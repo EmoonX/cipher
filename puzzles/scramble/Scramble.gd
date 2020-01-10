@@ -33,7 +33,7 @@ func _ready():
 			$Grid.add_child(piece)
 			grid[i].append(piece)
 
-func _solved():
+func _is_solved():
 	for i in range(height):
 		for j in range(width):
 			if grid[i][j].rect_rotation != 0.0:
@@ -41,5 +41,5 @@ func _solved():
 	return true
 
 func _process(delta):
-	if _solved():
+	if _is_solved():
 		get_tree().quit()
