@@ -17,10 +17,10 @@ func _ready():
 	for i in range(NUM_CARDS):
 		var card = Card.instance()
 		var filename = "%02d.jpg" % i
-		card.texture = load("res://puzzles/tarot/cards/" + filename)
-		card.rect_position.x = \
-				(i+1) * ($Cards.rect_size.x / (NUM_CARDS + 1)) - \
-				$Cards.rect_size.x / 2
+		card.get_node("Image").texture = \
+				load("res://puzzles/tarot/cards/" + filename)
+		card.layer = i
+		card.offset.x += i * ($Cards.rect_size.x / (NUM_CARDS + 1))
 		$Cards.add_child(card)
 	
 	slots.resize(5)
@@ -28,5 +28,5 @@ func _ready():
 		var slot = Slot.instance()
 		$Slots.add_child(slot)
 
-func _process(delta):
-	print($Cards.get_child_count())
+func _on_Tween_tween_completed(tween):
+	remove_child(tween)
