@@ -2,6 +2,9 @@ extends CanvasLayer
 
 onready var slots = $"../..".slots
 
+# Number of card in Major Arcana
+var number
+
 # Original position in card deck
 var original_pos
 
