@@ -14,7 +14,6 @@ var grid = []
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	# Fill grid with width x height randomly rotated pieces
 	randomize()
 	for i in range(height):
 		grid.append([])
@@ -24,14 +23,23 @@ func _ready():
 			var h = piece.texture.atlas.get_height() / height
 			piece.i = i
 			piece.j = j
-			piece.rect_position = Vector2(j * w, i * h)
 			piece.rect_size = Vector2(w, h)
+			piece.rect_position = Vector2(1920, 1080) / 2
 			piece.texture.region.position = Vector2(j * w, i * h)
 			piece.texture.region.size = Vector2(w, h)
-			piece.rect_pivot_offset = Vector2(w/2, h/2)
 			piece.rect_rotation = (randi() % 16) * 360 / 16
-			$Grid.add_child(piece)
+			piece.rect_pivot_offset = Vector2(w/2, h/2)
+			add_child(piece)
 			grid[i].append(piece)
+	
+	# Scatter and rotate pieces randomly
+	for i in range(height-1, -1, -1):
+		for j in range(width-1, -1, -1):
+			var x = (1400 * (randi() % 2)) + randi() % 300
+			var y = randi() % 900
+			Util.move(grid[i][j], "rect_position", Vector2(x, y))
+			Util.move(grid[i][j], "rect_rotation", (randi() % 16) * 360 / 16)
+			yield(get_tree().create_timer(0.1), "timeout")
 
 func _is_solved():
 	for i in range(height):
