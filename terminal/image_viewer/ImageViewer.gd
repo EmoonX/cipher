@@ -11,6 +11,7 @@ var last_ts = -1
 var last_pos
 
 var line = false
+var fill = false
 var picker = false
 
 # --------------------------------------------------------------------------- #
@@ -40,12 +41,33 @@ func _draw_line(last_pos, pos):
 		var p = last_pos + k * vn
 		_draw_dot(p)
 
+func _fill(pos_ini):
+	# Fill all neighbour same color pixels with new color
+	var color_ini = image.get_pixelv(pos_ini)
+	var color_new = $GUI/Controls/Color.color
+	var stack = [pos_ini]
+	while stack:
+		var pos = stack.pop_back()
+		if not image.get_used_rect().has_point(pos):
+			continue
+		var color = image.get_pixelv(pos)
+		if color != color_ini:
+			continue
+		image.set_pixelv(pos, color_new)
+		var positions = [
+			Vector2(pos.x - 1, pos.y), Vector2(pos.x + 1, pos.y),
+			Vector2(pos.x, pos.y - 1), Vector2(pos.x, pos.y + 1)
+		]
+		for pos_new in positions:
+			stack.push_back(pos_new)
+
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		image.lock()
 		var dx = ($GUI/Image.rect_size.x - image.get_width()) / 2
 		var dy = ($GUI/Image.rect_size.y - image.get_height()) / 2
 		var pos = event.position - rect_position - Vector2(dx, dy)
+		pos = Vector2(int(pos.x), int(pos.y))
 		
 		if line:
 			if not last_pos:
@@ -54,6 +76,8 @@ func _input(event):
 			else:
 				_draw_line(last_pos, pos)
 				last_pos = null
+		elif fill:
+			_fill(pos)
 		elif picker:
 			var color = image.get_pixelv(pos)
 			$GUI/Controls/Color.color = color

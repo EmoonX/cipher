@@ -20,6 +20,12 @@ func _on_Button_button_up():
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		$"../../..".line = not $"../../..".line
+	elif name == "Fill":
+		if not $"../../..".fill:
+			Input.set_default_cursor_shape(Input.CURSOR_CROSS)
+		else:
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		$"../../..".fill = not $"../../..".fill
 	elif name == "ColorPicker":
 		if not $"../../..".picker:
 			Input.set_custom_mouse_cursor(picker, 0, Vector2(0, 32))
