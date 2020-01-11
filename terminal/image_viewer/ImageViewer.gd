@@ -3,10 +3,14 @@ extends "res://terminal/Program.gd"
 onready var sprite = $GUI/Image
 onready var threshold = $GUI/Controls/Threshold
 
+const DOT_SIZE = 5
+
 var image : Image
 var pixels = []
 var last_ts = -1
+var last_pos
 
+var line = false
 var picker = false
 
 # --------------------------------------------------------------------------- #
@@ -14,6 +18,45 @@ var picker = false
 func _ready():
 	image = sprite.texture.get_data()
 	image.lock()
+
+func _draw_dot(pos):
+	# Draw circular dot (with radius DOT_SIZE - 1) centered at pos
+	var color = $GUI/Controls/Color.color
+	var x = int(round(pos.x))
+	var y = int(round(pos.y))
+	var k = DOT_SIZE - 1
+	for xx in range(x - k, x + k + 1):
+		for yy in range(y - k, y + k + 1):
+			var d = sqrt(pow(xx - x, 2) + pow(yy - y, 2))
+			if d <= k:
+				image.set_pixel(xx, yy, color)
+
+func _draw_line(last_pos, pos):
+	# Draw a straight line from last_pos to pos
+	var v = pos - last_pos
+	var norm = sqrt(pow(v.x, 2) + pow(v.y, 2))
+	var vn = v / norm
+	for k in range(ceil(norm)):
+		var p = last_pos + k * vn
+		_draw_dot(p)
+
+func _input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		image.lock()
+		var dx = ($GUI/Image.rect_size.x - image.get_width()) / 2
+		var dy = ($GUI/Image.rect_size.y - image.get_height()) / 2
+		var pos = event.position - rect_position - Vector2(dx, dy)
+		
+		if line:
+			if not last_pos:
+				_draw_dot(pos)
+				last_pos = pos
+			else:
+				_draw_line(last_pos, pos)
+				last_pos = null
+		elif picker:
+			var color = image.get_pixelv(pos)
+			$GUI/Controls/Color.color = color
 
 func _process(delta):
 	if last_ts == -1:
@@ -38,15 +81,6 @@ func _process(delta):
 					color = Color(1, 1, 1)
 				image.set_pixel(x, y, color)
 		
-		# Swap previous image with new (without having to reimport!)
-		sprite.texture = ImageTexture.new()
-		sprite.texture.image = image
-
-func _input(event):
-	if event is InputEventMouseButton and event.is_pressed() and picker:
-		image.lock()
-		var dx = ($GUI/Image.rect_size.x - image.get_width()) / 2
-		var dy = ($GUI/Image.rect_size.y - image.get_height()) / 2
-		var pos = event.position - rect_position - Vector2(dx, dy)
-		var color = image.get_pixelv(pos)
-		$GUI/Controls/Color.color = color
+	# Swap previous image with new (without having to reimport!)
+	sprite.texture = ImageTexture.new()
+	sprite.texture.image = image

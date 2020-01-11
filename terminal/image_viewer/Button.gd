@@ -14,6 +14,12 @@ func _on_Button_button_up():
 		image.flip_x()
 	elif name == "FlipV":
 		image.flip_y()
+	elif name == "LineMaker":
+		if not $"../../..".line:
+			Input.set_default_cursor_shape(Input.CURSOR_CROSS)
+		else:
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		$"../../..".line = not $"../../..".line
 	elif name == "ColorPicker":
 		if not $"../../..".picker:
 			Input.set_custom_mouse_cursor(picker, 0, Vector2(0, 32))
