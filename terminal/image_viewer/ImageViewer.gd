@@ -1,20 +1,24 @@
 extends "res://terminal/Program.gd"
 
-onready var sprite = $GUI/Image/Sprite
+onready var sprite = $GUI/Image
 onready var threshold = $GUI/Controls/Threshold
 
 var image : Image
 var pixels = []
 var last_ts = -1
 
+var picker = false
+
 # --------------------------------------------------------------------------- #
+
+func _ready():
+	image = sprite.texture.get_data()
+	image.lock()
 
 func _process(delta):
 	if last_ts == -1:
 		# Load original pixels in matrix to keep base image state
 		last_ts = 0
-		image = sprite.texture.get_data()
-		image.lock()
 		for y in image.get_height():
 			pixels.append([])
 			for x in image.get_width():
@@ -37,3 +41,12 @@ func _process(delta):
 		# Swap previous image with new (without having to reimport!)
 		sprite.texture = ImageTexture.new()
 		sprite.texture.image = image
+
+func _input(event):
+	if event is InputEventMouseButton and event.is_pressed() and picker:
+		image.lock()
+		var dx = ($GUI/Image.rect_size.x - image.get_width()) / 2
+		var dy = ($GUI/Image.rect_size.y - image.get_height()) / 2
+		var pos = event.position - rect_position - Vector2(dx, dy)
+		var color = image.get_pixelv(pos)
+		$GUI/Controls/Color.color = color

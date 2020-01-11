@@ -1,5 +1,7 @@
 extends Node
 
+const default_cursor = preload("res://assets/cursor-default.png")
+
 # --------------------------------------------------------------------------- #
 
 func _process(delta):
