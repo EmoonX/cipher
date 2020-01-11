@@ -25,6 +25,7 @@ const extra_commands = {
 	"bintoascii": "convert binary files to ASCII readable representation",
 	"decode64": "decode a base64 encoded file and save into a new file",
 	"demorse": "translate morse code from a file",
+	"substitute": "apply substitution cipher by mapping each alphabet letter",
 	"vigenere": "decode a Vigenère encoded text file based on a keyword"
 }
 
@@ -314,6 +315,18 @@ func _demorse(filename):
 			code = ""
 	_print(text, true)
 
+func _substitute(comm):
+	# Apply substitution cipher by mapping each alphabet letter to another one
+	if len(comm) < 3:
+		_print("")
+		return
+	var text = comm[1]
+	var mapping = comm[2]
+	for i in range(len(text)):
+		var j = alphabet.find(text[i])
+		text[i] = mapping[j]
+	_print(text, true)
+
 func _vigenere(comm):
 	# Decode a Vigenère encoded text file based on a keyword
 	if len(comm) < 3:
@@ -418,6 +431,9 @@ func _execute(s):
 			if not _check(comm):
 				return
 			_demorse(comm[1])
+		
+		"substitute":
+			_substitute(comm)
 		
 		"vigenere":
 			_vigenere(comm)
