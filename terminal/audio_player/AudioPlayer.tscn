@@ -100,3 +100,4 @@ pitch_scale = 32.0
 autoplay = true
 
 [connection signal="toggled" from="GUI/Extras/Reverse" to="." method="_on_Reverse_toggled"]
+[connection signal="finished" from="Player" to="." method="_on_Player_finished"]

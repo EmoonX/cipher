@@ -230,7 +230,7 @@ func _exif(filename):
 	for line in output:
 		if not line:
 			continue
-		line = line.split(" : ", true, 1)
+		line = line.split(": ", true, 1)
 		var key = line[0].strip_edges()
 		var value = line[1]
 		if key in good:

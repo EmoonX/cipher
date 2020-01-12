@@ -20,11 +20,17 @@ func _process(delta):
 		$Player.stream_paused = true
 	elif $GUI/Main/Buttons/Stop.pressed:
 		$Player.playing = false
-		$GUI/Main/Slider.value = 0.0
+		$GUI/Main/Slider.value = 0.0 if not $GUI/Extras/Reverse.pressed \
+				else $GUI/Main/Slider.max_value
 	
 	# Volume and speed
 	$Player.volume_db = $GUI/Volume.value
 	$Player.pitch_scale = $GUI/Extras/Speed.value
+
+func _on_Player_finished():
+	# Return slider to initial position when playback's finished
+	$GUI/Main/Slider.value = 0.0 if not $GUI/Extras/Reverse.pressed \
+				else $GUI/Main/Slider.max_value
 
 func _on_Reverse_toggled(button_pressed):
 	if button_pressed:

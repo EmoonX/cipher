@@ -163,6 +163,7 @@ texture = ExtResource( 9 )
 expand = true
 
 [node name="FPSCounter" type="Label" parent="."]
+visible = false
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 40.0
