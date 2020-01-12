@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pause.png-2fcf40df43871ee3b7377106e29d1667.stex"
+path="res://.import/play-button.png-2b254b24ba4f365ea706919b26e9d835.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terminal/audio_player/pause.png"
-dest_files=[ "res://.import/pause.png-2fcf40df43871ee3b7377106e29d1667.stex" ]
+source_file="res://terminal/media_player/play-button.png"
+dest_files=[ "res://.import/play-button.png-2b254b24ba4f365ea706919b26e9d835.stex" ]
 
 [params]
 

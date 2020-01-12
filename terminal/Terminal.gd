@@ -3,7 +3,7 @@ extends Control
 const Text = preload("res://terminal/Text.tscn")
 const CommandLine = preload("res://terminal/CommandLine.tscn")
 const ImageViewer = preload("res://terminal/image_viewer/ImageViewer.tscn")
-const AudioPlayer = preload("res://terminal/audio_player/AudioPlayer.tscn")
+const MediaPlayer = preload("res://terminal/media_player/MediaPlayer.tscn")
 
 const DX = 12
 const DY = 30
@@ -17,7 +17,7 @@ const base_commands = {
 	"file": "show information about file type (based on extension)",
 	"help": "what you are reading right now :)",
 	"ls": "show current folder files",
-	"play": "play audio file",
+	"play": "play media (audio or video) file",
 	"quit": "quit terminal",
 	"view": "display image"
 }
@@ -247,22 +247,28 @@ func _file(filename):
 			text += "image file"
 		"wav":
 			text += "audio file"
+		"webm":
+			text += "video file"
 		_:
 			text += "unknown file type"
 	
 	_print(text, true)
 
 func _play(filename):
-	# Play audio file
+	# Play media (audio or video) file
 	filename = cwd.get_current_dir() + "/" + filename
-	add_child(AudioPlayer.instance())
-	$AudioPlayer/Player.stream = load(filename)
+	add_child(MediaPlayer.instance())
+	var video = filename.split(".")[-1] == "webm"
+	$MediaPlayer.player = \
+			$MediaPlayer/GUI/Main/VideoPlayer if video \
+			else $MediaPlayer/AudioPlayer
+	$MediaPlayer.player.stream = load(filename)
 
 func _view(filename):
 	# Display PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
 	add_child(ImageViewer.instance())
-	$ImageViewer/GUI/Image/Sprite.texture = load(filename)
+	$ImageViewer/Image.texture.image = load(filename)
 
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
