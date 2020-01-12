@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -80,6 +80,10 @@ nodes/fragment/connections = PoolIntArray( 5, 0, 4, 0, 4, 0, 0, 0, 6, 0, 4, 1 )
 shader = SubResource( 6 )
 shader_param/amount = 0.0
 
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 7 )
+
 [node name="Game" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
@@ -91,6 +95,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 
 [node name="Corridor" parent="." instance=ExtResource( 3 )]
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Inventory" parent="Interfaces" groups=[
 "center",
@@ -156,4 +161,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 9 )
 expand = true
+
+[node name="FPSCounter" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 0.772549, 0, 1 )
+text = "60.0 FPS"
+align = 1
+valign = 1
 

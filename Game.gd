@@ -45,3 +45,10 @@ func _process(delta):
 		var value = abs(cont) if cont < 0 else 60 - cont
 		$ScreenEffects/Fade.color.a = value/60.0
 		cont -= sign(cont)
+	
+	# Show number of frames per second
+	if Input.is_action_just_pressed("fps"):
+		$FPSCounter.visible = not $FPSCounter.visible
+	if $FPSCounter.visible and delta > 0.0:
+		var fps = 1 / delta
+		$FPSCounter.text = "%2.1f FPS" % fps
