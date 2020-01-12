@@ -32,6 +32,8 @@ func _on_Button_button_up():
 		else:
 			Input.set_custom_mouse_cursor(View.default_cursor)
 		$"../../..".picker = not $"../../..".picker
+	elif name == "Revert":
+		$"../../..".image = $"../../..".original_image
 	
 	# Swap previous image with new (without having to reimport!)
 	sprite.texture = ImageTexture.new()

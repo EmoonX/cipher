@@ -39,55 +39,63 @@ margin_bottom = 720.0
 alignment = 1
 
 [node name="Threshold" type="HSlider" parent="GUI/Controls" index="0"]
-margin_top = 280.0
+margin_top = 268.0
 margin_right = 268.0
-margin_bottom = 296.0
+margin_bottom = 284.0
 max_value = 255.0
 ticks_on_borders = true
 
 [node name="FlipH" parent="GUI/Controls" index="1" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 300.0
+margin_top = 288.0
 margin_right = 268.0
-margin_bottom = 320.0
+margin_bottom = 308.0
 text = "Flip horizontally"
 
 [node name="FlipV" parent="GUI/Controls" index="2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 324.0
+margin_top = 312.0
 margin_right = 268.0
-margin_bottom = 344.0
+margin_bottom = 332.0
 text = "Flip vertically"
 
 [node name="LineMaker" parent="GUI/Controls" index="3" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 348.0
+margin_top = 336.0
 margin_right = 268.0
-margin_bottom = 368.0
+margin_bottom = 356.0
 text = "Line maker"
 
 [node name="Fill" parent="GUI/Controls" index="4" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 372.0
+margin_top = 360.0
 margin_right = 268.0
-margin_bottom = 392.0
+margin_bottom = 380.0
 text = "Fill tool"
 
 [node name="ColorPicker" parent="GUI/Controls" index="5" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 396.0
+margin_top = 384.0
 margin_right = 268.0
-margin_bottom = 416.0
+margin_bottom = 404.0
 text = "Color picker"
 
 [node name="Color" type="ColorPickerButton" parent="GUI/Controls" index="6"]
-margin_top = 420.0
+margin_top = 408.0
 margin_right = 268.0
-margin_bottom = 440.0
+margin_bottom = 428.0
 color = Color( 1, 0, 0, 1 )
+
+[node name="Revert" parent="GUI/Controls" index="7" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 432.0
+margin_right = 268.0
+margin_bottom = 452.0
+text = "Revert all changes"
 

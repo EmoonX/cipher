@@ -1,15 +1,20 @@
 extends "res://terminal/Program.gd"
 
+# Radius (+1) of drawn dots
+const DOT_SIZE = 5
+
 onready var sprite = $GUI/Image
 onready var threshold = $GUI/Controls/Threshold
 
-const DOT_SIZE = 5
-
+# Current and original images
 var image : Image
+var original_image
+
 var pixels = []
 var last_ts = -1
 var last_pos
 
+# If respective tool is chosen
 var line = false
 var fill = false
 var picker = false
@@ -19,6 +24,7 @@ var picker = false
 func _ready():
 	image = sprite.texture.get_data()
 	image.lock()
+	original_image = image.duplicate()
 
 func _draw_dot(pos):
 	# Draw circular dot (with radius DOT_SIZE - 1) centered at pos
