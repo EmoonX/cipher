@@ -7,7 +7,7 @@ export(int) var height = 5
 export(int) var width = 5
 
 # How many random clicks are done before playing
-export(int) var clicks = 5
+export(int) var clicks = 3
 
 # Matrix containing grid buttons
 var grid = []
@@ -31,6 +31,7 @@ func _ready():
 	for x in range(clicks):
 		var i = randi() % height
 		var j = randi() % width
+		grid[i][j].pressed = not grid[i][j].pressed
 		toggle(i, j)
 
 func toggle(i, j):
@@ -44,7 +45,7 @@ func toggle(i, j):
 		var button = grid[pos.x][pos.y]
 		button.pressed = not button.pressed
 
-func _solved():
+func _is_solved():
 	# Check if all buttons are lightened up
 	for i in range(height):
 		for j in range(width):
@@ -53,5 +54,5 @@ func _solved():
 	return true
 
 func _process(delta):
-	if _solved():
+	if _is_solved():
 		get_tree().quit()
