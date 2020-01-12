@@ -11,6 +11,19 @@ var paused = false
 
 # --------------------------------------------------------------------------- #
 
+func _ready():
+	if file_name.split(".")[-1] != "webm":
+		player = $AudioPlayer
+	else:
+		player = $GUI/Main/VideoPlayer
+		
+		# Disable options that don't work with videos
+		$GUI/Main/Slider.visible = false
+		$GUI/Extras/Reverse.disabled = true
+		$GUI/Extras/Speed.editable = false
+	
+	player.stream = load(file_name)
+
 func _set_paused(value):
 	# Pause or unpause playback
 	paused = value
@@ -30,15 +43,18 @@ func _process(delta):
 	
 	# Check button presses
 	if $GUI/Main/Buttons/Play.pressed:
-		if not player.playing or paused:
-			player.playing = true
-			_set_paused(false)
+		if not player.is_playing() or paused:
 			if player == $AudioPlayer:
+				player.playing = true
 				player.seek($GUI/Main/Slider.value)
+			else:
+				if not paused:
+					player.play()
+			_set_paused(false)
 	elif $GUI/Main/Buttons/Pause.pressed:
 		_set_paused(true)
 	elif $GUI/Main/Buttons/Stop.pressed:
-		player.playing = false
+		player.stop()
 		if player == $AudioPlayer:
 			$GUI/Main/Slider.value = 0.0 if not $GUI/Extras/Reverse.pressed \
 					else $GUI/Main/Slider.max_value

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://terminal/Program.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terminal/media_player/MediaPlayer.gd" type="Script" id=2]
 [ext_resource path="res://terminal/media_player/play-button.png" type="Texture" id=3]
 [ext_resource path="res://terminal/media_player/pause.png" type="Texture" id=4]
 [ext_resource path="res://terminal/media_player/stop.png" type="Texture" id=5]
-[ext_resource path="res://user/files/audio/a.wav" type="AudioStream" id=6]
 
 [node name="MediaPlayer" index="0" instance=ExtResource( 1 )]
 pause_mode = 2
@@ -14,38 +13,45 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -300.0
-margin_top = -300.0
+margin_top = -200.0
 margin_right = 300.0
-margin_bottom = 300.0
+margin_bottom = 200.0
 script = ExtResource( 2 )
 
 [node name="GUI" parent="." index="0"]
-margin_right = 600.0
-margin_bottom = 600.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 200.0
 
 [node name="Main" type="VBoxContainer" parent="GUI" index="0"]
 margin_right = 428.0
-margin_bottom = 600.0
+margin_bottom = 400.0
 alignment = 1
 
 [node name="VideoPlayer" type="VideoPlayer" parent="GUI/Main" index="0"]
 margin_right = 428.0
-margin_bottom = 442.0
+margin_bottom = 242.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+autoplay = true
 
 [node name="Slider" type="HSlider" parent="GUI/Main" index="1"]
-margin_top = 446.0
+margin_top = 246.0
 margin_right = 428.0
-margin_bottom = 462.0
+margin_bottom = 262.0
 step = 0.0
 tick_count = 64
 ticks_on_borders = true
 
 [node name="Buttons" type="HBoxContainer" parent="GUI/Main" index="2"]
-margin_top = 466.0
+margin_top = 266.0
 margin_right = 428.0
-margin_bottom = 600.0
+margin_bottom = 400.0
 
 [node name="Play" type="Button" parent="GUI/Main/Buttons" index="0"]
 margin_right = 140.0
@@ -68,9 +74,9 @@ icon = ExtResource( 5 )
 flat = true
 
 [node name="Volume" type="VSlider" parent="GUI" index="1"]
-margin_left = 440.0
-margin_right = 456.0
-margin_bottom = 600.0
+margin_left = 432.0
+margin_right = 448.0
+margin_bottom = 400.0
 min_value = -24.0
 max_value = 24.0
 step = 0.0
@@ -79,9 +85,9 @@ tick_count = 32
 ticks_on_borders = true
 
 [node name="Extras" type="VBoxContainer" parent="GUI" index="2"]
-margin_left = 486.0
-margin_right = 565.0
-margin_bottom = 300.0
+margin_left = 452.0
+margin_right = 531.0
+margin_bottom = 400.0
 
 [node name="Reverse" type="CheckBox" parent="GUI/Extras" index="0"]
 margin_right = 79.0
@@ -99,9 +105,9 @@ step = 0.0
 value = 1.0
 exp_edit = true
 tick_count = 16
+ticks_on_borders = true
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." index="1"]
-stream = ExtResource( 6 )
 volume_db = 24.0
 pitch_scale = 32.0
 autoplay = true

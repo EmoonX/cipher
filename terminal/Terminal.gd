@@ -256,13 +256,9 @@ func _file(filename):
 
 func _play(filename):
 	# Play media (audio or video) file
-	filename = cwd.get_current_dir() + "/" + filename
-	add_child(MediaPlayer.instance())
-	var video = filename.split(".")[-1] == "webm"
-	$MediaPlayer.player = \
-			$MediaPlayer/GUI/Main/VideoPlayer if video \
-			else $MediaPlayer/AudioPlayer
-	$MediaPlayer.player.stream = load(filename)
+	var player = MediaPlayer.instance()
+	player.file_name = cwd.get_current_dir() + "/" + filename
+	add_child(player)
 
 func _view(filename):
 	# Display PNG image in viewer
