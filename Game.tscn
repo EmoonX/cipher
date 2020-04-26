@@ -121,6 +121,7 @@ margin_bottom = 1080.0
 script = ExtResource( 8 )
 
 [node name="Audio" type="AudioStreamPlayer" parent="Speech"]
+volume_db = 8.0
 
 [node name="Subtitle" type="Label" parent="Speech" groups=[
 "center",

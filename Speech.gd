@@ -19,7 +19,8 @@ func display(speech_id : String):
 func _play_next_line():
 	# Get absolute path of next audio file
 	var filename = audio_id + "_" + str(index + 1) + ".wav"
-	var path = "res://audio/speech/en/" + filename
+	var lang = Config.langs[Config.file.get_value("base", "opt_lang")]
+	var path = "res://audio/speech/" + lang + "/" + filename
 	
 	# Play speech audio
 	$Audio.stream = load(path)

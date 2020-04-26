@@ -340,3 +340,5 @@ transform = Transform( -2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09
 transform = Transform( 0.0198278, -0.0177555, 0.096393, 0.00357737, 0.0984111, 0.0173914, -0.0979493, -3.6489e-10, 0.0201479, 9.48669, 4.46237, -0.181796 )
 light_energy = 0.2
 shadow_enabled = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
