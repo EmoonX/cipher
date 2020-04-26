@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/start_2.wav-dd020c46bbab96c43d723acb8b8653ee.sample"
+
+[deps]
+
+source_file="res://audio/speech/en/start_2.wav"
+dest_files=[ "res://.import/start_2.wav-dd020c46bbab96c43d723acb8b8653ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

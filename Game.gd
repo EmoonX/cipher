@@ -11,14 +11,14 @@ var cont = -60
 # --------------------------------------------------------------------------- #
 
 func display_subtitles(key):
-	$Subtitles.display(key)
+	$Speech.display(key)
 
 func play_sfx(sfx):
 	# Play requisited audio file
 	var asp = AudioStreamPlayer.new()
-	add_child(asp)
 	asp.stream = load(sfx)
 	asp.play()
+	add_child(asp)
 
 func pause_toggle():
 	# Treats procedures to be done on (un)pause (+ inventory/terminal)
