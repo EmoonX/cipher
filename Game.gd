@@ -24,9 +24,12 @@ func pause_toggle():
 	# Treats procedures to be done on (un)pause (+ inventory/terminal)
 	get_tree().paused = not get_tree().paused
 	_tween_blur(get_tree().paused)
-	var mode = Input.MOUSE_MODE_VISIBLE if get_tree().paused \
-			else Input.MOUSE_MODE_CAPTURED
-	Input.set_mouse_mode(mode)
+	if get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$Speech/Audio.stream_paused = true
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$Speech/Audio.stream_paused = false
 
 func _tween_blur(increase):
 	# Do an interpolated (de)blur effect
