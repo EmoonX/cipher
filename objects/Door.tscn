@@ -13,4 +13,3 @@ action_label = "ACTION_OPEN"
 [node name="CollisionShape" parent="Area" index="0"]
 transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, -1 )
 shape = SubResource( 1 )
-

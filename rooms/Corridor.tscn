@@ -10,6 +10,7 @@
 [ext_resource path="res://audio/bgm/unerving.ogg" type="AudioStream" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
+vertex_color_is_srgb = true
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 4, 1, 5 )
 
