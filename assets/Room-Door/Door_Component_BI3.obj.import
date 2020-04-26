@@ -15,4 +15,5 @@ dest_files=[ "res://.import/Door_Component_BI3.obj-9d3e956a2d190ef25d5d440423e0b
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
 optimize_mesh=true
