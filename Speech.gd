@@ -22,18 +22,22 @@ func _play_next_line():
 	var path = "res://audio/speech/en/" + filename
 	
 	# Play speech audio
-	$AudioStreamPlayer.stream = load(path)
-	$AudioStreamPlayer.playing = true
+	$Audio.stream = load(path)
+	$Audio.playing = true
+	
+	# Reduce BGM volume so speech can be heard better
+	$"/root/Game".current.get_node("BGM").volume_db = -10.0
 	
 	# Show subtitle
 	$Subtitle.text = speech[index]
 
 func _on_AudioStreamPlayer_finished():
-	# When line is finished spoken, either play
-	# next one (if any) or just blank subtitles.
+	# When line is finished spoken, either play next one (if any)
+	# or just blank subtitles and return BGM volume to normal.
 	if index < len(speech) - 1:
 		index += 1
 		_play_next_line()
 	else:
 		index = 0
 		$Subtitle.text = ""
+		$"/root/Game".current.get_node("BGM").volume_db = 0.0

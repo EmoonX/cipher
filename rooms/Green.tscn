@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Material_004.material" type="Material" id=1]
 [ext_resource path="res://assets/Material_000.material" type="Material" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/wire_115115115.material" type="Material" id=11]
 [ext_resource path="res://assets/wire_115115115_001.material" type="Material" id=12]
 [ext_resource path="res://objects/paintings/Grass.tscn" type="PackedScene" id=13]
-[ext_resource path="res://objects/Interactable.gd" type="Script" id=14]
 [ext_resource path="res://objects/LightSwitch.tscn" type="PackedScene" id=15]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=16]
 
@@ -218,7 +217,6 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 [node name="Box" type="Spatial" parent="."]
 
 [node name="Floor" type="MeshInstance" parent="Box"]
-editor/display_folded = true
 transform = Transform( 0.75, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
@@ -230,7 +228,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 2 )
 
 [node name="Walls001" type="MeshInstance" parent="Box"]
-editor/display_folded = true
 transform = Transform( -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 5, 2.25, 1.5, 0.00302982 )
 mesh = SubResource( 3 )
 material/0 = null
@@ -243,7 +240,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 2 )
 
 [node name="Walls002" type="MeshInstance" parent="Box"]
-editor/display_folded = true
 transform = Transform( 0, 1.5, 0, -1.5, 0, 0, 0, 0, 5, 0.75, 1.5, 10.003 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -256,7 +252,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 2 )
 shape = SubResource( 2 )
 
 [node name="Walls000" type="MeshInstance" parent="Box"]
-editor/display_folded = true
 transform = Transform( 0, 1.5, 0, -1.5, 0, 0, 0, 0, 5, 0.75, 1.5, 0.00302982 )
 mesh = SubResource( 5 )
 material/0 = null
@@ -269,7 +264,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 2 )
 
 [node name="Walls004" type="MeshInstance" parent="Box"]
-editor/display_folded = true
 transform = Transform( 0, 1.5, 0, -1.5, 0, 0, 0, 0, 5, 0.75, 1.5, 0.00302982 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -311,7 +305,6 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="Lamps" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.7102, 0 )
 visible = false
 
@@ -334,7 +327,6 @@ omni_range = 4096.0
 
 [node name="GrassPainting" parent="." instance=ExtResource( 13 )]
 transform = Transform( -1.18021e-07, 0, -2, 0, 2, 0, 2.7, 0, -8.74228e-08, 0.749179, 1.7, 0 )
-script = ExtResource( 14 )
 
 [node name="LightSwitch" parent="." instance=ExtResource( 15 )]
 transform = Transform( -2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, -0.731, 1.4, 4 )
@@ -348,4 +340,3 @@ transform = Transform( -2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09
 transform = Transform( 0.0198278, -0.0177555, 0.096393, 0.00357737, 0.0984111, 0.0173914, -0.0979493, -3.6489e-10, 0.0201479, 9.48669, 4.46237, -0.181796 )
 light_energy = 0.2
 shadow_enabled = true
-

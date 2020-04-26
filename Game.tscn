@@ -120,7 +120,7 @@ margin_bottom = 1080.0
 [node name="Speech" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Speech"]
+[node name="Audio" type="AudioStreamPlayer" parent="Speech"]
 
 [node name="Subtitle" type="Label" parent="Speech" groups=[
 "center",
@@ -177,4 +177,4 @@ custom_colors/font_color = Color( 1, 0.772549, 0, 1 )
 text = "60.0 FPS"
 align = 1
 valign = 1
-[connection signal="finished" from="Speech/AudioStreamPlayer" to="Speech" method="_on_AudioStreamPlayer_finished"]
+[connection signal="finished" from="Speech/Audio" to="Speech" method="_on_AudioStreamPlayer_finished"]
