@@ -48,7 +48,7 @@ alignment = 1
 
 [node name="Start" type="Button" parent="Items"]
 margin_right = 954.0
-margin_bottom = 357.0
+margin_bottom = 267.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
@@ -59,10 +59,25 @@ custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "MENU_START"
 flat = true
 
-[node name="Options" type="Button" parent="Items"]
-margin_top = 361.0
+[node name="Continue" type="Button" parent="Items"]
+margin_top = 271.0
 margin_right = 954.0
-margin_bottom = 718.0
+margin_bottom = 538.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Options")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
+disabled = true
+text = "MENU_CONTINUE"
+flat = true
+
+[node name="Options" type="Button" parent="Items"]
+margin_top = 542.0
+margin_right = 954.0
+margin_bottom = 809.0
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 size_flags_horizontal = 3
@@ -74,7 +89,7 @@ text = "MENU_OPTIONS"
 flat = true
 
 [node name="Quit" type="Button" parent="Items"]
-margin_top = 722.0
+margin_top = 813.0
 margin_right = 954.0
 margin_bottom = 1080.0
 focus_neighbour_top = NodePath("../Options")
@@ -88,6 +103,7 @@ text = "MENU_QUIT"
 flat = true
 
 [node name="Fade" type="ColorRect" parent="."]
+visible = false
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )

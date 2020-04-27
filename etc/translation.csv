@@ -1,8 +1,9 @@
 ,en,pt_BR
 MENU_START,Start,Começar
+MENU_CONTINUE,Continue,Continuar
 MENU_OPTIONS,Options,Opções
 MENU_QUIT,Quit Game,Sair do Jogo
-MENU_RESUME,Resume,Continuar
+MENU_RESUME,Resume,Retomar Jogo
 MENU_RETURN,Return to Menu,Retornar ao Menu
 ,,
 OPT_LANG,Language,Linguagem

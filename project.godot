@@ -17,11 +17,13 @@ _global_script_class_icons={
 
 config/name="Cipher"
 run/main_scene="res://menus/MainMenu.tscn"
+config/custom_user_dir_name="res://user/"
 config/icon="res://icon.png"
 
 [autoload]
 
 Config="*res://Config.gd"
+Save="*res://Save.gd"
 View="*res://View.gd"
 Util="*res://puzzles/Util.gd"
 
