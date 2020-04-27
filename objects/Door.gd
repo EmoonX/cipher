@@ -29,7 +29,6 @@ func _process(delta):
 		player = game.get_node("Player")
 		player.rotation_degrees.y = door.rotation_degrees.y
 		player.translation = door.translation
-		
 		match round(door.rotation_degrees.y):
 			0.0:
 				player.translation.z += 5
@@ -39,6 +38,10 @@ func _process(delta):
 				player.translation.z -= 5
 			270.0, -90.0:
 				player.translation.x -= 5
+		
+		# Update initial player's position in room (for saved games)
+		player.translation_ini = player.translation
+		player.rotation_ini = player.rotation
 		
 		game.cont = -60
 		game.play_sfx("res://assets/close_door_1.wav")

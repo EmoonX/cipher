@@ -15,7 +15,8 @@ onready var rotation_helper = $Rotation_Helper
 var inventory = []
 
 # Initial position upon entering a room
-var pos_ini = Vector2()
+var translation_ini = Vector3()
+var rotation_ini = Vector3()
 
 # Velocity and direction vectors
 var vel = Vector3()
@@ -31,7 +32,8 @@ func _ready():
 
 func save():
 	var save_dict = {
-		"pos": pos_ini
+		"player_translation": var2str(translation_ini),
+		"player_rotation": var2str(rotation_ini)
 	}
 	return save_dict
 

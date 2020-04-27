@@ -5,6 +5,9 @@ export(AudioStream) var bgm
 # --------------------------------------------------------------------------- #
 
 func _ready():
+	# Wait a bit so we can actually save the initial player's position
+	yield(get_tree(), "idle_frame")
+	
 	# Save game upon entering a new room
 	Save.save_game()
 	

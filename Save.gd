@@ -5,9 +5,16 @@ const SAVE_FILE = "res://user/emoon.save"
 # --------------------------------------------------------------------------- #
 
 func create_save():
-	# Make a empty save file, which is simply a copy of the base save file
-	var dir = Directory.new()
-	dir.copy("res://etc/new.save", SAVE_FILE)
+	# Make a empty save file with the initial persistent game state
+	var initial_state = {
+		"room": "Corridor",
+		"player_translation": var2str(Vector3(30, 0, 0)),
+		"player_rotation": var2str(Vector3(0, -90, 0))
+	}
+	var file = File.new()
+	file.open(SAVE_FILE, File.WRITE)
+	file.store_line(to_json(initial_state))
+	file.close()
 
 func save_game():
 	# Open and write save file, recording current game state
@@ -27,11 +34,16 @@ func load_game():
 		var line = parse_json(file.get_line())
 		if not line:
 			break
-		print(line)
-		match line.keys()[0]:
-			"room":
-				var current = load("res://rooms/" + \
-						line[line.keys()[0]] + ".tscn").instance()
-				$"/root/Game".current = current
-				$"/root/Game".add_child(current)
+		for attr in line:
+			match attr:
+				"room":
+					var current = load("res://rooms/" + \
+							line[attr] + ".tscn").instance()
+					$"/root/Game".current = current
+					$"/root/Game".add_child(current)
+					
+				"player_translation":
+					$"/root/Game/Player".translation = str2var(line[attr])
+				"player_rotation":
+					$"/root/Game/Player".rotation = str2var(line[attr])
 	file.close()
