@@ -22,7 +22,7 @@ func _ready():
 	OS.set_window_position(0.5 * screen_size - 0.5 * window_size)
 	
 	# Enable Continue button if save file exists
-	if file.file_exists(Save.FILE):
+	if file.file_exists(Save.SAVE_FILE):
 		$Items/Continue.disabled = false
 	
 func _process(delta):
@@ -36,9 +36,10 @@ func _process(delta):
 	
 	# Check button presses
 	if $Items/Start.pressed:
+		Save.create_save()
 		get_tree().change_scene("res://Game.tscn")
 	elif $Items/Continue.pressed:
-		Save.load_game()
+		get_tree().change_scene("res://Game.tscn")
 	elif $Items/Options.pressed:
 		get_tree().change_scene("res://menus/OptionsMenu.tscn")
 	elif $Items/Quit.pressed:

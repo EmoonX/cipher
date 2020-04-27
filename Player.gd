@@ -14,6 +14,9 @@ onready var rotation_helper = $Rotation_Helper
 # Items currently in player's possession
 var inventory = []
 
+# Initial position upon entering a room
+var pos_ini = Vector2()
+
 # Velocity and direction vectors
 var vel = Vector3()
 var dir = Vector3()
@@ -25,6 +28,12 @@ var cont = 0.0
 func _ready():
 	# Hide mouse and avoid it leaving screen
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func save():
+	var save_dict = {
+		"pos": pos_ini
+	}
+	return save_dict
 
 func _physics_process(delta):
 	_process_input(delta)

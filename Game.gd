@@ -11,8 +11,8 @@ var cont = -60
 # --------------------------------------------------------------------------- #
 
 func _ready():
-	current = load("res://rooms/" + Save.room + ".tscn").instance()
-	add_child(current)
+	# Load saved game info before game starts
+	connect("ready", Save, "load_game")
 
 func display_subtitles(key):
 	$Speech.display(key)
