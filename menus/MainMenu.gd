@@ -21,6 +21,10 @@ func _ready():
 	var window_size = OS.get_window_size()
 	OS.set_window_position(0.5 * screen_size - 0.5 * window_size)
 	
+	# Enable Continue button if save file exists
+	if file.file_exists(Save.FILE):
+		$Items/Continue.disabled = false
+	
 func _process(delta):
 	# Apply fade in
 	if $Fade.color.a > 0.0:
@@ -33,6 +37,8 @@ func _process(delta):
 	# Check button presses
 	if $Items/Start.pressed:
 		get_tree().change_scene("res://Game.tscn")
+	elif $Items/Continue.pressed:
+		Save.load_game()
 	elif $Items/Options.pressed:
 		get_tree().change_scene("res://menus/OptionsMenu.tscn")
 	elif $Items/Quit.pressed:
