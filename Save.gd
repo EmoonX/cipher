@@ -6,16 +6,14 @@ var room = "Corridor"
 
 # --------------------------------------------------------------------------- #
 
-func save_game(room):
-	# Dict containing persistent save info
-	var save_dict = {
-		"room": room
-	}
-	
+func save_game():
 	# Open and write save file, recording current game state
 	var file = File.new()
 	file.open(FILE, File.WRITE)
-	file.store_line(to_json(save_dict))
+	var save_nodes = get_tree().get_nodes_in_group("persist")
+	for node in save_nodes:
+		var data = node.save()
+		file.store_line(to_json(data))
 	file.close()
 
 func load_game():

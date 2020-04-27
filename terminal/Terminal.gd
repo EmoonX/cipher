@@ -184,12 +184,10 @@ func _check(comm):
 	# Check if a single argument is given AND file exists
 	if len(comm) != 2:
 		_print("Usage: " + comm[0] + " [FILE]", true)
-		return false
-	if not cwd.file_exists(comm[1]):
+	elif not cwd.file_exists(comm[1]):
 		_print(comm[0] + ": " + comm[1] + ": file not found", true)
-		return false
-	
-	return true
+	else:
+		return true
 
 func _cat(filename):
 	# Open file and print lines from it

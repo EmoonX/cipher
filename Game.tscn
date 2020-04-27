@@ -82,7 +82,9 @@ shader_param/amount = 0.0
 size = 32
 font_data = ExtResource( 7 )
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" groups=[
+"persist",
+]]
 pause_mode = 2
 script = ExtResource( 1 )
 

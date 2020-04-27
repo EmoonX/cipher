@@ -47,6 +47,12 @@ func _tween_blur(increase):
 	yield(tween, "tween_completed")
 	remove_child(tween)
 
+func save():
+	var save_dict = {
+		"room": current.name
+	}
+	return save_dict
+
 func _process(delta):
 	if cont != 0:
 		var value = abs(cont) if cont < 0 else 60 - cont
