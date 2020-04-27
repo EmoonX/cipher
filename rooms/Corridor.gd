@@ -1,4 +1,4 @@
-extends Spatial
+extends "res://rooms/Room.gd"
 
 var ok = false
 

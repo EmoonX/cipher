@@ -27,7 +27,7 @@ func _play_next_line():
 	$Audio.playing = true
 	
 	# Reduce BGM volume so speech can be heard better
-	$"/root/Game".current.get_node("BGM").volume_db = -10.0
+	$"/root/Game/BGM".volume_db = -10.0
 	
 	# Show subtitle
 	$Subtitle.text = speech[index]
@@ -41,4 +41,4 @@ func _on_AudioStreamPlayer_finished():
 	else:
 		index = 0
 		$Subtitle.text = ""
-		$"/root/Game".current.get_node("BGM").volume_db = 0.0
+		$"/root/Game/BGM".volume_db = 0.0

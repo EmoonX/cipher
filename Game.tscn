@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://Speech.gd" type="Script" id=8]
 [ext_resource path="res://assets/vignette.png" type="Texture" id=9]
+[ext_resource path="res://BGM.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -166,6 +167,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 9 )
 expand = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 10 )
 
 [node name="FPSCounter" type="Label" parent="."]
 visible = false

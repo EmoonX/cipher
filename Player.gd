@@ -3,21 +3,22 @@ extends KinematicBody
 const Interactable = preload("res://objects/Interactable.gd")
 const PauseMenu = preload("res://menus/Pause.tscn")
 
-const MAX_SPEED = 30
+const MAX_SPEED = 30.0
 const ACCEL = 4.5
-const DEACCEL = 16
+const DEACCEL = 16.0
 const MOUSE_SENSITIVITY = 0.20
-
-# Items currently in player's possession
-var inventory = []
-
-var vel = Vector3()
-var dir = Vector3()
 
 onready var camera = $Rotation_Helper/Camera    
 onready var rotation_helper = $Rotation_Helper
 
-var cont = 1.0
+# Items currently in player's possession
+var inventory = []
+
+# Velocity and direction vectors
+var vel = Vector3()
+var dir = Vector3()
+
+var cont = 0.0
 
 # --------------------------------------------------------------------------- #
 
@@ -97,15 +98,16 @@ func _process_input(delta):
 		$"/root/Game/Subtitles".visible = true
 		$"/root/Game/ScreenEffects".visible = true
 	
+	# Change color of interactable objects on key press (focus on all)
 	var color
 	if Input.is_action_pressed("focus_all"):
-		color = Color(1.0, 1.0, 0.6 + abs(cont)/3)
+		color = Color(1.0 + abs(cont), 1.0 + abs(cont), 1.0 + abs(cont))
 		cont -= delta * 2
 		if cont < -1.0:
 			cont = 1.0
 	else:
 		color = ColorN("white")
-		cont = 1.0
+		cont = 0.0
 	for node in $"/root/Game".current.get_children():
 		if node is Interactable:
 			var mesh = node.get_node("MeshInstance")
@@ -117,7 +119,7 @@ func _process_movement(delta):
 	dir = dir.normalized()
 	dir *= MAX_SPEED
 	
-	# Check if we should accel or not based on relative position of movements
+	# Check the type of accel based on relative position of movements
 	var accel = ACCEL if dir.dot(vel) > 0 else DEACCEL
 
 	# Produce resulting velocity by applying accel and (possibly) wall slide
