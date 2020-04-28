@@ -14,7 +14,7 @@ var pixels = []
 var last_ts = -1
 var last_pos
 
-# If respective tool was chosen
+# If respective tool is currently chosen
 var line = false
 var fill = false
 var picker = false
@@ -98,6 +98,7 @@ func _process(delta):
 				var color = image.get_pixel(x, y)
 				pixels[y].append(color)
 	
+	# TODO: Use a signal
 	elif threshold.value != last_ts:
 		# Apply threshold based on average pixel intensity
 		last_ts = threshold.value
@@ -106,9 +107,9 @@ func _process(delta):
 				var color = pixels[y][x]
 				var avg = color.get_v() * 256
 				if avg < $GUI/Controls/Threshold.value:
-					color = Color(0, 0, 0)
+					color = ColorN("black")
 				else:
-					color = Color(1, 1, 1)
+					color = ColorN("white")
 				image.set_pixel(x, y, color)
 		
 	# Swap previous image with new (without having to reimport!)
