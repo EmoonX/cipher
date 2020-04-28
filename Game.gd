@@ -49,7 +49,7 @@ func _tween_blur(increase):
 
 func save():
 	var save_dict = {
-		"room": current.name
+		"room": current.name,
 	}
 	return save_dict
 

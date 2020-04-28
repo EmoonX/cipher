@@ -13,4 +13,3 @@ mesh = ExtResource( 2 )
 
 [node name="CollisionShape" parent="Area" index="0"]
 shape = SubResource( 1 )
-

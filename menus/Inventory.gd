@@ -1,44 +1,52 @@
 extends Control
 
-# Lists of, respectly, picked up and used up items
-var items = []
-var used = []
+# List of picked up items names
+var picked_items = []
+
+# List of references to inventory items
+var inventory = []
 
 # --------------------------------------------------------------------------- #
 
 func add(item):
 	item.translation = Vector3(0, 0, 0)
 	item.scale = Vector3(1, 1, 1)
-	items.append(item)
+	picked_items.append(item.name)
+	inventory.append(item)
 
 func remove(item):
-	items.erase(item)
-	used.append(item)
+	inventory.erase(item)
 	
 func was_picked_up(item):
-	for x in items:
-		if item.name == x.name:
-			return true
-	for y in used:
-		if item.name == y.name:
-			return true
-	return false
+	return item.name in picked_items
 	
 func _build_list():
 	$ItemList.clear()
-	items.sort()
-	for item in items:
+	inventory.sort()
+	for item in inventory:
 		var pretty_name = TranslationServer.translate(item.pretty_name)
 		$ItemList.add_item(pretty_name)
 	
 	$ItemList.select(0)
 
 func _show(idx):
-	$Details/Description.text = items[idx].description
+	$Details/Description.text = inventory[idx].description
 	$Viewport/Item.remove_child(get_child(0))
-	$Viewport/Item.add_child(items[idx])
+	$Viewport/Item.add_child(inventory[idx])
 	$Viewport/AnimationPlayer.current_animation = "rotate"
 	$Viewport/AnimationPlayer.play()
+
+func save():
+	# Get string names of inventory items
+	var inventory_names = []
+	for item in inventory:
+		inventory_names.append(item.name)
+	
+	var save_dict = {
+		"picked_items": var2str(picked_items),
+		"inventory": var2str(inventory_names)
+	}
+	return save_dict
 
 func _process(delta):
 	if not visible and Input.is_action_just_pressed("inventory") and \
@@ -46,7 +54,7 @@ func _process(delta):
 		visible = true
 		$"/root/Game".pause_toggle()
 		_build_list()
-		if items:
+		if inventory:
 			_show(0)
 	elif visible:
 		if Input.is_action_just_pressed("ui_cancel") or \

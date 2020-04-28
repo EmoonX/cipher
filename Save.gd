@@ -8,8 +8,6 @@ func create_save():
 	# Make a empty save file with the initial persistent game state
 	var initial_state = {
 		"room": "Corridor",
-		"player_translation": var2str(Vector3(30, 0, 0)),
-		"player_rotation": var2str(Vector3(0, -90, 0))
 	}
 	var file = File.new()
 	file.open(SAVE_FILE, File.WRITE)
@@ -46,4 +44,21 @@ func load_game():
 					$"/root/Game/Player".translation = str2var(line[attr])
 				"player_rotation":
 					$"/root/Game/Player".rotation = str2var(line[attr])
+				
+				"picked_items":
+					var items = []
+					for item_name in str2var(line[attr]):
+						items.append(item_name)
+					$"/root/Game/Interfaces/Inventory".picked_items = items
+				"inventory":
+					var items = []
+					for item_name in str2var(line[attr]):
+						var path = "res://objects/items/" + item_name + ".tscn"
+						var item = load(path).instance()
+						add_child(item)
+						items.append(item)
+						remove_child(item)
+						# (adding and removing from tree is a quick fix so
+						# the _ready method actually gets called...)
+					$"/root/Game/Interfaces/Inventory".inventory = items
 	file.close()

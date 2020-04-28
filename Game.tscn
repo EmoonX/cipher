@@ -96,6 +96,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 
 
 [node name="Inventory" parent="Interfaces" groups=[
 "center",
+"persist",
 ] instance=ExtResource( 4 )]
 visible = false
 

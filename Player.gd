@@ -33,7 +33,7 @@ func _ready():
 func save():
 	var save_dict = {
 		"player_translation": var2str(translation_ini),
-		"player_rotation": var2str(rotation_ini)
+		"player_rotation": var2str(rotation_ini),
 	}
 	return save_dict
 
