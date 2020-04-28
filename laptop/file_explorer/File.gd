@@ -1,5 +1,8 @@
 extends Button
 
+const ImageViewer = preload("res://laptop/image_viewer/ImageViewer.tscn")
+const MediaPlayer = preload("res://laptop/media_player/MediaPlayer.tscn")
+
 var extension = ""
 
 # --------------------------------------------------------------------------- #
@@ -30,7 +33,21 @@ func _on_File_focus_exited():
 func _on_File_gui_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept") or \
 			event is InputEventMouseButton and event.doubleclick:
-		if not "." in $Name.text:
-			# Change the current directory if it's a folder
-			$"../..".path += $Name.text + "/"
-			$"../..".show_files()
+		var path = $"../..".path + $Name.text
+		print(path)
+		match extension:
+			"":
+				# Change the current directory if it's a folder
+				$"../..".path = path + "/"
+				$"../..".show_files()
+			"txt":
+				pass
+			"jpg", "png":
+				# Display (and allow to edit) PNG image in viewer
+				$"../..".add_child(ImageViewer.instance())
+				$"../../ImageViewer/GUI/Image".texture = load(path)
+			"wav", "webm":
+				# Play media (audio or video) file
+				var player = MediaPlayer.instance()
+				player.file_name = path
+				$"../..".add_child(player)

@@ -259,10 +259,10 @@ func _play(filename):
 	add_child(player)
 
 func _view(filename):
-	# Display PNG image in viewer
+	# Display (and allow to edit) PNG image in viewer
 	filename = cwd.get_current_dir() + "/" + filename
 	add_child(ImageViewer.instance())
-	$ImageViewer/Image.texture.image = load(filename)
+	$ImageViewer/GUI/Image.texture = load(filename)
 
 func _bin_to_ascii(filename):
 	# Convert binary string from file to ASCII readable format
