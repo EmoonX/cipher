@@ -22,5 +22,5 @@ func _show_files():
 			var file = _File.instance()
 			file.get_node("Icon").texture = \
 					load("res://laptop/file_explorer/icons/folder.png")
-			file.get_node("Label").text = filename
+			file.get_node("Name").text = filename
 			$FileGrid.add_child(file)
