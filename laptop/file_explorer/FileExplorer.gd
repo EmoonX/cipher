@@ -31,3 +31,11 @@ func show_files():
 		var file = _File.instance()
 		file.get_node("Name").text = filename
 		$FileGrid.add_child(file)
+
+func _process(delta):
+	if Input.is_action_just_pressed("folder_up"):
+		# Go back one level (if possible)
+		if path != "res://user/files/":
+			path = path.substr(0, len(path) - 1)
+			path = path.substr(0, path.find_last("/") + 1)
+			show_files()
