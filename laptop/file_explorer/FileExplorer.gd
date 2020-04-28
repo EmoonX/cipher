@@ -29,12 +29,5 @@ func show_files():
 	files.sort()
 	for filename in files:
 		var file = _File.instance()
-		
-		var icon
-		if not "." in filename:
-			# If it doesn't have an extension, it must be a folder
-			icon = load("res://laptop/file_explorer/icons/folder.png")
-			
-		file.get_node("Icon").texture = icon
 		file.get_node("Name").text = filename
 		$FileGrid.add_child(file)
