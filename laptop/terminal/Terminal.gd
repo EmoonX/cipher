@@ -1,9 +1,9 @@
 extends Control
 
-const Text = preload("res://terminal/Text.tscn")
-const CommandLine = preload("res://terminal/CommandLine.tscn")
-const ImageViewer = preload("res://terminal/image_viewer/ImageViewer.tscn")
-const MediaPlayer = preload("res://terminal/media_player/MediaPlayer.tscn")
+const Text = preload("res://laptop/terminal/Text.tscn")
+const CommandLine = preload("res://laptop/terminal/CommandLine.tscn")
+const ImageViewer = preload("res://laptop/image_viewer/ImageViewer.tscn")
+const MediaPlayer = preload("res://laptop/media_player/MediaPlayer.tscn")
 
 const DX = 12
 const DY = 30

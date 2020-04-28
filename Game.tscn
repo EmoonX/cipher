@@ -3,12 +3,13 @@
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menus/Inventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://terminal/Terminal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://laptop/terminal/Terminal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menus/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://Speech.gd" type="Script" id=8]
 [ext_resource path="res://assets/vignette.png" type="Texture" id=9]
 [ext_resource path="res://BGM.gd" type="Script" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 40

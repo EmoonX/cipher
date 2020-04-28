@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://terminal/Terminal.gd" type="Script" id=1]
+[ext_resource path="res://laptop/terminal/Terminal.gd" type="Script" id=1]
 
 [node name="Terminal" type="Control"]
 pause_mode = 2
@@ -14,4 +14,3 @@ cwd_color = Color( 1, 0.823529, 0.407843, 1 )
 margin_right = 2560.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
-

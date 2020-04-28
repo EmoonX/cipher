@@ -1,4 +1,4 @@
-extends "res://terminal/Program.gd"
+extends "res://laptop/Program.gd"
 
 # Radius (+1) of drawn dots
 const DOT_SIZE = 5

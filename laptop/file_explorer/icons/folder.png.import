@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/color_picker.png-33e4b1e8a08eed3660a4e2569c2c70a2.stex"
+path="res://.import/folder.png-9521230dce76c6df9f707420193bf44e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terminal/image_viewer/color_picker.png"
-dest_files=[ "res://.import/color_picker.png-33e4b1e8a08eed3660a4e2569c2c70a2.stex" ]
+source_file="res://laptop/file_explorer/icons/folder.png"
+dest_files=[ "res://.import/folder.png-9521230dce76c6df9f707420193bf44e.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends "res://terminal/Program.gd"
+extends "res://laptop/Program.gd"
 
 # Filename of the media to be played
 var file_name

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://terminal/DynamicFont.res" type="DynamicFont" id=1]
+[ext_resource path="res://laptop/terminal/DynamicFont.res" type="DynamicFont" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -20,4 +20,3 @@ custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 1 )
 max_length = 50
 caret_blink = true
-

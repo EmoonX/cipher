@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://terminal/Program.gd" type="Script" id=1]
+[ext_resource path="res://laptop/Program.gd" type="Script" id=1]
 
 [node name="Program" type="Panel"]
 anchor_right = 1.0
@@ -13,4 +13,3 @@ script = ExtResource( 1 )
 pause_mode = 2
 margin_right = 40.0
 margin_bottom = 40.0
-

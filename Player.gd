@@ -45,7 +45,8 @@ func _input(event):
 	# If mouse is moved...
 	if event is InputEventMouseMotion:
 		# Rotate player camera
-		rotation_helper.rotate_x(deg2rad(event.relative.y * MOUSE_SENSITIVITY))
+		rotation_helper.rotate_x( \
+				deg2rad(event.relative.y * MOUSE_SENSITIVITY))
 		rotate_y(deg2rad(event.relative.x * MOUSE_SENSITIVITY * -1))
 		
 		# Avoid too inclined vertical rotation

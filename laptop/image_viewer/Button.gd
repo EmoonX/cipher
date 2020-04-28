@@ -1,6 +1,6 @@
 extends Button
 
-const picker = preload("res://terminal/image_viewer/color_picker.png")
+const picker = preload("res://laptop/image_viewer/color_picker.png")
 
 onready var sprite = $"../../Image"
 
