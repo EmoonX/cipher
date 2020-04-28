@@ -14,7 +14,7 @@ var pixels = []
 var last_ts = -1
 var last_pos
 
-# If respective tool is chosen
+# If respective tool was chosen
 var line = false
 var fill = false
 var picker = false
