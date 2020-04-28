@@ -50,7 +50,7 @@ func _process(delta):
 		var ok = true
 		if key:
 			ok = false
-			for item in inventory.items:
+			for item in inventory.inventory:
 				if not key or key == item.name:
 					ok = true
 					break

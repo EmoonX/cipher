@@ -3,6 +3,9 @@ extends Node
 # Current room/area
 var current
 
+# Set of event string flags that already happened
+var flags = []
+
 # Number of pics taken with camera
 var num_pics = 0
 
@@ -13,6 +16,13 @@ var cont = -60
 func _ready():
 	# Load saved game info before game starts
 	connect("ready", Save, "load_game")
+
+func check_and_flag(event):
+	# Return if an one-timed event has not been played
+	# In case it is still unseen, flag it as done
+	if not event in flags:
+		flags.append(event)
+		return true
 
 func display_subtitles(key):
 	$Speech.display(key)
@@ -50,6 +60,7 @@ func _tween_blur(increase):
 func save():
 	var save_dict = {
 		"room": current.name,
+		"flags": flags
 	}
 	return save_dict
 

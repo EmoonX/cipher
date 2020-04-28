@@ -39,6 +39,9 @@ func load_game():
 							line[attr] + ".tscn").instance()
 					$"/root/Game".current = current
 					$"/root/Game".add_child(current)
+				"flags":
+					for flag in line[attr]:
+						$"/root/Game".flags.append(flag)
 					
 				"player_translation":
 					$"/root/Game/Player".translation = str2var(line[attr])
@@ -59,6 +62,6 @@ func load_game():
 						items.append(item)
 						remove_child(item)
 						# (adding and removing from tree is a quick fix so
-						# the _ready method actually gets called...)
+						# the item's _ready method actually gets called...)
 					$"/root/Game/Interfaces/Inventory".inventory = items
 	file.close()

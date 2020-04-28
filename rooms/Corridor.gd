@@ -1,10 +1,7 @@
 extends "res://rooms/Room.gd"
 
-var ok = false
-
 # --------------------------------------------------------------------------- #
 
-func _process(delta):
-	if not ok:
+func _ready():
+	if $"/root/Game".check_and_flag("SPEECH_START"):
 		$"/root/Game".display_subtitles("SPEECH_START")
-		ok = true
