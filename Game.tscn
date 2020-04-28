@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://laptop/Laptop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menus/Inventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://laptop/terminal/Terminal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menus/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://Speech.gd" type="Script" id=8]
@@ -63,7 +63,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -653, 75 )
+graph_offset = Vector2( -479, 58 )
 mode = 1
 flags/light_only = false
 nodes/fragment/4/node = SubResource( 3 )
@@ -94,20 +94,14 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 0, 
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
 
+[node name="Laptop" parent="Interfaces" instance=ExtResource( 3 )]
+visible = false
+
 [node name="Inventory" parent="Interfaces" groups=[
 "center",
 "persist",
 ] instance=ExtResource( 4 )]
 visible = false
-
-[node name="Terminal" parent="Interfaces" groups=[
-"expand",
-] instance=ExtResource( 5 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1920.0
-margin_bottom = 1080.0
 
 [node name="PauseMenu" parent="Interfaces" groups=[
 "center",
@@ -144,6 +138,9 @@ __meta__ = {
 margin_right = 1920.0
 margin_bottom = 1080.0
 custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Blur" type="ColorRect" parent="ScreenEffects"]
 material = SubResource( 7 )

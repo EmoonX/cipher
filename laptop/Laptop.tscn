@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://laptop/terminal/Terminal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://laptop/file_explorer/FileExplorer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://laptop/map/Map.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -98,7 +99,9 @@ shader_param/aberration_amount = 1.0
 shader_param/move_aberration = false
 shader_param/aberration_speed = 1.0
 
-[node name="Laptop" type="Control"]
+[node name="Laptop" type="Control" groups=[
+"center",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -106,9 +109,14 @@ __meta__ = {
 }
 
 [node name="FileExplorer" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
+visible = false
 
 [node name="Terminal" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
 visible = false
+
+[node name="Map" parent="." instance=ExtResource( 3 )]
 
 [node name="CRTLayer" type="ColorRect" parent="."]
 material = SubResource( 2 )

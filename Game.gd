@@ -48,12 +48,12 @@ func pause_toggle():
 func _tween_blur(increase):
 	# Do an interpolated (de)blur effect
 	var tween = Tween.new()
-	var next = 3 if increase else 0
+	add_child(tween)
+	var next = 2 if increase else 0
 	tween.interpolate_property($ScreenEffects/Blur.material,
 			"shader_param/amount", null, next, 0.2,
 			Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
-	add_child(tween)
 	yield(tween, "tween_completed")
 	remove_child(tween)
 
