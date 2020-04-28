@@ -117,6 +117,7 @@ pause_mode = 1
 visible = false
 
 [node name="Map" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="CRTLayer" type="ColorRect" parent="."]
 material = SubResource( 2 )
