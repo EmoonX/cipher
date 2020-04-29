@@ -51,6 +51,10 @@ func register_room(room, entry_door=""):
 		map_door.rect_position = \
 				room_pos - door_pos - (map_door.rect_size / 2)
 		map_door.rect_rotation = door.rotation_degrees.y
+		
+		# If it's locked, color it in some different way
+		if door.key:
+			map_door.color = ColorN("red")
 
 func _position_player():
 	# Update player position by making whole map re-center on it
