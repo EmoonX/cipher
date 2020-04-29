@@ -22,6 +22,7 @@ func _process(delta):
 		# Change current room
 		game.remove_child(game.current)
 		game.current = load("res://rooms/" + where_to + ".tscn").instance()
+		game.current.entry_door = name
 		game.add_child(game.current)
 		
 		# Position the player accordingly

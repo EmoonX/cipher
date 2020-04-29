@@ -30,7 +30,7 @@ albedo_texture = ExtResource( 4 )
 bgm = ExtResource( 7 )
 
 [node name="Box" parent="." index="0"]
-transform = Transform( 0.6, 0, 0, 0, 0.4, 0, 0, 0, 0.6, 0, 0, 0 )
+transform = Transform( 0.6, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="Floor_plane" parent="Box" index="0"]
 material/0 = SubResource( 1 )
@@ -58,11 +58,11 @@ shadow_bias = 1.0
 omni_range = 36.7
 
 [node name="EntryDoor" parent="." index="3" instance=ExtResource( 5 )]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -23 )
+transform = Transform( -1.62921e-06, 0, -10, 0, 10, 0, 10, 0, -1.62921e-06, 23, 0, 0 )
 where_to = "Corridor"
 
 [node name="LockedDoor" parent="." index="4" instance=ExtResource( 5 )]
-transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0, 24 )
+transform = Transform( -1.62921e-06, 0, 10, 0, 10, 0, -10, 0, -1.62921e-06, -24, 0, -1 )
 where_to = "Green"
 key = "SimpleKey"
 

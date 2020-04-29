@@ -8,35 +8,57 @@ const SCALE = 8.0
 
 # --------------------------------------------------------------------------- #
 
-func register_room(room, entry_door=null):
+func register_room(room, entry_door=""):
 	# Get top-down representation of the room by its floor dimensions
 	var size = SCALE * room.get_node("Box/Floor_plane").mesh.size
 	var scale = room.get_node("Box").scale
 	size.x *= scale.x
 	size.y *= scale.z
 	
+	# Find where to put room based on door position
+	var room_pos = Vector2(0, 0)
+	if entry_door:
+		for node in $Rooms.get_children():
+			print(node.name)
+			if node.name == entry_door:
+				var map_door = node
+				var exit_pos = map_door.rect_position
+				for node in room.get_children():
+					if node.name == entry_door:
+						var door = node
+						var entry_pos = SCALE * \
+								Vector2(door.translation.x, door.translation.z)
+						room_pos = exit_pos + entry_pos
+						break
+				break
+	
 	# Add correctly scaled room to the map
 	var map_room = MapRoom.instance()
 	$Rooms.add_child(map_room)
+	map_room.name = room.name
 	map_room.rect_size = size
-	map_room.rect_position = Vector2(0, 0) - size/2
+	map_room.rect_position = room_pos - size/2
 	
-	# Add doors to map
+	# Add unmarked doors to map
 	for node in room.get_children():
-		if not "Door" in node.name:
+		if not "Door" in node.name or node.name == entry_door:
 			continue
 		var door = node
-		var pos = SCALE * Vector2(door.translation.x, door.translation.z)
+		var door_pos = SCALE * Vector2(door.translation.x, door.translation.z)
 		var map_door = MapDoor.instance()
 		$Rooms.add_child(map_door)
-		map_door.rect_position = -pos - (map_door.rect_size / 2)
+		map_door.name = door.name
+		map_door.rect_position = \
+				room_pos - door_pos - (map_door.rect_size / 2)
 		map_door.rect_rotation = door.rotation_degrees.y
 
 func _position_player():
 	# Update player position by making whole map re-center on it
 	var player = $"/root/Game/Player"
 	var pos = SCALE * Vector2(player.translation.x, player.translation.z)
-	$Rooms.rect_position = get_viewport_rect().size/2 + pos
+	var room = $Rooms.get_node($"/root/Game".current.name)
+	var delta = room.rect_position + room.rect_size/2
+	$Rooms.rect_position = get_viewport_rect().size/2 + pos - delta
 	
 	# Rotate player accordingly
 	var rot = 180.0 - player.rotation_degrees.y
@@ -55,4 +77,5 @@ func _process(delta):
 #		$"/root/Game".pause_toggle()
 	Input.action_release("map")
 	
-	_position_player()
+	if visible:
+		_position_player()

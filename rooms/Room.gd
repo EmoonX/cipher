@@ -6,6 +6,9 @@ export(AudioStream) var bgm
 # If room has already been visited
 var visited = false
 
+# Identifier of door used to enter room
+var entry_door = ""
+
 # --------------------------------------------------------------------------- #
 
 func _ready():
@@ -21,5 +24,5 @@ func _ready():
 		
 	# In case of first visit, register room on map
 	if not visited:
-		$"/root/Game/Interfaces/Laptop/Map".register_room(self)
+		$"/root/Game/Interfaces/Laptop/Map".register_room(self, entry_door)
 		visited = true
