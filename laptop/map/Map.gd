@@ -25,6 +25,11 @@ func _position_player():
 	var player = $"/root/Game/Player"
 	var pos = SCALE * Vector2(player.translation.x, player.translation.z)
 	$Rooms.rect_position = get_viewport_rect().size/2 + pos
+	
+	# Rotate player accordingly
+	var rot = 180.0 - player.rotation_degrees.y
+	$Player.rect_rotation = rot
+	print(rot)
 
 func _process(delta):
 	# Enter or exit map

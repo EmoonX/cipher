@@ -8,8 +8,8 @@ const ACCEL = 4.5
 const DEACCEL = 16.0
 const MOUSE_SENSITIVITY = 0.20
 
-onready var camera = $Rotation_Helper/Camera    
-onready var rotation_helper = $Rotation_Helper
+onready var camera = $RotationHelper/Camera    
+onready var rotation_helper = $RotationHelper
 
 # Items currently in player's possession
 var inventory = []
@@ -77,8 +77,8 @@ func _process_input(delta):
 	
 	# Toggle flashlight
 	if Input.is_action_just_pressed("flashlight"):
-		$Rotation_Helper/Flashlight.visible = \
-			not $Rotation_Helper/Flashlight.visible
+		$RotationHelper/Flashlight.visible = \
+			not $RotationHelper/Flashlight.visible
 	
 	# Capture screen by camera
 	if Input.is_action_just_pressed("camera"):
