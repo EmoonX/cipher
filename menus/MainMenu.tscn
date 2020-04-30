@@ -32,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Cipher" type="TextureRect" parent="."]
 margin_right = 954.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
