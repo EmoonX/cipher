@@ -4,3 +4,6 @@ extends Node
 export(String) var title
 export(String) var composer
 export(String, MULTILINE) var description
+
+# If song is playing
+var playing = false

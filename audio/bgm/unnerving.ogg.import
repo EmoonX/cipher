@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/unnerving.ogg-7fa3327bdcf094b112a57dd7630f6b81.oggstr"
+
+[deps]
+
+source_file="res://audio/bgm/unnerving.ogg"
+dest_files=[ "res://.import/unnerving.ogg-7fa3327bdcf094b112a57dd7630f6b81.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

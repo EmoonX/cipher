@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+BGM="*res://BGM.gd"
 Config="*res://Config.gd"
 Save="*res://Save.gd"
 View="*res://View.gd"
