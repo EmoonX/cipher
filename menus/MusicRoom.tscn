@@ -1,22 +1,25 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://menus/OptionsFont.res" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Titillium-RegularItalic.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/music.png" type="Texture" id=4]
+[ext_resource path="res://menus/note.png" type="Texture" id=5]
 
-[sub_resource type="ImageTexture" id=1]
-size = Vector2( 960, 1080 )
-
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.94902, 0.815686, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
@@ -24,9 +27,21 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="StyleBoxEmpty" id=6]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="DynamicFont" id=5]
 size = 40
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
 
 [node name="MusicRoom" type="HSplitContainer"]
 anchor_right = 1.0
@@ -37,44 +52,53 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_right = 960.0
+margin_right = 954.0
 margin_bottom = 1080.0
-texture = SubResource( 1 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+stretch_mode = 4
 
 [node name="Container" type="VSplitContainer" parent="."]
-margin_left = 972.0
+margin_left = 966.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+size_flags_horizontal = 3
 split_offset = 540
+dragger_visibility = 2
 
 [node name="Songs" type="ItemList" parent="Container"]
-margin_right = 948.0
+margin_right = 954.0
 margin_bottom = 540.0
-custom_styles/selected_focus = SubResource( 5 )
-custom_styles/bg_focus = SubResource( 6 )
+custom_styles/selected_focus = SubResource( 1 )
+custom_styles/bg_focus = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-items = [ "Unnerving", null, false ]
+custom_constants/vseparation = 20
+custom_constants/icon_margin = 20
+items = [ "Unnerving", ExtResource( 5 ), false, "Yet Another Night", ExtResource( 5 ), false, "? ? ? ?", ExtResource( 5 ), true ]
+fixed_icon_size = Vector2( 32, 32 )
 
 [node name="Info" type="VBoxContainer" parent="Container"]
-margin_top = 552.0
-margin_right = 948.0
+margin_top = 540.0
+margin_right = 954.0
 margin_bottom = 1080.0
 custom_constants/separation = 50
 
 [node name="Composer" type="Label" parent="Container/Info"]
-margin_right = 948.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 7 )
+margin_right = 954.0
+margin_bottom = 80.0
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Composer: Emoon"
 
 [node name="Description" type="Label" parent="Container/Info"]
-margin_top = 90.0
-margin_right = 948.0
-margin_bottom = 250.0
+margin_top = 130.0
+margin_right = 954.0
+margin_bottom = 330.0
+custom_styles/normal = SubResource( 7 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 custom_constants/line_spacing = 20
