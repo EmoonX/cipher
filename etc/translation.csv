@@ -2,6 +2,7 @@
 MENU_START,Start,Começar
 MENU_CONTINUE,Continue,Continuar
 MENU_OPTIONS,Options,Opções
+MENU_MUSICROOM,Music Room,Sala de Música
 MENU_QUIT,Quit Game,Sair do Jogo
 MENU_RESUME,Resume,Retomar Jogo
 MENU_RETURN,Return to Menu,Retornar ao Menu
@@ -31,3 +32,11 @@ Talvez ele tivesse algum apego a plantas."
 ,,
 SIMPLEKEY_NAME,Simple Key,Chave Simples
 SIMPLEKEY_DESCR,A simple key. Nothing special about it.,Uma simples chave. Não há nada de especial.
+,,
+MUSIC_COMPOSER,Composer,Compositor
+MUSIC_DESCR_EMPTY,"Nothing here yet...
+Go play the game and get some songs!","Nada ainda por aqui…
+Comece o jogo e consiga algumas músicas!"
+MUSIC_DESCR_UNNERVING,The first song done especifically for the game. It has an eerie but not too hardcore feel. The minor chords on the second part help enhancing the mood.,A primeira composição feita especificamente para o jogo. Causa uma sensação sinistra mas não tão pesada. Os acordes em menor na segunda parte ajudam a realçar a ambientação.
+MUSIC_DESCR_NIGHT,This is the rhythm of the night.,Esse é o ritmo da noite.
+MUSIC_DESCR_UNTITLED,A masterpiece.,Uma obra-prima.

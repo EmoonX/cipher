@@ -42,5 +42,7 @@ func _process(delta):
 		get_tree().change_scene("res://Game.tscn")
 	elif $Items/Options.pressed:
 		get_tree().change_scene("res://menus/OptionsMenu.tscn")
+	elif $Items/MusicRoom.pressed:
+		get_tree().change_scene("res://menus/music_room/MusicRoom.tscn")
 	elif $Items/Quit.pressed:
 		get_tree().quit()

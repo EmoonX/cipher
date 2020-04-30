@@ -51,7 +51,7 @@ alignment = 1
 
 [node name="Start" type="Button" parent="Items"]
 margin_right = 954.0
-margin_bottom = 267.0
+margin_bottom = 212.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
@@ -63,9 +63,9 @@ text = "MENU_START"
 flat = true
 
 [node name="Continue" type="Button" parent="Items"]
-margin_top = 271.0
+margin_top = 216.0
 margin_right = 954.0
-margin_bottom = 538.0
+margin_bottom = 428.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
@@ -78,9 +78,9 @@ text = "MENU_CONTINUE"
 flat = true
 
 [node name="Options" type="Button" parent="Items"]
-margin_top = 542.0
+margin_top = 432.0
 margin_right = 954.0
-margin_bottom = 809.0
+margin_bottom = 644.0
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 size_flags_horizontal = 3
@@ -91,8 +91,22 @@ custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "MENU_OPTIONS"
 flat = true
 
+[node name="MusicRoom" type="Button" parent="Items"]
+margin_top = 648.0
+margin_right = 954.0
+margin_bottom = 860.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Quit")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
+text = "MENU_MUSICROOM"
+flat = true
+
 [node name="Quit" type="Button" parent="Items"]
-margin_top = 813.0
+margin_top = 864.0
 margin_right = 954.0
 margin_bottom = 1080.0
 focus_neighbour_top = NodePath("../Options")

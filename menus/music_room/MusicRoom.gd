@@ -15,10 +15,15 @@ func _ready():
 			continue
 		songs.add_item(song.title, note_image, true)
 	
-	# First of list starts of selected
+	# Put focus on song list and select first song of it
+	songs.grab_focus()
 	songs.select(0)
 
 func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		# Return to main menu
+		get_tree().change_scene("res://menus/MainMenu.tscn")
+	
 	# Get node corresponding to currently selected song
 	var index = songs.get_selected_items()[0]
 	var title = songs.get_item_text(index)
@@ -27,7 +32,8 @@ func _process(_delta):
 	# Change info to match song
 	# (need to be done this way as .select() doesn't trigger signals...)
 	if index != last_idx:
-		$Container/Info/Composer.text = "Composer: " + song.composer
+		var s = TranslationServer.translate("MUSIC_COMPOSER")
+		$Container/Info/Composer.text = s + ": " + song.composer
 		$Container/Info/Description.text = song.description
 		last_idx = index
 	

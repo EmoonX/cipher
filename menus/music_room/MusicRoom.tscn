@@ -34,7 +34,7 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 content_margin_left = 20.0
-content_margin_right = 20.0
+content_margin_right = 40.0
 content_margin_top = 20.0
 content_margin_bottom = 20.0
 
@@ -80,13 +80,19 @@ fixed_icon_size = Vector2( 48, 32 )
 script = ExtResource( 6 )
 title = "Unnerving"
 composer = "Emoon"
-description = "The first of all."
+description = "MUSIC_DESCR_UNNERVING"
 
 [node name="YetAnotherNight" type="Node" parent="Container/Songs"]
 script = ExtResource( 6 )
 title = "Yet Another Night"
 composer = "Emoon"
-description = "The second of all."
+description = "MUSIC_DESCR_NIGHT"
+
+[node name="Untitled" type="Node" parent="Container/Songs"]
+script = ExtResource( 6 )
+title = "Untitled"
+composer = "gamemastertips"
+description = "MUSIC_DESCR_UNTITLED"
 
 [node name="Info" type="VBoxContainer" parent="Container"]
 margin_top = 540.0
@@ -104,11 +110,10 @@ custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 [node name="Description" type="Label" parent="Container/Info"]
 margin_top = 130.0
 margin_right = 954.0
-margin_bottom = 270.0
+margin_bottom = 210.0
 custom_styles/normal = SubResource( 7 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 custom_constants/line_spacing = 20
-text = "Nothing here yet...
-Go play the game and get some songs!"
+text = "MUSIC_DESCR_EMPTY"
 autowrap = true
