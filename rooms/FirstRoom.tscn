@@ -6,7 +6,8 @@
 [ext_resource path="res://assets/TexturesCom_Tiles_PorcelainChevron_1K_albedo.png" type="Texture" id=4]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/items/SimpleKey.tscn" type="PackedScene" id=6]
-[ext_resource path="res://audio/bgm/unerving.ogg" type="AudioStream" id=7]
+[ext_resource path="res://audio/bgm/unnerving.ogg" type="AudioStream" id=7]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )

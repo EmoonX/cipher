@@ -15,4 +15,5 @@ func _process(delta):
 			$"/root/Game".play_sfx("res://assets/key_pickup.wav")
 	
 	if inventory.was_picked_up(self):
-		$"/root/Game".current.remove_child(self)
+		if $"/root/Game".current.has_node(name):
+			$"/root/Game".current.remove_child(self)

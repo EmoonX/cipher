@@ -35,8 +35,8 @@ func load_game():
 		for attr in line:
 			match attr:
 				"room":
-					var current = load("res://rooms/" + \
-							line[attr] + ".tscn").instance()
+					var path = "res://rooms/" + line[attr] + ".tscn"
+					var current = load(path).instance()
 					$"/root/Game".current = current
 					$"/root/Game".add_child(current)
 				"flags":
