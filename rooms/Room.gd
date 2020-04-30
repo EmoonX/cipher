@@ -26,3 +26,6 @@ func _ready():
 	if not visited:
 		$"/root/Game/Interfaces/Laptop/Map".register_room(self, entry_door)
 		visited = true
+	
+	# Highlight current room (and only it) on map
+	$"/root/Game/Interfaces/Laptop/Map".highlight(self)

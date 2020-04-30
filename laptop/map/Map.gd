@@ -19,7 +19,6 @@ func register_room(room, entry_door=""):
 	var room_pos = Vector2(0, 0)
 	if entry_door:
 		for node in $Rooms.get_children():
-			print(node.name)
 			if node.name == entry_door:
 				var map_door = node
 				var exit_pos = map_door.rect_position
@@ -55,6 +54,23 @@ func register_room(room, entry_door=""):
 		# If it's locked, color it in some different way
 		if door.key:
 			map_door.color = ColorN("red")
+	
+	# Duplicate style box to allow individual recoloring
+	var panel = map_room.get("custom_styles/panel").duplicate()
+	map_room.set("custom_styles/panel", panel)
+
+func highlight(current):
+	# Highlight current room on map (and only it)
+	for node in $Rooms.get_children():
+		if "Door" in node.name:
+			continue
+		var room = node
+		var color
+		if room.name == current.name:
+			color = Color("af0076ff")
+		else:
+			color = Color("af003a7d")
+		room.get("custom_styles/panel").bg_color = color
 
 func _position_player():
 	# Update player position by making whole map re-center on it
