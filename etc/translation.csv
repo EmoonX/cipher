@@ -14,6 +14,7 @@ SCRMOD_BLWIN,Borderless Window,Janela sem Bordas
 SCRMOD_FULL,Fullscreen,Tela Cheia
 OPT_RES,Resolution,Resolução
 RES_SCR_ADAPT,Screen Adapt,Adaptado à Tela
+OPT_ERASEALL,Erase ALL Data,Apagar TODOS os dados
 OPT_APPLY,Apply,Aplicar
 ,,
 ACTION_EXAMINE,Examine,Investigar

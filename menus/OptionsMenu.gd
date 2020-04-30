@@ -18,6 +18,10 @@ func _ready():
 					if button.get_item_text(id) == value:
 						button.selected = id
 				break
+				
+	# Erase all data option should be grayed out ingame
+	if has_node("/root/Game"):
+		$Items/EraseAllData.disabled = true
 	
 	$Items/Language/OptionButton.grab_focus()
 
@@ -38,7 +42,7 @@ func _process(delta):
 					button.selected += 1
 				change = true
 	
-	# It's necessary to don't change important options every frame!
+	# It's necessary to not change important options every frame!
 	if change:
 		# Update config *in memory*
 		for node in $Items.get_children():
@@ -51,12 +55,29 @@ func _process(delta):
 		
 		Config.set_options()
 	
-	if $Items/Apply.pressed:
+	if $Items/EraseAllData.pressed:
+		# TODO: add some VERY NEEDED confirmation beforehand
+		
+		# Erase all save, config and user data files
+		var dir = Directory.new()
+		dir.change_dir("res://user/")
+		dir.list_dir_begin(true)
+		while true:
+			var filename = dir.get_next()
+			if not filename:
+				break
+			if not dir.current_is_dir():
+				dir.remove(filename)
+		
+		# Quit game so we can start all over
+		get_tree().quit()
+	
+	elif $Items/Apply.pressed:
 		# Save pending changes to file
 		Config.file.save(Config.FILE)
 		
 		# Different procedures in-game and in main menu
-		if $"/root/".has_node("Game"):
+		if has_node("/root/Game"):
 			Input.action_release("ui_accept")
 			var pause_menu = $"/root/Game/Interfaces/PauseMenu"
 			pause_menu.pause_mode = PAUSE_MODE_PROCESS

@@ -10,11 +10,17 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Items" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -29,15 +35,15 @@ alignment = 1
 
 [node name="Language" type="HSplitContainer" parent="Items"]
 margin_right = 1120.0
-margin_bottom = 164.0
+margin_bottom = 130.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offset = -100
 
 [node name="Label" type="Label" parent="Items/Language"]
-margin_top = 31.0
+margin_top = 45.0
 margin_right = 454.0
-margin_bottom = 132.0
+margin_bottom = 85.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
@@ -49,7 +55,7 @@ valign = 1
 [node name="OptionButton" type="OptionButton" parent="Items/Language"]
 margin_left = 466.0
 margin_right = 1120.0
-margin_bottom = 164.0
+margin_bottom = 130.0
 focus_neighbour_top = NodePath("../../Apply")
 focus_neighbour_bottom = NodePath("../../ScreenMode/OptionButton")
 size_flags_horizontal = 3
@@ -58,23 +64,24 @@ custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 button_mask = 0
 text = "English"
+icon = ExtResource( 3 )
 flat = true
 align = 1
 items = [ "English", ExtResource( 3 ), false, 0, null, "Português (Brasil)", ExtResource( 4 ), false, 1, null ]
 selected = 0
 
 [node name="ScreenMode" type="HSplitContainer" parent="Items"]
-margin_top = 168.0
+margin_top = 134.0
 margin_right = 1120.0
-margin_bottom = 332.0
+margin_bottom = 264.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offset = -100
 
 [node name="Label" type="Label" parent="Items/ScreenMode"]
-margin_top = 31.0
+margin_top = 45.0
 margin_right = 454.0
-margin_bottom = 132.0
+margin_bottom = 85.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
@@ -86,7 +93,7 @@ valign = 1
 [node name="OptionButton" type="OptionButton" parent="Items/ScreenMode"]
 margin_left = 466.0
 margin_right = 1120.0
-margin_bottom = 164.0
+margin_bottom = 130.0
 focus_neighbour_top = NodePath("../../Language/OptionButton")
 focus_neighbour_bottom = NodePath("../../Resolution/OptionButton")
 size_flags_horizontal = 3
@@ -101,17 +108,17 @@ items = [ "SCRMOD_WIN", null, false, 0, null, "SCRMOD_BLWIN", null, false, 1, nu
 selected = 0
 
 [node name="Resolution" type="HSplitContainer" parent="Items"]
-margin_top = 336.0
+margin_top = 268.0
 margin_right = 1120.0
-margin_bottom = 500.0
+margin_bottom = 398.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offset = -100
 
 [node name="Label" type="Label" parent="Items/Resolution"]
-margin_top = 31.0
+margin_top = 45.0
 margin_right = 454.0
-margin_bottom = 132.0
+margin_bottom = 85.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
@@ -123,9 +130,9 @@ valign = 1
 [node name="OptionButton" type="OptionButton" parent="Items/Resolution"]
 margin_left = 466.0
 margin_right = 1120.0
-margin_bottom = 164.0
+margin_bottom = 130.0
 focus_neighbour_top = NodePath("../../ScreenMode/OptionButton")
-focus_neighbour_bottom = NodePath("../../Apply")
+focus_neighbour_bottom = NodePath("../../EraseAllData")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
@@ -137,11 +144,24 @@ align = 1
 items = [ "1280x720", null, false, 0, null, "1600x900", null, false, 1, null, "1920x1080", null, false, 2, null, "2560x1080", null, false, 3, null, "2560x1440", null, false, 4, null, "3440x1440", null, false, 5, null, "3840x2160", null, false, 6, null, "RES_SCR_ADAPT", null, false, 7, null ]
 selected = 7
 
+[node name="EraseAllData" type="Button" parent="Items"]
+margin_top = 402.0
+margin_right = 1120.0
+margin_bottom = 532.0
+focus_neighbour_top = NodePath("../Resolution/OptionButton")
+focus_neighbour_bottom = NodePath("../Apply")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
+text = "OPT_ERASEALL"
+flat = true
+
 [node name="Apply" type="Button" parent="Items"]
-margin_top = 504.0
+margin_top = 536.0
 margin_right = 1120.0
 margin_bottom = 668.0
-focus_neighbour_top = NodePath("../Resolution/OptionButton")
+focus_neighbour_top = NodePath("../EraseAllData")
 focus_neighbour_bottom = NodePath("../Language/OptionButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -149,4 +169,3 @@ custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "OPT_APPLY"
 flat = true
-
