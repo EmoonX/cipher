@@ -110,20 +110,23 @@ func _process_input(delta):
 		$"/root/Game/Subtitles".visible = true
 		$"/root/Game/ScreenEffects".visible = true
 	
-	# Change color of interactable objects on key press (focus on all)
-	var color
+	# Brighten interactable objects on key press (focus on all)
+	var energy
 	if Input.is_action_pressed("focus_all"):
-		color = Color(1.0 + abs(cont), 1.0 + abs(cont), 1.0 + abs(cont))
+		energy = abs(cont) / 16
 		cont -= delta * 2
 		if cont < -1.0:
 			cont = 1.0
 	else:
-		color = ColorN("white")
+		energy = 0.0
 		cont = 0.0
 	for node in $"/root/Game".current.get_children():
 		if node is Interactable:
-			var mesh = node.get_node("MeshInstance")
-			mesh.material_override.albedo_color = color
+			for mesh in node.get_node("Meshes").get_children():
+				var material = mesh.mesh.get("surface_1/material")
+				material.emission_enabled = true
+				material.emission_energy = energy
+				mesh.mesh.set("surface_1/material", material)
 
 func _process_movement(delta):
 	# Horizontal velocity isn't affected by vertical direction
