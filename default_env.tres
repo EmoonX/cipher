@@ -5,4 +5,5 @@ radiance_size = 3
 sun_energy = 64.0
 
 [resource]
+background_mode = 2
 background_sky = SubResource( 1 )
