@@ -14,3 +14,7 @@ export_presets.cfg
 user/player.cfg
 user/*.save
 user/files/camera/*
+
+# Blender files
+blender/
+*.gltf

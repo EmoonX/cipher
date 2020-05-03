@@ -124,7 +124,10 @@ func _process_input(delta):
 		if node is Interactable:
 			for mesh in node.get_node("Meshes").get_children():
 				var material = mesh.mesh.get("surface_1/material")
+				if not material:
+					continue
 				material.emission_enabled = true
+				material.emission = ColorN("white")
 				material.emission_energy = energy
 				mesh.mesh.set("surface_1/material", material)
 
