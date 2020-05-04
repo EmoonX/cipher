@@ -17,12 +17,14 @@ RES_SCR_ADAPT,Screen Adapt,Adaptado à Tela
 OPT_ERASEALL,Erase ALL Data,Apagar TODOS os dados
 OPT_APPLY,Apply,Aplicar
 ,,
-ACTION_EXAMINE,Examine,Investigar
+ACTION_EXAMINE,Examine,Examinar
+ACTION_OPEN_DOOR,Open,Abrir
+ACTION_TURN_ON,Turn on,Ligar
+ACTION_TURN_OFF,Turn off,Desligar
 ACTION_OPEN,Open,Abrir
-ACTION_PICKUP,Pick up,Coletar
+ACTION_CLOSE,Close,Fechar
+ACTION_PICK_UP,Pick up,Coletar
 ACTION_SCAN,Scan,Digitalizar
-ACTION_TURNON,Turn on,Ligar
-ACTION_TURNOFF,Turn off,Desligar
 ,,
 SPEECH_START,"I see myself once again stuck at the same dark corridor...
 Gotta find my way out.","Me vejo de novo preso ao mesmo corredor escuro...
