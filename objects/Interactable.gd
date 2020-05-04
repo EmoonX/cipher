@@ -27,7 +27,7 @@ func _process(delta):
 	if active:
 		$ActionLabel.visible = true
 		
-		energy = abs(cont) / 16
+		energy = abs(cont) / 32
 		cont -= delta * 2
 		if cont < -1.0:
 			cont = 1.0
