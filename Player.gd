@@ -127,7 +127,7 @@ func _process_input(delta):
 				if not material:
 					continue
 				material.emission_enabled = true
-				material.emission = ColorN("white")
+#				material.emission = ColorN("white")
 				material.emission_energy = energy
 				mesh.mesh.set("surface_1/material", material)
 

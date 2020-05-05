@@ -27,10 +27,23 @@ var cont = 0.0
 
 # --------------------------------------------------------------------------- #
 
-func _on_Area_area_entered(area):
+func _ready():
+	# Set up emission "glow" features in materials for when active
+	for mesh in get_node("Meshes").get_children():
+		for idx in mesh.mesh.get_surface_count():
+			var material = mesh.mesh.surface_get_material(idx)
+			material.emission_enabled = true
+			material.emission = material.albedo_color
+			if material.albedo_texture:
+				material.emission_operator = \
+						SpatialMaterial.EMISSION_OP_MULTIPLY
+				material.emission_texture = material.albedo_texture
+			mesh.mesh.surface_set_material(idx, material)
+
+func _on_Area_area_entered(_area):
 	active = true
 
-func _on_Area_area_exited(area):
+func _on_Area_area_exited(_area):
 	active = false
 
 func _process(delta):
@@ -43,7 +56,7 @@ func _process(delta):
 	if active:
 		$ActionLabel.visible = true
 		
-		energy = abs(cont) / 32
+		energy = abs(cont) / 2
 		cont -= delta * 2
 		if cont < -1.0:
 			cont = 1.0
@@ -80,10 +93,7 @@ func _process(delta):
 	
 	# Brigthen up object while examining
 	for mesh in get_node("Meshes").get_children():
-		var material = mesh.mesh.get("surface_1/material")
-		if not material:
-			continue
-		material.emission_enabled = true
-		material.emission = ColorN("white")
-		material.emission_energy = energy
-		mesh.mesh.set("surface_1/material", material)
+		for idx in mesh.mesh.get_surface_count():
+			var material = mesh.mesh.surface_get_material(idx)
+			material.emission_energy = energy
+			mesh.mesh.surface_set_material(idx, material)
