@@ -569,6 +569,7 @@ interior_enable = true
 
 [node name="CityLight" type="SpotLight" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.0996335, 0.00855387, 0, -0.00855387, 0.0996335, 0, 2.56794, 17.8829 )
+visible = false
 light_energy = 0.08
 shadow_enabled = true
 shadow_bias = 1.0
