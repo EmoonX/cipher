@@ -86,6 +86,12 @@ func _process(delta):
 						actions[0] = ActionType.TURN_OFF
 					else:
 						actions[0] = ActionType.TURN_ON
+					
+					# Update ReflectionProbe when lighting changes
+					var probe = \
+							$"/root/Game".current.get_node("ReflectionProbe")
+					probe.update_mode = ReflectionProbe.UPDATE_ONCE
+	
 	else:
 		$ActionLabel.visible = false
 		energy = 0.0
