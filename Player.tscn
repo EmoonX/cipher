@@ -1,16 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://rooms/bedroom/nightstand/Lamp.mesh" type="ArrayMesh" id=2]
-
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.8
 height = 11.0
 
-[sub_resource type="CapsuleShape" id=3]
-radius = 2.0
+[sub_resource type="CapsuleShape" id=2]
+radius = 1.5
 height = 10.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "zoom_in"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 45, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "zoom_out"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 45, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
 
 [node name="Player" type="KinematicBody" groups=[
 "persist",
@@ -29,13 +56,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RotationHelper/ActionArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="RotationHelper"]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
 current = true
 fov = 100.0
 far = 180.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationHelper/Camera"]
+anims/zoom_in = SubResource( 3 )
+anims/zoom_out = SubResource( 4 )
 
 [node name="Flashlight" type="SpotLight" parent="RotationHelper"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -57,3 +88,4 @@ transform = Transform( 8.88941, 0, 0, 0, 38.4969, 0, 0, 0, 6.45938, 1.19278, 1.9
 visible = false
 mesh = ExtResource( 2 )
 material/0 = null
+[connection signal="animation_finished" from="RotationHelper/Camera/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

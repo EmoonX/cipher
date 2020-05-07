@@ -10,6 +10,7 @@ const MOUSE_SENSITIVITY = 0.20
 
 onready var camera = $RotationHelper/Camera    
 onready var rotation_helper = $RotationHelper
+onready var zoom_player = $RotationHelper/Camera/AnimationPlayer
 
 # Items currently in player's possession
 var inventory = []
@@ -22,6 +23,10 @@ var rotation_ini = Vector3()
 var vel = Vector3()
 var dir = Vector3()
 
+# If the zoom in/out animations have finished
+var zoom_in_ended = false
+var zoom_out_ended = false
+
 var cont = 0.0
 
 # --------------------------------------------------------------------------- #
@@ -30,12 +35,11 @@ func _ready():
 	# Hide mouse and avoid it leaving screen
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func save():
-	var save_dict = {
-		"player_translation": var2str(translation_ini),
-		"player_rotation": var2str(rotation_ini),
-	}
-	return save_dict
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "zoom_in":
+		zoom_in_ended = true
+	else:
+		zoom_out_ended = true
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -74,6 +78,16 @@ func _process_input(delta):
 	dir = Vector3()
 	dir += cam_xform.basis.x * input_movement_vector.x
 	dir += -cam_xform.basis.z * input_movement_vector.z
+	
+	# Zoom in/out
+	if Input.is_action_pressed("zoom"):
+		if not zoom_in_ended:
+			zoom_player.play("zoom_in")
+		zoom_out_ended = false
+	else:
+		if not zoom_out_ended:
+			zoom_player.play("zoom_out")
+		zoom_in_ended = false
 	
 	# Toggle flashlight
 	if Input.is_action_just_pressed("flashlight"):
@@ -143,3 +157,10 @@ func _process_movement(delta):
 	# Produce resulting velocity by applying accel and (possibly) wall slide
 	vel = vel.linear_interpolate(dir, accel * delta)
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
+
+func save():
+	var save_dict = {
+		"player_translation": var2str(translation_ini),
+		"player_rotation": var2str(rotation_ini),
+	}
+	return save_dict
