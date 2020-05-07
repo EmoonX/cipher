@@ -139,8 +139,9 @@ func _process_input(delta):
 	for node in $"/root/Game".current.get_children():
 		if node is Interactable:
 			for mesh in node.get_node("Meshes").get_children():
+				continue
 				var material = mesh.mesh.get("surface_1/material")
-				if not material:
+				if not material :
 					continue
 				material.emission_enabled = true
 #				material.emission = ColorN("white")

@@ -47,13 +47,13 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -638, 81 )
+graph_offset = Vector2( -633, 40 )
 mode = 1
 flags/light_only = false
 nodes/fragment/4/node = SubResource( 1 )
-nodes/fragment/4/position = Vector2( 120, 140 )
+nodes/fragment/4/position = Vector2( 100, 120 )
 nodes/fragment/5/node = SubResource( 2 )
 nodes/fragment/5/position = Vector2( -200, 120 )
 nodes/fragment/6/node = SubResource( 3 )
 nodes/fragment/6/position = Vector2( -180, 220 )
-nodes/fragment/connections = PoolIntArray( 4, 0, 0, 0, 6, 0, 4, 1, 5, 0, 4, 0 )
+nodes/fragment/connections = PoolIntArray( 6, 0, 4, 1, 5, 0, 4, 0, 4, 0, 0, 0 )

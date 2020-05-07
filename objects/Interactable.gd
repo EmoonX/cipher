@@ -33,6 +33,8 @@ func _ready():
 	for mesh in get_node("Meshes").get_children():
 		for idx in mesh.mesh.get_surface_count():
 			var material = mesh.mesh.surface_get_material(idx)
+			if not material is SpatialMaterial:
+				continue
 			material.emission_enabled = true
 			material.emission = material.albedo_color
 			if material.albedo_texture:
@@ -100,5 +102,7 @@ func _process(delta):
 	for mesh in get_node("Meshes").get_children():
 		for idx in mesh.mesh.get_surface_count():
 			var material = mesh.mesh.surface_get_material(idx)
+			if not material is SpatialMaterial:
+				continue
 			material.emission_energy = energy
 			mesh.mesh.surface_set_material(idx, material)
