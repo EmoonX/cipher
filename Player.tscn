@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://rooms/bedroom/nightstand/Lamp.mesh" type="ArrayMesh" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.8
@@ -21,22 +20,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 45, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 100, -0.25, 0, 0.1, -36.2418, 45, -0.44, 0.00819778, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.8 )
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "zoom_out"
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:fov")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 45, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
 }
 
 [node name="Player" type="KinematicBody" groups=[
@@ -66,7 +51,6 @@ far = 180.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RotationHelper/Camera"]
 anims/zoom_in = SubResource( 3 )
-anims/zoom_out = SubResource( 4 )
 
 [node name="Flashlight" type="SpotLight" parent="RotationHelper"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -82,10 +66,4 @@ spot_angle_attenuation = 0.25
 light_energy = 0.05
 shadow_enabled = true
 omni_range = 50.0
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 8.88941, 0, 0, 0, 38.4969, 0, 0, 0, 6.45938, 1.19278, 1.90735e-06, 0.467918 )
-visible = false
-mesh = ExtResource( 2 )
-material/0 = null
 [connection signal="animation_finished" from="RotationHelper/Camera/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

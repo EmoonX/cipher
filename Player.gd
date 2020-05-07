@@ -23,9 +23,8 @@ var rotation_ini = Vector3()
 var vel = Vector3()
 var dir = Vector3()
 
-# If the zoom in/out animations have finished
-var zoom_in_ended = false
-var zoom_out_ended = false
+# Length of zoom animation
+var zoom_length
 
 var cont = 0.0
 
@@ -34,12 +33,11 @@ var cont = 0.0
 func _ready():
 	# Hide mouse and avoid it leaving screen
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "zoom_in":
-		zoom_in_ended = true
-	else:
-		zoom_out_ended = true
+	
+	# Set zoom animation to player and get length of it
+	zoom_player.current_animation = "zoom_in"
+	zoom_player.stop(false)
+	zoom_length = zoom_player.current_animation_length
 
 func _physics_process(delta):
 	_process_input(delta)
@@ -80,14 +78,17 @@ func _process_input(delta):
 	dir += -cam_xform.basis.z * input_movement_vector.z
 	
 	# Zoom in/out
+	var pos = zoom_player.current_animation_position
 	if Input.is_action_pressed("zoom"):
-		if not zoom_in_ended:
-			zoom_player.play("zoom_in")
-		zoom_out_ended = false
+		if pos + delta <= zoom_length:
+			zoom_player.advance(delta)
+		else:
+			zoom_player.seek(zoom_length, true)
 	else:
-		if not zoom_out_ended:
-			zoom_player.play("zoom_out")
-		zoom_in_ended = false
+		if pos - 2 * delta >= 0.0:
+			zoom_player.advance(-2 * delta)
+		else:
+			zoom_player.seek(0.0, true)
 	
 	# Toggle flashlight
 	if Input.is_action_just_pressed("flashlight"):
