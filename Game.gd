@@ -6,6 +6,9 @@ var current
 # Set of event string flags that already happened
 var flags = []
 
+# Currently active object
+var active_object = null
+
 # Number of pics taken with camera
 var num_pics = 0
 

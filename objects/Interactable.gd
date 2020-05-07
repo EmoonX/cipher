@@ -11,6 +11,10 @@ enum ActionType {
 	SCAN
 }
 
+onready var Interactable = get_script()
+
+onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
+
 # List of possible actions to be done with the object
 export(Array, ActionType) var actions = []
 
@@ -19,11 +23,6 @@ export(String) var examine_text
 
 # In case of being a switch, which node contain lights to be turned on/off
 export(NodePath) var linked_lights
-
-onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
-
-# If the object is in player's action range
-var active = false
 
 var cont = 0.0
 
@@ -42,12 +41,6 @@ func _ready():
 				material.emission_texture = material.albedo_texture
 			mesh.mesh.surface_set_material(idx, material)
 
-func _on_Area_area_entered(_area):
-	active = true
-
-func _on_Area_area_exited(_area):
-	active = false
-
 func _update_probe():
 	# Update ReflectionProbe when lighting changes
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
@@ -62,7 +55,7 @@ func _process(delta):
 	$ActionLabel.text = action_label
 	
 	var energy
-	if active:
+	if self == $"/root/Game".active_object:
 		$ActionLabel.visible = true
 		
 		energy = abs(cont) / 2

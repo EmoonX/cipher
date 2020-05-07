@@ -42,6 +42,7 @@ func _ready():
 func _physics_process(delta):
 	_process_input(delta)
 	_process_movement(delta)
+	_process_interaction(delta)
 
 func _input(event):
 	# If mouse is moved...
@@ -158,6 +159,12 @@ func _process_movement(delta):
 	# Produce resulting velocity by applying accel and (possibly) wall slide
 	vel = vel.linear_interpolate(dir, accel * delta)
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
+
+func _process_interaction(_delta):
+	var object = $RotationHelper/ActiveRay.get_collider()
+	if object:
+		object = object.get_parent()
+	$"/root/Game".active_object = object
 
 func save():
 	var save_dict = {

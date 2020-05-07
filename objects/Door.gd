@@ -12,6 +12,8 @@ var exit = false
 # --------------------------------------------------------------------------- #
 
 func _process(delta):
+	var active = (self == $"/root/Game".active_object)
+	
 	if exit and game.cont == 0:
 		if not where_to:
 			get_tree().quit()
