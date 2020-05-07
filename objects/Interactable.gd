@@ -20,6 +20,8 @@ export(String) var examine_text
 # In case of being a switch, which node contain lights to be turned on/off
 export(NodePath) var linked_lights
 
+onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
+
 # If the object is in player's action range
 var active = false
 
@@ -45,6 +47,13 @@ func _on_Area_area_entered(_area):
 
 func _on_Area_area_exited(_area):
 	active = false
+
+func _update_probe():
+	# Update ReflectionProbe when lighting changes
+	probe.update_mode = ReflectionProbe.UPDATE_ONCE
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	_update_probe()
 
 func _process(delta):
 	# Set action label text
@@ -72,6 +81,7 @@ func _process(delta):
 					$AnimationPlayer.current_animation = "open"
 					$AnimationPlayer.play()
 					actions[0] = ActionType.CLOSE
+					
 				ActionType.CLOSE:
 					# Close a curtain, closet, etc
 					$AnimationPlayer.current_animation = "close"
@@ -86,11 +96,7 @@ func _process(delta):
 						actions[0] = ActionType.TURN_OFF
 					else:
 						actions[0] = ActionType.TURN_ON
-					
-					# Update ReflectionProbe when lighting changes
-					var probe = \
-							$"/root/Game".current.get_node("ReflectionProbe")
-					probe.update_mode = ReflectionProbe.UPDATE_ONCE
+					_update_probe()
 	
 	else:
 		$ActionLabel.visible = false

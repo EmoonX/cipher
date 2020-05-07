@@ -1,0 +1,672 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://rooms/bedroom/lamps/Circle.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://rooms/bedroom/window/Main.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://rooms/bedroom/Ceiling.material" type="Material" id=3]
+[ext_resource path="res://rooms/bedroom/Wallpaper.material" type="Material" id=4]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric03.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://rooms/bedroom/light_switch/Slider.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://rooms/bedroom/curtains/Curtain002.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric05.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://rooms/bedroom/light_switch/Base.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric10.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://rooms/bedroom/lamps/Curve.mesh" type="ArrayMesh" id=11]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric06.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://rooms/bedroom/WoodFloor.material" type="Material" id=13]
+[ext_resource path="res://rooms/bedroom/light_switch/BaseSlider.mesh" type="ArrayMesh" id=14]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=15]
+[ext_resource path="res://rooms/bedroom/curtains/Curtain001.mesh" type="ArrayMesh" id=16]
+[ext_resource path="res://rooms/bedroom/nightstand/Nightstand.mesh" type="ArrayMesh" id=17]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric01.mesh" type="ArrayMesh" id=18]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric09.mesh" type="ArrayMesh" id=19]
+[ext_resource path="res://rooms/bedroom/carpet/Carpet.mesh" type="ArrayMesh" id=20]
+[ext_resource path="res://objects/Interactable.tscn" type="PackedScene" id=21]
+[ext_resource path="res://rooms/bedroom/door/Knob.mesh" type="ArrayMesh" id=22]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric04.mesh" type="ArrayMesh" id=23]
+[ext_resource path="res://rooms/bedroom/nightstand/Cactus.mesh" type="ArrayMesh" id=24]
+[ext_resource path="res://rooms/bedroom/window/Frame.mesh" type="ArrayMesh" id=25]
+[ext_resource path="res://rooms/bedroom/door/Door.mesh" type="ArrayMesh" id=26]
+[ext_resource path="res://rooms/bedroom/single_bed/Fabric02.mesh" type="ArrayMesh" id=27]
+[ext_resource path="res://rooms/bedroom/light_switch/Screw.mesh" type="ArrayMesh" id=28]
+[ext_resource path="res://rooms/bedroom/nightstand/Lamp.mesh" type="ArrayMesh" id=29]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Ceiling"
+surfaces/0 = {
+"aabb": AABB( -1, 1, -1, 2.00001, 1.00136e-05, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 129, 0, 0, 127, 0, 184, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 129, 0, 0, 127, 0, 62, 0, 62, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 129, 0, 0, 127, 0, 184, 0, 62, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 129, 0, 0, 127, 0, 184, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 129, 0, 0, 127, 0, 62, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 129, 0, 0, 127, 0, 62, 0, 62 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97303,
+"index_count": 0,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 6
+}
+
+[sub_resource type="ArrayMesh" id=2]
+resource_name = "Floor-col"
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 1.00136e-05, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 127, 0, 0, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 127, 0, 0, 127, 0, 60, 0, 60 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97303,
+"index_count": 0,
+"material": ExtResource( 13 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 6
+}
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1 )
+
+[sub_resource type="ArrayMesh" id=4]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2.00001, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 184, 240, 8, 205, 190, 222, 30, 248, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 31, 52, 94, 46, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 126, 0, 127, 0, 0, 0, 184, 240, 8, 205, 190, 222, 30, 248, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 31, 52, 94, 46, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 126, 0, 127, 0, 0, 0, 184, 240, 8, 205, 190, 222, 30, 248, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 31, 52, 94, 46, 209, 177, 199, 62, 34, 173, 246, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 37, 52, 30, 59, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 0, 0, 62, 209, 177, 199, 62, 34, 173, 246, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 37, 52, 30, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 62, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 184, 152, 25, 205, 190, 186, 16, 42, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 168, 58, 92, 46, 240, 8, 205, 190, 222, 30, 248, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 31, 52, 94, 46, 170, 190, 199, 62, 37, 132, 42, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 170, 58, 30, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 62, 209, 177, 199, 62, 34, 173, 246, 190, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 37, 52, 30, 59, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 184, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0, 0, 127, 0, 127, 0, 60, 0, 62, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 0, 0, 184, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 60, 0, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 127, 0, 127, 0, 0, 0, 62, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 184, 170, 190, 199, 62, 37, 132, 42, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 170, 58, 30, 59, 152, 25, 205, 190, 186, 16, 42, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 168, 58, 92, 46, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 184, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 0, 60, 0, 62, 170, 190, 199, 62, 37, 132, 42, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 127, 0, 127, 170, 58, 30, 59 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97303,
+"index_count": 0,
+"material": ExtResource( 4 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 42
+}
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -1, 1, 1, -0.4005, -0.4846, 1, -1, -1, 1, -0.4005, -0.4846, 1, 1, -1, 1, -1, -1, 1, -0.4005, -0.4846, 1, 0.39, -0.4818, 1, 1, -1, 1, 0.39, -0.4818, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -0.4006, 0.6643, 1, -0.4005, -0.4846, 1, 0.3901, 0.6661, 1, 1, 1, 1, 0.39, -0.4818, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 0.3901, 0.6661, 1, -0.4006, 0.6643, 1, -1, 1, 1, 1, 1, 1, 0.3901, 0.6661, 1 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.0145339, 0.976005, 0.482866 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.99699, 0.0618769, 1.02996 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "close"
+length = 0.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Meshes/Curtain001:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -0.38219, -0.25, 0, 0.25, 0, -1.12606, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Meshes/Curtain001:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -2.62268e-09, -0.25, 0, 0.25, 0, -2.62268e-09, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Meshes/Curtain001:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1.78219, -0.25, 0, 0.25, 0, 1.78219, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Meshes/Curtain002:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.0290404, -0.25, 0, 0.25, 0, 0.750098, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Meshes/Curtain002:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 2.10589e-09, -0.25, 0, 0.25, 0, 2.10589e-09, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Meshes/Curtain002:translation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1.76618, -0.25, 0, 0.25, 0, 1.76618, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("../ReflectionProbe:interior_ambient_color:r")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0.1152, -0.25, 0, 0.25, 0, 0.0509804, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("../ReflectionProbe:interior_ambient_color:g")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0.1152, -0.25, 0, 0.25, 0, 0.0509804, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("../ReflectionProbe:interior_ambient_color:b")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0.18, -0.25, 0, 0.25, 0, 0.0784314, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("../ReflectionProbe:interior_ambient_color:a")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Meshes/Curtain001:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1.12606, -0.25, 0, 0.25, 0, -0.38219, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Meshes/Curtain001:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -2.62268e-09, -0.25, 0, 0.25, 0, -2.62268e-09, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Meshes/Curtain001:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1.78219, -0.25, 0, 0.25, 0, 1.78219, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Meshes/Curtain002:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.750098, -0.25, 0, 0.25, 0, 0.0290404, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Meshes/Curtain002:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 2.10589e-09, -0.25, 0, 0.25, 0, 2.10589e-09, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Meshes/Curtain002:translation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1.76618, -0.25, 0, 0.25, 0, 1.76618, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("../ReflectionProbe:interior_ambient_color:r")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0.0509804, -0.25, 0, 0.25, 0, 0.1152, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("../ReflectionProbe:interior_ambient_color:g")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0.0509804, -0.25, 0, 0.25, 0, 0.1152, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("../ReflectionProbe:interior_ambient_color:b")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0.0784314, -0.25, 0, 0.25, 0, 0.18, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("../ReflectionProbe:interior_ambient_color:a")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.00956081, 0.056057, 0.0998366 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.616513, 1.02363, 0.378301 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.616513, 0.29252, 0.196339 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.28946, 0.448702, 0.216587 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 0.118088, 0.147472, 0.185082 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.0778367, 0.0807896, 0.0544887 )
+
+[node name="Bedroom" type="Spatial"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="Box" type="Spatial" parent="."]
+
+[node name="Ceiling" type="MeshInstance" parent="Box"]
+transform = Transform( 2, 0, 0, 0, 1.25, 0, 0, 0, 2, 0, 1.25, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Floor" type="MeshInstance" parent="Box"]
+transform = Transform( 2, 0, 0, 0, 1.25, 0, 0, 0, 2, 0, 1.25, 0 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="static_collision" type="StaticBody" parent="Box/Floor"]
+
+[node name="shape0" type="CollisionShape" parent="Box/Floor/static_collision"]
+shape = SubResource( 3 )
+
+[node name="Walls" type="MeshInstance" parent="Box"]
+transform = Transform( 2, 0, 0, 0, 1.25, 0, 0, 0, 2, 0, 1.25, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="static_collision" type="StaticBody" parent="Box/Walls"]
+
+[node name="shape0" type="CollisionShape" parent="Box/Walls/static_collision"]
+shape = SubResource( 5 )
+
+[node name="Door" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+actions = [ 1 ]
+
+[node name="Door" type="MeshInstance" parent="Door/Meshes" index="0"]
+transform = Transform( 0.00173551, 0, 0, 0, 0, -0.000912555, 0, 0.000905147, 0, -1.96392, 0, -1.17781 )
+mesh = ExtResource( 26 )
+material/0 = null
+
+[node name="Knob" type="MeshInstance" parent="Door/Meshes" index="1"]
+transform = Transform( 0.00173551, 0, 0, 0, 0, -0.000912555, 0, 0.000905147, 0, -1.96392, 0, -1.17781 )
+mesh = ExtResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98501, 1.00101, -1.17992 )
+shape = SubResource( 6 )
+
+[node name="Window" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0 )
+actions = [ 0 ]
+
+[node name="Frame" type="MeshInstance" parent="Window/Meshes" index="0"]
+transform = Transform( 0.05, 0, 0, 0, 0, -0.05, 0, 0.05, 0, 0, 0.492907, 2.02598 )
+mesh = ExtResource( 25 )
+material/0 = null
+
+[node name="Left" type="MeshInstance" parent="Window/Meshes" index="1"]
+transform = Transform( 0.05, 0, 0, 0, 0, -0.05, 0, 0.05, 0, 0.750584, 0.492907, 2.02598 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="Right" type="MeshInstance" parent="Window/Meshes" index="2"]
+transform = Transform( 0.05, 0, 0, 0, 0, -0.05, 0, 0.05, 0, 0, 0.492907, 2.02598 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="Curtains" parent="." instance=ExtResource( 21 )]
+actions = [ 4 ]
+
+[node name="Curtain001" type="MeshInstance" parent="Curtains/Meshes" index="0"]
+transform = Transform( -0.0011, -1.20797e-10, 5.28019e-18, 0, -3.49691e-11, -0.0008, 1.66095e-10, -0.0008, 3.49691e-11, -1.12606, -2.62268e-09, 1.78219 )
+mesh = ExtResource( 16 )
+material/0 = null
+
+[node name="Curtain002" type="MeshInstance" parent="Curtains/Meshes" index="1"]
+transform = Transform( -0.000945095, -1.20797e-10, 5.28019e-18, 0, -3.49691e-11, -0.0008, 1.42705e-10, -0.0008, 3.49691e-11, 0.750098, 2.10589e-09, 1.76618 )
+mesh = ExtResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Curtains/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0127506, 1.0859, 1.83928 )
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Curtains"]
+method_call_mode = 1
+anims/close = SubResource( 8 )
+anims/open = SubResource( 9 )
+next/open = "close"
+
+[node name="Lamps" type="Spatial" parent="."]
+transform = Transform( 2.5, 0, 0, 0, 1.25, 0, 0, 0, 2.5, 0, 1.25, 0 )
+
+[node name="Circle" type="MeshInstance" parent="Lamps"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, -2.88486e-06, 0.596548, 0.0827857 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="Curve" type="MeshInstance" parent="Lamps"]
+transform = Transform( 2.38419e-09, 0.04, 0, -0.08, 4.76837e-09, 0, 0, 0, 0.04, 4.29153e-06, 0.38272, 0.0828214 )
+mesh = ExtResource( 11 )
+material/0 = null
+
+[node name="Curve001" type="MeshInstance" parent="Lamps"]
+transform = Transform( 2.38419e-09, 3.57628e-09, -0.04, -0.08, 0, -7.15256e-09, 0, 0.04, 2.38419e-09, -0.0919957, 0.38272, -0.00917853 )
+mesh = ExtResource( 11 )
+material/0 = null
+
+[node name="Curve002" type="MeshInstance" parent="Lamps"]
+transform = Transform( 2.38419e-09, 0, 0.04, -0.08, 0, 7.15256e-09, 0, -0.04, 0, 0.0920043, 0.38272, -0.00917858 )
+mesh = ExtResource( 11 )
+material/0 = null
+
+[node name="Curve003" type="MeshInstance" parent="Lamps"]
+transform = Transform( 2.38419e-09, -0.04, -3.01992e-09, -0.08, -9.53675e-09, -6.03983e-09, 3.01992e-09, 3.01992e-09, -0.04, 4.26769e-06, 0.38272, -0.101179 )
+mesh = ExtResource( 11 )
+material/0 = null
+
+[node name="Lights" type="Spatial" parent="Lamps"]
+visible = false
+
+[node name="Point" type="OmniLight" parent="Lamps/Lights"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, -2.88486e-06, 0.395427, -0.00921425 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 0.2
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 0.0
+omni_range = 80.0
+omni_attenuation = 1.68179
+
+[node name="Point001" type="OmniLight" parent="Lamps/Lights"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, -2.88486e-06, 0.569785, -0.101214 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 0.2
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 0.0
+omni_range = 80.0
+omni_attenuation = 1.68179
+
+[node name="Point002" type="OmniLight" parent="Lamps/Lights"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, 0.0919971, 0.569785, -0.00921429 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 0.2
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 0.0
+omni_range = 80.0
+omni_attenuation = 1.68179
+
+[node name="Point003" type="OmniLight" parent="Lamps/Lights"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, -0.0920028, 0.569785, -0.00921429 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 0.2
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 0.0
+omni_range = 80.0
+omni_attenuation = 1.68179
+
+[node name="Point004" type="OmniLight" parent="Lamps/Lights"]
+transform = Transform( 0.04, 0, 0, 0, 0.08, 0, 0, 0, 0.04, -2.88486e-06, 0.569785, 0.0827857 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 0.2
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 0.0
+omni_range = 80.0
+omni_attenuation = 1.68179
+
+[node name="LightSwitch" parent="." instance=ExtResource( 21 )]
+actions = [ 2 ]
+linked_lights = NodePath("../../Bedroom/Lamps/Lights")
+
+[node name="Base" type="MeshInstance" parent="LightSwitch/Meshes" index="0"]
+transform = Transform( 1.48522e-09, 0.0249178, 2.22783e-09, 0, 1.48522e-09, -0.0249178, -0.0249178, 2.22783e-09, 0, -2, 1.07506, -0.404717 )
+mesh = ExtResource( 9 )
+material/0 = null
+
+[node name="BaseSlider" type="MeshInstance" parent="LightSwitch/Meshes" index="1"]
+transform = Transform( 1.51396e-09, 0.0254, -7.56979e-10, -7.56979e-10, 0, -0.0254, -0.0254, 7.56979e-10, 1.51396e-09, -1.99227, 1.07523, -0.401174 )
+mesh = ExtResource( 14 )
+material/0 = null
+
+[node name="Slider" type="MeshInstance" parent="LightSwitch/Meshes" index="2"]
+transform = Transform( 1.51396e-09, 0.0254, -7.56979e-10, -7.56979e-10, 0, -0.0254, -0.0254, 7.56979e-10, 1.51396e-09, -1.99317, 0.532914, 0.101812 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="ScrewMainInstance" type="MeshInstance" parent="LightSwitch/Meshes" index="3"]
+transform = Transform( 1.51396e-09, 0.0254, 0, -0.0254, 1.51396e-09, 0, 0, 0, 0.0254, -1.99439, 1.15751, -0.400992 )
+mesh = ExtResource( 28 )
+material/0 = null
+
+[node name="ScrewMainInstance001" type="MeshInstance" parent="LightSwitch/Meshes" index="4"]
+transform = Transform( 3.02792e-09, 0.0254, 5.29885e-09, -0.021997, 0, 0.0127, 0.0127, -6.43432e-09, 0.021997, -1.99439, 0.994429, -0.400992 )
+mesh = ExtResource( 28 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="LightSwitch/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.98688, 1.08573, -0.393805 )
+shape = SubResource( 10 )
+
+[node name="Bed" parent="." instance=ExtResource( 21 )]
+actions = [ 0 ]
+examine_text = "EXAMINE_SINGLEBED"
+
+[node name="Fabric01" type="MeshInstance" parent="Bed/Meshes" index="0"]
+transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.460434, 0.126759, -0.947425 )
+mesh = ExtResource( 18 )
+material/0 = null
+
+[node name="Fabric10" type="MeshInstance" parent="Bed/Meshes" index="1"]
+transform = Transform( 0, 0, -0.01, 0, 0.01, 0, 0.01, 0, 0, 1.83746, 0.723651, -0.909935 )
+mesh = ExtResource( 10 )
+material/0 = null
+
+[node name="Fabric03" type="MeshInstance" parent="Bed/Meshes" index="2"]
+transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 1.37301, 0.368031, -0.94759 )
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="Fabric04" type="MeshInstance" parent="Bed/Meshes" index="3"]
+transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.934835, 0.0432726, -0.94687 )
+mesh = ExtResource( 23 )
+material/0 = null
+
+[node name="Fabric05" type="MeshInstance" parent="Bed/Meshes" index="4"]
+transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.37541, 0.781742, -1.2647 )
+mesh = ExtResource( 8 )
+material/0 = null
+
+[node name="Fabric06" type="MeshInstance" parent="Bed/Meshes" index="5"]
+transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.49343, 0.73871, -0.916454 )
+mesh = ExtResource( 12 )
+material/0 = null
+
+[node name="Fabric09" type="MeshInstance" parent="Bed/Meshes" index="6"]
+transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.68555, 0.74157, -1.16423 )
+mesh = ExtResource( 19 )
+material/0 = null
+
+[node name="Fabric02" type="MeshInstance" parent="Bed/Meshes" index="7"]
+transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.540271, 0, -0.93312 )
+mesh = ExtResource( 27 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Bed/Area" index="0"]
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.778574, 0.379549, -1.02908 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Bed/Area" index="1"]
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 1.61587, 0.965355, -1.0405 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Bed/StaticBody" index="0"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.11758e-22, 1, 0.778574, -1.02908, -0.379549 )
+shape = SubResource( 11 )
+
+[node name="Carpet" type="MeshInstance" parent="."]
+transform = Transform( 0.01905, 0, 0, 0, 0.0134286, 0, 0, 0, 0.01905, 0.681817, 0, 0.811156 )
+mesh = ExtResource( 20 )
+material/0 = null
+
+[node name="Nightstand" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.74833, 0, 0.775518 )
+
+[node name="Nightstand" type="MeshInstance" parent="Nightstand"]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.00534618, 0.498034, 0 )
+mesh = ExtResource( 17 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Nightstand/Nightstand"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Nightstand/Nightstand/StaticBody"]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, -0.0446587, 0 )
+shape = SubResource( 13 )
+
+[node name="Lamp" parent="Nightstand" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
+actions = [ 3 ]
+linked_lights = NodePath("../../../Bedroom/Nightstand/Lamp/Lights")
+
+[node name="Lamp" type="MeshInstance" parent="Nightstand/Lamp/Meshes" index="0"]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.0476167, 0.498034, 0.0620518 )
+mesh = ExtResource( 29 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Nightstand/Lamp/Area" index="0"]
+transform = Transform( 1, 3.55271e-15, 0, -1.42584e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, -0.0992447, 0.792265, 0 )
+shape = SubResource( 14 )
+
+[node name="Lights" type="Spatial" parent="Nightstand/Lamp"]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="Nightstand/Lamp/Lights"]
+transform = Transform( 0.1, 0, -4.44089e-16, 0, 0.1, 0, 4.44089e-16, 0, 0.1, -0.0923578, 0.936826, 0 )
+light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+shadow_bias = 1.5
+omni_range = 50.0
+omni_attenuation = 2.63902
+
+[node name="Cactus" parent="Nightstand" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
+actions = [ 0 ]
+examine_text = "EXAMINE_CACTUS"
+
+[node name="Cactus" type="MeshInstance" parent="Nightstand/Cactus/Meshes" index="0"]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0.498034, 0 )
+mesh = ExtResource( 24 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Nightstand/Cactus/Area" index="0"]
+transform = Transform( 1, 3.55271e-15, 0, -3.33166e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, 0.144587, 0.660908, 0.0578156 )
+shape = SubResource( 15 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.19292, 0 )
+extents = Vector3( 21.3253, 13.5326, 20.8188 )
+box_projection = true
+enable_shadows = true
+interior_enable = true
+interior_ambient_color = Color( 0.0509804, 0.0509804, 0.0784314, 1 )
+
+[node name="CityLight" type="SpotLight" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.0996335, 0.00855387, 0, -0.00855387, 0.0996335, 0, 2.56794, 17.8829 )
+light_energy = 0.08
+shadow_enabled = true
+shadow_bias = 1.0
+spot_range = 4096.0
+spot_angle = 5.0
+[connection signal="animation_finished" from="Curtains/AnimationPlayer" to="Curtains" method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Door"]
+
+[editable path="Window"]
+
+[editable path="Curtains"]
+
+[editable path="LightSwitch"]
+
+[editable path="Bed"]
+
+[editable path="Nightstand/Lamp"]
+
+[editable path="Nightstand/Cactus"]

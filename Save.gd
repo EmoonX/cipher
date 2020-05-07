@@ -7,7 +7,7 @@ const SAVE_FILE = "res://user/emoon.save"
 func create_save():
 	# Make a empty save file with the initial persistent game state
 	var initial_state = {
-		"room": "Room/room",
+		"room": "bedroom/Bedroom",
 	}
 	var file = File.new()
 	file.open(SAVE_FILE, File.WRITE)
