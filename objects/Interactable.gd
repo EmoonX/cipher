@@ -14,8 +14,8 @@ enum ActionType {
 # List of possible actions to be done with the object
 export(Array, ActionType) var actions = []
 
-# What the main character say upon examining
-export(String) var examine_text
+# If the object should have a simpler pretty name before examining it
+export(bool) var has_pre_name = false
 
 # In case of being a switch, which node contain lights to be turned on/off
 export(NodePath) var linked_lights
@@ -28,8 +28,13 @@ onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
 
 func _ready():
 	# Set object pretty name to label
-	var pretty_name = "OBJECT_" + name.to_upper()
-	pretty_name = TranslationServer.translate(pretty_name)
+	var s = "OBJECT_" + name.to_upper()
+	if has_pre_name and not name in $"/root/Game".examined_objects:
+		s += "_PRE"
+	var pretty_name = TranslationServer.translate(s)
+	if pretty_name == s:
+		# There's no explicit pre-name, so it's just "unknown"
+		pretty_name = "????"
 	$ActionInterface/Name.text = pretty_name
 	
 	# Set up emission "glow" features in materials for when active
@@ -74,6 +79,15 @@ func _process(delta):
 					# Examine (get player's flavored info from) the object
 					var examine_text = "OBJECT_" + name.to_upper() + "_EXAMINE"
 					$"/root/Game".display_subtitles(examine_text)
+					
+					# Upon first examination and if it has a pre-name,
+					# register it and change pretty name
+					if has_pre_name and \
+							not self in $"/root/Game".examined_objects:
+						$"/root/Game".examined_objects[name] = true
+						var s = "OBJECT_" + name.to_upper()
+						var pretty_name = TranslationServer.translate(s)
+						$ActionInterface/Name.text = pretty_name
 					
 				ActionType.OPEN:
 					# Open a curtain, closet, etc

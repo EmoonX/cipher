@@ -6,6 +6,9 @@ var current
 # Set of event string flags that already happened
 var flags = []
 
+# Set of already examined objects (e.g. for pre-name purposes)
+var examined_objects = {}
+
 # Currently active object
 var active_object = null
 
