@@ -58,6 +58,12 @@ func _update_probe():
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	_update_probe()
 
+func _hide_actions():
+	# Play hiding animation before turning interface invisible
+	$ActionInterface/AnimationPlayer.play_backwards("show")
+	yield($ActionInterface/AnimationPlayer, "animation_finished")
+	$ActionInterface.visible = false
+
 func _process(delta):
 	# Set action label text
 #	var action_label = "ACTION_" + ActionType.keys()[actions[0]]
@@ -66,6 +72,11 @@ func _process(delta):
 	
 	var energy
 	if self == $"/root/Game".active_object:
+		if not $ActionInterface.visible:
+			# Start animation playback one frame before
+			# turning interface visible (to not render garbage)
+			$ActionInterface/AnimationPlayer.play("show")
+			yield(get_tree(), "idle_frame")
 		$ActionInterface.visible = true
 		
 		energy = abs(cont) / 2
@@ -112,7 +123,8 @@ func _process(delta):
 					_update_probe()
 	
 	else:
-		$ActionInterface.visible = false
+		if $ActionInterface.visible:
+			_hide_actions()
 		energy = 0.0
 		cont = 0
 	

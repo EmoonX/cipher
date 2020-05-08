@@ -10,7 +10,9 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[node name="Item" type="Button"]
+[node name="Item" type="Button" groups=[
+"center_on_parent",
+]]
 margin_right = 400.0
 margin_bottom = 31.0
 custom_styles/normal = SubResource( 1 )

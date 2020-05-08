@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://rooms/bedroom/lamps/Circle.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://rooms/bedroom/window/TexturesCom_WindowsOther0024_M.jpg" type="Texture" id=2]
@@ -50,8 +50,6 @@
 [ext_resource path="res://BlurShader.tres" type="Shader" id=48]
 [ext_resource path="res://rooms/bedroom/Wood.material" type="Material" id=49]
 [ext_resource path="res://objects/Window.gd" type="Script" id=50]
-[ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=51]
-[ext_resource path="res://assets/Titillium-RegularItalic.otf" type="DynamicFontData" id=52]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Ceiling"
@@ -105,16 +103,6 @@ data = PoolVector3Array( -1, 1, 1, -0.4005, -0.4846, 1, -1, -1, 1, -0.4005, -0.4
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.0145339, 0.976005, 0.482866 )
-
-[sub_resource type="DynamicFont" id=22]
-size = 30
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 52 )
-
-[sub_resource type="DynamicFont" id=23]
-size = 30
-font_data = ExtResource( 51 )
 
 [sub_resource type="Shader" id=7]
 resource_local_to_scene = true
@@ -500,31 +488,6 @@ shape = SubResource( 6 )
 visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
-
-[node name="Name" type="Label" parent="Door/ActionInterface" index="0"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -15.5
-margin_right = 20.0
-margin_bottom = 15.5
-custom_fonts/font = SubResource( 22 )
-custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-align = 1
-valign = 1
-
-[node name="ActionLabel" type="Label" parent="Door/ActionInterface" index="1" groups=[
-"center",
-]]
-visible = false
-margin_right = 1920.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 23 )
-custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-text = "Lorem ipsum"
-align = 1
 
 [node name="Window" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0 )
