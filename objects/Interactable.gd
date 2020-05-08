@@ -51,18 +51,39 @@ func _ready():
 				material.emission_texture = material.albedo_texture
 			mesh.mesh.surface_set_material(idx, material)
 
+func _on_ActionInterface_visibility_changed():
+	if $ActionInterface.visible:
+		for item in $ActionInterface/Actions.get_children():
+			var player = item.get_node("AnimationPlayer")
+			var reverse_playback = \
+					$ActionInterface/AnimationPlayer.is_playing() and \
+					$ActionInterface/AnimationPlayer.get_playing_speed() < 0.0
+			if reverse_playback or not $ActionInterface.visible:
+				# Hiding animation already started 
+				# (or even finished), so we stop immediately
+				break
+			player.play("show")
+			yield(get_tree().create_timer(0.2), "timeout")
+			
+func _hide_actions():
+	# Play hiding animations before turning interface invisible
+	var items = $ActionInterface/Actions.get_children()
+	for item in items:
+		if item.modulate.a == 0.0:
+			# Item hasn't even appeared, so avoid playing animation
+			break
+		var player = item.get_node("AnimationPlayer")
+		player.play_backwards("show")
+	$ActionInterface/AnimationPlayer.play_backwards("show")
+	yield($ActionInterface/AnimationPlayer, "animation_finished")
+	$ActionInterface.visible = false
+
 func _update_probe():
 	# Update ReflectionProbe when lighting changes
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	_update_probe()
-
-func _hide_actions():
-	# Play hiding animation before turning interface invisible
-	$ActionInterface/AnimationPlayer.play_backwards("show")
-	yield($ActionInterface/AnimationPlayer, "animation_finished")
-	$ActionInterface.visible = false
 
 func _process(delta):
 	# Set action label text
@@ -73,8 +94,8 @@ func _process(delta):
 	var energy
 	if self == $"/root/Game".active_object:
 		if not $ActionInterface.visible:
-			# Start animation playback one frame before
-			# turning interface visible (to not render garbage)
+			# Start animations playback one frame before
+			# turning interface visible (so to not render garbage)
 			$ActionInterface/AnimationPlayer.play("show")
 			yield(get_tree(), "idle_frame")
 		$ActionInterface.visible = true
@@ -123,7 +144,8 @@ func _process(delta):
 					_update_probe()
 	
 	else:
-		if $ActionInterface.visible:
+		if $ActionInterface.visible and \
+				not $ActionInterface/AnimationPlayer.is_playing():
 			_hide_actions()
 		energy = 0.0
 		cont = 0

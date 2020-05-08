@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://menus/actions/icons/hand.png" type="Texture" id=1]
 [ext_resource path="res://assets/Titillium-RegularItalic.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://menus/actions/Item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menus/actions/ActionInterface.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
+size = 36
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -24,7 +23,7 @@ region_rect = Rect2( 0, 0, 2048, 2 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "show"
-length = 0.5
+length = 0.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("HSeparator:rect_size:x")
 tracks/0/interp = 1
@@ -33,20 +32,31 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 400, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"times": PoolRealArray( 0, 0.4 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("HSeparator:rect_size:y")
+tracks/1/path = NodePath("HSeparator:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 120, -0.25, 0, 0.25, 0, 120, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"points": PoolRealArray( 0, -0.25, 0, 0.01, 0.673016, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Name:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
 }
 
 [node name="ActionInterface" type="VBoxContainer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -62,8 +72,9 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
 margin_right = 400.0
-margin_bottom = 31.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Pretty name"
@@ -73,42 +84,53 @@ valign = 1
 [node name="HSeparator" type="HSeparator" parent="." groups=[
 "center_on_parent",
 ]]
-margin_top = 35.0
-margin_right = 400.0
-margin_bottom = 155.0
+modulate = Color( 1, 1, 1, 0.90538 )
+margin_top = 40.0
+margin_right = 201.5
+margin_bottom = 160.0
 custom_styles/separator = SubResource( 4 )
 custom_constants/separation = 120
 
 [node name="Actions" type="VBoxContainer" parent="."]
-margin_top = 159.0
+margin_top = 164.0
 margin_right = 400.0
-margin_bottom = 474.0
+margin_bottom = 483.0
 custom_constants/separation = 40
 
 [node name="Examine" parent="Actions" instance=ExtResource( 3 )]
+margin_bottom = 32.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Examine"
 
 [node name="Investigate" parent="Actions" instance=ExtResource( 3 )]
-margin_top = 71.0
-margin_bottom = 102.0
+margin_top = 72.0
+margin_bottom = 104.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Investigate"
 
 [node name="Open" parent="Actions" instance=ExtResource( 3 )]
-margin_top = 142.0
-margin_bottom = 173.0
+margin_top = 144.0
+margin_bottom = 176.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Open"
 
 [node name="Close" parent="Actions" instance=ExtResource( 3 )]
-margin_top = 213.0
-margin_bottom = 244.0
+margin_top = 216.0
+margin_bottom = 248.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 text = "Close"
 
 [node name="PickUp" parent="Actions" instance=ExtResource( 3 )]
-margin_top = 284.0
-margin_bottom = 315.0
+margin_top = 288.0
+margin_bottom = 319.0
+rect_scale = Vector2( 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 custom_constants/hseparation = 20
 text = "Pick up"
-icon = ExtResource( 1 )
 expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
