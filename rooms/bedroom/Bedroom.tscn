@@ -485,7 +485,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98501, 1.00101, -1.17992 )
 shape = SubResource( 6 )
 
 [node name="ActionInterface" parent="Door" index="3"]
-visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 

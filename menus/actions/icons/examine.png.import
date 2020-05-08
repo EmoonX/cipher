@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hand.png-e767a7fa7b4bbdca996f6d1fd64cab86.stex"
+path="res://.import/examine.png-4932861a7e781297fd1299b0a226b3e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/actions/icons/hand.png"
-dest_files=[ "res://.import/hand.png-e767a7fa7b4bbdca996f6d1fd64cab86.stex" ]
+source_file="res://menus/actions/icons/examine.png"
+dest_files=[ "res://.import/examine.png-4932861a7e781297fd1299b0a226b3e6.stex" ]
 
 [params]
 

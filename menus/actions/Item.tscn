@@ -1,9 +1,13 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://menus/actions/icons/hand.png" type="Texture" id=2]
+[ext_resource path="res://menus/actions/icons/examine.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 100.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 0.0
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -48,18 +52,17 @@ tracks/2/keys = {
 [node name="Item" type="Button" groups=[
 "center_on_parent",
 ]]
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 400.0
 margin_bottom = 31.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_constants/hseparation = 10
+custom_constants/hseparation = 15
 text = "Lorem Ipsum"
 icon = ExtResource( 2 )
+clip_text = true
 align = 0
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
