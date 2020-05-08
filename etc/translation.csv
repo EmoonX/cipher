@@ -33,6 +33,14 @@ SPEECH_GRASSPAINT,"This reminds me somehow of a friend of mine...
 Perhaps he was fond of plants.","Isso me lembra, de alguma forma, de um amigo meu...
 Talvez ele tivesse algum apego a plantas."
 ,,
+OBJECT_SINGLEBED,Single bed,Cama de solteiro
+OBJECT_SINGLEBED_EXAMINE,"Seems like an expensive bed…
+But there’s no time for rest right now.","Parece uma cama cara…
+Mas não é hora de descansar agora."
+,,
+,,
+,,
+,,
 SIMPLEKEY_NAME,Simple Key,Chave Simples
 SIMPLEKEY_DESCR,A simple key. Nothing special about it.,Uma simples chave. Não há nada de especial.
 ,,

@@ -17,4 +17,4 @@ user/files/camera/*
 
 # Blender files
 blender/
-*.gltf
+*.gltf*

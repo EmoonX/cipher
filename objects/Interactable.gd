@@ -11,10 +11,6 @@ enum ActionType {
 	SCAN
 }
 
-onready var Interactable = get_script()
-
-onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
-
 # List of possible actions to be done with the object
 export(Array, ActionType) var actions = []
 
@@ -26,9 +22,16 @@ export(NodePath) var linked_lights
 
 var cont = 0.0
 
+onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
+
 # --------------------------------------------------------------------------- #
 
 func _ready():
+	# Set object pretty name to label
+	var pretty_name = "OBJECT_" + name.to_upper()
+	pretty_name = TranslationServer.translate(pretty_name)
+	$ActionInterface/Name.text = pretty_name
+	
 	# Set up emission "glow" features in materials for when active
 	for mesh in get_node("Meshes").get_children():
 		for idx in mesh.mesh.get_surface_count():
@@ -52,13 +55,13 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 func _process(delta):
 	# Set action label text
-	var action_label = "ACTION_" + ActionType.keys()[actions[0]]
-	action_label = TranslationServer.translate(action_label)
-	$ActionLabel.text = action_label
+#	var action_label = "ACTION_" + ActionType.keys()[actions[0]]
+#	action_label = TranslationServer.translate(action_label)
+#	$ActionLabel.text = action_label
 	
 	var energy
 	if self == $"/root/Game".active_object:
-		$ActionLabel.visible = true
+		$ActionInterface.visible = true
 		
 		energy = abs(cont) / 2
 		cont -= delta * 2
@@ -68,7 +71,8 @@ func _process(delta):
 		if Input.is_action_just_pressed("action"):
 			match actions[0]:
 				ActionType.EXAMINE:
-					# Examine (get player flavored info from) the object
+					# Examine (get player's flavored info from) the object
+					var examine_text = "OBJECT_" + name.to_upper() + "_EXAMINE"
 					$"/root/Game".display_subtitles(examine_text)
 					
 				ActionType.OPEN:
@@ -94,7 +98,7 @@ func _process(delta):
 					_update_probe()
 	
 	else:
-		$ActionLabel.visible = false
+		$ActionInterface.visible = false
 		energy = 0.0
 		cont = 0
 	

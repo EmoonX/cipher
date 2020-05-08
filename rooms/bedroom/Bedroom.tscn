@@ -199,14 +199,14 @@ surfaces/1 = {
 "vertex_count": 868
 }
 
-[sub_resource type="ShaderMaterial" id=21]
+[sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 48 )
 shader_param/amount = 3.0
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.99699, 0.0618769, 1.02996 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.5
 step = 0.05
 tracks/0/type = "bezier"
@@ -310,7 +310,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Meshes/Curtain001:translation:x")
@@ -413,25 +413,25 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="BoxShape" id=14]
+[sub_resource type="BoxShape" id=15]
 extents = Vector3( 0.00956081, 0.056057, 0.0998366 )
 
-[sub_resource type="BoxShape" id=15]
-extents = Vector3( 0.616513, 1.02363, 0.378301 )
-
 [sub_resource type="BoxShape" id=16]
-extents = Vector3( 0.616513, 0.29252, 0.196339 )
+extents = Vector3( 1.0453, 0.344505, 0.688349 )
 
 [sub_resource type="BoxShape" id=17]
-extents = Vector3( 0.28946, 0.448702, 0.216587 )
+extents = Vector3( 0.257746, 0.2, 0.490389 )
 
 [sub_resource type="BoxShape" id=18]
-extents = Vector3( 0.118088, 0.147472, 0.185082 )
+extents = Vector3( 0.28946, 0.448702, 0.216587 )
 
 [sub_resource type="BoxShape" id=19]
-extents = Vector3( 0.0778367, 0.0807896, 0.0544887 )
+extents = Vector3( 0.118088, 0.147472, 0.185082 )
 
 [sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.0778367, 0.0807896, 0.0544887 )
+
+[sub_resource type="BoxShape" id=21]
 extents = Vector3( 0.0638071, 1.02991, 0.772358 )
 
 [node name="Bedroom" type="Spatial"]
@@ -517,7 +517,7 @@ current = true
 fov = 100.0
 
 [node name="Blur" type="ColorRect" parent="Window/Viewport"]
-material = SubResource( 21 )
+material = SubResource( 11 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
@@ -537,12 +537,12 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Curtains/Area" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0127506, 1.0859, 1.83928 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Curtains"]
 method_call_mode = 1
-anims/close = SubResource( 12 )
-anims/open = SubResource( 13 )
+anims/close = SubResource( 13 )
+anims/open = SubResource( 14 )
 next/open = "close"
 
 [node name="Lamps" type="Spatial" parent="."]
@@ -658,64 +658,64 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="LightSwitch/Area" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.98688, 1.08573, -0.487933 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
-[node name="Bed" parent="." instance=ExtResource( 21 )]
+[node name="SingleBed" parent="." instance=ExtResource( 21 )]
 actions = [ 0 ]
 examine_text = "EXAMINE_SINGLEBED"
 
-[node name="Fabric01" type="MeshInstance" parent="Bed/Meshes" index="0"]
+[node name="Fabric01" type="MeshInstance" parent="SingleBed/Meshes" index="0"]
 transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.460434, 0.126759, -0.947425 )
 mesh = ExtResource( 18 )
 material/0 = null
 
-[node name="Fabric10" type="MeshInstance" parent="Bed/Meshes" index="1"]
+[node name="Fabric10" type="MeshInstance" parent="SingleBed/Meshes" index="1"]
 transform = Transform( 0, 0, -0.01, 0, 0.01, 0, 0.01, 0, 0, 1.83746, 0.723651, -0.909935 )
 mesh = ExtResource( 10 )
 material/0 = null
 
-[node name="Fabric03" type="MeshInstance" parent="Bed/Meshes" index="2"]
+[node name="Fabric03" type="MeshInstance" parent="SingleBed/Meshes" index="2"]
 transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 1.37301, 0.368031, -0.94759 )
 mesh = ExtResource( 5 )
 material/0 = null
 
-[node name="Fabric04" type="MeshInstance" parent="Bed/Meshes" index="3"]
+[node name="Fabric04" type="MeshInstance" parent="SingleBed/Meshes" index="3"]
 transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.934835, 0.0432726, -0.94687 )
 mesh = ExtResource( 23 )
 material/0 = null
 
-[node name="Fabric05" type="MeshInstance" parent="Bed/Meshes" index="4"]
+[node name="Fabric05" type="MeshInstance" parent="SingleBed/Meshes" index="4"]
 transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.37541, 0.781742, -1.2647 )
 mesh = ExtResource( 8 )
 material/0 = null
 
-[node name="Fabric06" type="MeshInstance" parent="Bed/Meshes" index="5"]
+[node name="Fabric06" type="MeshInstance" parent="SingleBed/Meshes" index="5"]
 transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.49343, 0.73871, -0.916454 )
 mesh = ExtResource( 12 )
 material/0 = null
 
-[node name="Fabric09" type="MeshInstance" parent="Bed/Meshes" index="6"]
+[node name="Fabric09" type="MeshInstance" parent="SingleBed/Meshes" index="6"]
 transform = Transform( 5.96046e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, 5.96046e-10, 1.68555, 0.74157, -1.16423 )
 mesh = ExtResource( 19 )
 material/0 = null
 
-[node name="Fabric02" type="MeshInstance" parent="Bed/Meshes" index="7"]
+[node name="Fabric02" type="MeshInstance" parent="SingleBed/Meshes" index="7"]
 transform = Transform( 4.17232e-10, 0, -0.01, 0, 0.01, 0, 0.007, 0, 5.96046e-10, 0.540271, 0, -0.93312 )
 mesh = ExtResource( 27 )
 material/0 = null
 material/1 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Bed/Area" index="0"]
-transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.778574, 0.379549, -1.02908 )
-shape = SubResource( 15 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="Bed/Area" index="1"]
-transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 1.61587, 0.965355, -1.0405 )
+[node name="CollisionShape" type="CollisionShape" parent="SingleBed/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90754, 0.360882, -0.924138 )
 shape = SubResource( 16 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Bed/StaticBody" index="0"]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.11758e-22, 1, 0.778574, -1.02908, -0.379549 )
-shape = SubResource( 15 )
+[node name="CollisionShape2" type="CollisionShape" parent="SingleBed/Area" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60459, 0.936426, -1.0217 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SingleBed/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.90754, -0.924138, -0.352266 )
+shape = SubResource( 16 )
 
 [node name="Carpet" type="MeshInstance" parent="."]
 transform = Transform( 0.01905, 0, 0, 0, 0.0134286, 0, 0, 0, 0.01905, 0.681817, 0, 0.811156 )
@@ -734,7 +734,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Nightstand/Nightstand/StaticBody"]
 transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, -0.0446587, 0 )
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="Lamp" parent="Nightstand" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
@@ -748,7 +748,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Nightstand/Lamp/Area" index="0"]
 transform = Transform( 1, 3.55271e-15, 0, -1.42584e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, -0.0992447, 0.792265, 0 )
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="Lights" type="Spatial" parent="Nightstand/Lamp"]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
@@ -776,7 +776,7 @@ material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Nightstand/Cactus/Area" index="0"]
 transform = Transform( 1, 3.55271e-15, 0, -3.33166e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, 0.144587, 0.660908, 0.0578156 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="Wardrobe" type="Spatial" parent="."]
 
@@ -871,7 +871,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Wardrobe/StaticBody"]
 transform = Transform( 3.9034, 0, 0, 0, 1, 0, 0, 0, 1, -1.68911, 1.00899, 0.706842 )
-shape = SubResource( 20 )
+shape = SubResource( 21 )
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.19292, 0 )
@@ -883,6 +883,7 @@ interior_ambient_color = Color( 0.0509804, 0.0509804, 0.0784314, 1 )
 
 [node name="CityLight" type="SpotLight" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.0996335, 0.00855387, 0, -0.00855387, 0.0996335, 0, 2.56794, 17.8829 )
+light_color = Color( 0.8, 0.945098, 1, 1 )
 light_energy = 0.08
 shadow_enabled = true
 shadow_bias = 1.0
@@ -898,7 +899,7 @@ spot_angle = 5.0
 
 [editable path="LightSwitch"]
 
-[editable path="Bed"]
+[editable path="SingleBed"]
 
 [editable path="Nightstand/Lamp"]
 
