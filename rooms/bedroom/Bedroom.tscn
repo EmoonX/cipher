@@ -484,6 +484,9 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98501, 1.00101, -1.17992 )
 shape = SubResource( 6 )
 
+[node name="ActionLabel" parent="Door/ActionInterface" index="1"]
+custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
+
 [node name="Window" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 50 )

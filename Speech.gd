@@ -1,5 +1,7 @@
 extends Node
 
+const silence = preload("res://audio/speech/silence.wav")
+
 var speech = []
 var index = 0
 var audio_id
@@ -24,13 +26,19 @@ func _play_next_line():
 	
 	# Play speech audio
 	$Audio.stream = load(path)
+	if not $Audio.stream:
+		# Placeholder for debug
+		$Audio.stream = silence
 	$Audio.playing = true
 	
 	# Reduce BGM volume so speech can be heard better
 	BGM.volume_db = -10.0
 	
-	# Show subtitle
-	$Subtitle.text = speech[index]
+	# Format BBCode from translation file and show subtitle
+	var text = speech[index]
+	text = text.replace("[wave]", "[wave amp=50 freq=5]")
+	text = "[center]" + text + "[/center]"
+	$Subtitle.bbcode_text = text
 
 func _on_AudioStreamPlayer_finished():
 	# When line is finished spoken, either play next one (if any)
