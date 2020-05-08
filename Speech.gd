@@ -1,6 +1,7 @@
 extends Node
 
-const silence = preload("res://audio/speech/silence.wav")
+# Audio file containing only silence...
+const silence_file = preload("res://audio/speech/silence.wav")
 
 var speech = []
 var index = 0
@@ -28,7 +29,7 @@ func _play_next_line():
 	$Audio.stream = load(path)
 	if not $Audio.stream:
 		# Placeholder for debug
-		$Audio.stream = silence
+		$Audio.stream = silence_file
 	$Audio.playing = true
 	
 	# Reduce BGM volume so speech can be heard better
