@@ -12,8 +12,19 @@ func _ready():
 	for action in $"..".actions:
 		var item = Item.instance()
 		item.name = $"..".ActionType.keys()[action]
-		item.name = item.name.capitalize().replace("_", "")
+		item.name = item.name.capitalize().replace(" ", "")
 		$Actions.add_child(item)
+	
+	# Attribute focus neighbours
+#	var k = $Actions.get_child_count()
+#	for idx in range(k):
+#		var item = $Actions.get_child(idx)
+#		if idx > 0:
+#			var prev = $Actions.get_child(idx - 1)
+#			item.focus_neighbour_bottom = item.get_path_to(prev)
+#		if idx < k-1:
+#			var next = $Actions.get_child(idx + 1)
+#			item.focus_neighbour_top = item.get_path_to(next)
 
 func _on_ActionInterface_visibility_changed():
 	show_actions()

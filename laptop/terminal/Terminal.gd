@@ -447,6 +447,9 @@ func _execute(s):
 			_print(comm[0] + ": command not found", true)
 
 func _process(delta):
+	
+	return
+	
 	# Enter or exit terminal
 	if not visible and Input.is_action_just_pressed("terminal") and \
 			not get_tree().paused:

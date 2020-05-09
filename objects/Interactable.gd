@@ -21,6 +21,9 @@ export(bool) var has_pre_name = false
 # In case of being a switch, which node contain lights to be turned on/off
 export(NodePath) var linked_lights
 
+# The currently selected action
+var selected_action
+
 var cont = 0.0
 
 onready var probe = $"/root/Game".current.get_node("ReflectionProbe")
@@ -55,11 +58,11 @@ func _ready():
 func _update_actions(idx, value):
 	# Change list of actions by setting index idx to value
 	var old_value = actions[idx]
-	var old_name = ActionType.keys()[old_value].capitalize().replace("_", "")
+	var old_name = ActionType.keys()[old_value].capitalize().replace(" ", "")
 	actions[idx] = value
 	
 	# Update interface item
-	var name = ActionType.keys()[value].capitalize().replace("_", "")
+	var name = ActionType.keys()[value].capitalize().replace(" ", "")
 	var item = $ActionInterface/Actions.get_node(old_name)
 	item.name = name
 	item.update()
@@ -74,12 +77,7 @@ func _update_probe():
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	_update_probe()
 
-func _process(delta):
-	# Set action label text
-#	var action_label = "ACTION_" + ActionType.keys()[actions[0]]
-#	action_label = TranslationServer.translate(action_label)
-#	$ActionLabel.text = action_label
-	
+func _process(delta):	
 	var energy
 	if self == $"/root/Game".active_object:
 		if not $ActionInterface.visible:
@@ -94,8 +92,9 @@ func _process(delta):
 		if cont < -1.0:
 			cont = 1.0
 		
-		if Input.is_action_just_pressed("action"):
-			match actions[0]:
+		if Input.is_action_just_pressed("ui_accept") or \
+				Input.is_action_just_pressed("action"):
+			match selected_action:
 				ActionType.EXAMINE:
 					# Examine (get player's flavored info from) the object
 					var examine_text = "OBJECT_" + name.to_upper() + "_EXAMINE"
@@ -137,6 +136,10 @@ func _process(delta):
 					else:
 						_update_actions(0, ActionType.TURN_ON)
 					_update_probe()
+				
+				ActionType.INVESTIGATE:
+					print("GAME OVER")
+					get_tree().quit()
 	
 	else:
 		if $ActionInterface.visible and \

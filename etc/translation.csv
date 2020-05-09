@@ -18,9 +18,9 @@ OPT_ERASEALL,Erase ALL Data,Apagar TODOS os dados
 OPT_APPLY,Apply,Aplicar
 ,,
 ACTION_EXAMINE,Examine,Examinar
-ACTION_OPEN_DOOR,Open,Abrir
-ACTION_TURN_ON,Turn on,Ligar
-ACTION_TURN_OFF,Turn off,Desligar
+ACTION_OPENDOOR,Open,Abrir
+ACTION_TURNON,Turn on,Ligar
+ACTION_TURNOFF,Turn off,Desligar
 ACTION_OPEN,Open,Abrir
 ACTION_CLOSE,Close,Fechar
 ACTION_PICKUP,Pick up,Coletar
@@ -36,6 +36,7 @@ Talvez ele tivesse algum apego a plantas."
 ,,
 OBJECT_DOOR,Door,Porta
 OBJECT_LIGHTSWITCH,Light switch,Interruptor
+OBJECT_CURTAINS,Curtains,Cortinas
 OBJECT_SINGLEBED_PRE,Bed,Cama
 OBJECT_SINGLEBED,Single bed,Cama de solteiro
 OBJECT_SINGLEBED_EXAMINE,"Seems like an expensive single bed…

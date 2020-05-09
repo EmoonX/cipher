@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/actions/icons/pickup.png" type="Texture" id=2]
 [ext_resource path="res://menus/actions/Item.gd" type="Script" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-content_margin_left = 110.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 0.0
+[ext_resource path="res://menus/actions/StyleBox.tres" type="StyleBox" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -16,10 +11,26 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_top = 5
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "show"
+resource_name = "focus"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1.5, 1.5 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:modulate:a")
@@ -53,16 +64,18 @@ tracks/2/keys = {
 }
 
 [node name="Item" type="Button"]
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 400.0
 margin_bottom = 36.0
-rect_scale = Vector2( 1e-05, 1e-05 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
 custom_constants/hseparation = 15
+action_mode = 0
 text = "Lorem Ipsum"
 icon = ExtResource( 2 )
+flat = true
 clip_text = true
 align = 0
 expand_icon = true
@@ -72,4 +85,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/show = SubResource( 3 )
+anims/focus = SubResource( 3 )
+anims/show = SubResource( 4 )
+[connection signal="focus_entered" from="." to="." method="_on_Item_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_Item_focus_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
