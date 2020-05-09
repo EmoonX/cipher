@@ -23,8 +23,9 @@ ACTION_TURN_ON,Turn on,Ligar
 ACTION_TURN_OFF,Turn off,Desligar
 ACTION_OPEN,Open,Abrir
 ACTION_CLOSE,Close,Fechar
-ACTION_PICK_UP,Pick up,Coletar
+ACTION_PICKUP,Pick up,Coletar
 ACTION_SCAN,Scan,Digitalizar
+ACTION_INVESTIGATE,Investigate,Investigar
 ,,
 SPEECH_START,"I see myself once again stuck at the same dark corridor...
 Gotta find my way out.","Me vejo de novo preso ao mesmo corredor escuro...
@@ -33,6 +34,8 @@ SPEECH_GRASSPAINT,"This reminds me somehow of a friend of mine...
 Perhaps he was fond of plants.","Isso me lembra, de alguma forma, de um amigo meu...
 Talvez ele tivesse algum apego a plantas."
 ,,
+OBJECT_DOOR,Door,Porta
+OBJECT_LIGHTSWITCH,Light switch,Interruptor
 OBJECT_SINGLEBED_PRE,Bed,Cama
 OBJECT_SINGLEBED,Single bed,Cama de solteiro
 OBJECT_SINGLEBED_EXAMINE,"Seems like an expensive single bed…
@@ -41,8 +44,8 @@ Mas não é hora de descansar agora."
 OBJECT_BEDSIDELAMP,Bedside lamp,Abajur
 OBJECT_CACTUS,Cactus,Cactus
 OBJECT_CACTUS_EXAMINE,"I’ve heard somewhere that cacti are the most [i]tsundere[/i] of plants
-Good thing they´re not [i]yandere[/]>… and [wave]neither[/wave] programmers.","Ouvi falar em algum lugar que os cactus são as plantas mais [i]tsundere[/i]
-Felizmente não são [i]yandere[/i]… e [wave]muito menos[/wave] programadores."
+Good thing they´re not [i]yandere[/]>… like some [wave]programmers[/wave].","Ouvi falar em algum lugar que os cactus são as plantas mais [i]tsundere[/i]
+Felizmente não são [i]yandere[/i]… como certos [wave]programadores[/wave]."
 ,,
 ,,
 SIMPLEKEY_NAME,Simple Key,Chave Simples

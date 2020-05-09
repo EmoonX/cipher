@@ -425,13 +425,13 @@ extents = Vector3( 0.257746, 0.2, 0.490389 )
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 0.28946, 0.448702, 0.216587 )
 
-[sub_resource type="BoxShape" id=19]
+[sub_resource type="BoxShape" id=21]
 extents = Vector3( 0.118088, 0.147472, 0.185082 )
 
-[sub_resource type="BoxShape" id=20]
+[sub_resource type="BoxShape" id=19]
 extents = Vector3( 0.0778367, 0.0807896, 0.0544887 )
 
-[sub_resource type="BoxShape" id=21]
+[sub_resource type="BoxShape" id=20]
 extents = Vector3( 0.0638071, 1.02991, 0.772358 )
 
 [node name="Bedroom" type="Spatial"]
@@ -483,10 +483,6 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Door/Area" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98501, 1.00101, -1.17992 )
 shape = SubResource( 6 )
-
-[node name="ActionInterface" parent="Door" index="3"]
-margin_right = 1920.0
-margin_bottom = 1080.0
 
 [node name="Window" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0 )
@@ -740,24 +736,24 @@ material/0 = null
 transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, -0.0446587, 0 )
 shape = SubResource( 18 )
 
-[node name="Lamp" parent="Nightstand" instance=ExtResource( 21 )]
+[node name="BedsideLamp" parent="Nightstand" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
 actions = [ 3 ]
-linked_lights = NodePath("../../../Bedroom/Nightstand/Lamp/Lights")
+linked_lights = NodePath("Lights")
 
-[node name="Lamp" type="MeshInstance" parent="Nightstand/Lamp/Meshes" index="0"]
+[node name="Lamp" type="MeshInstance" parent="Nightstand/BedsideLamp/Meshes" index="0"]
 transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.0476167, 0.498034, 0.0620518 )
 mesh = ExtResource( 29 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Nightstand/Lamp/Area" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Nightstand/BedsideLamp/Area" index="0"]
 transform = Transform( 1, 3.55271e-15, 0, -1.42584e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, -0.0992447, 0.792265, 0 )
-shape = SubResource( 19 )
+shape = SubResource( 21 )
 
-[node name="Lights" type="Spatial" parent="Nightstand/Lamp"]
+[node name="Lights" type="Spatial" parent="Nightstand/BedsideLamp"]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
 
-[node name="OmniLight" type="OmniLight" parent="Nightstand/Lamp/Lights"]
+[node name="OmniLight" type="OmniLight" parent="Nightstand/BedsideLamp/Lights"]
 transform = Transform( 0.1, 0, -4.44089e-16, 0, 0.1, 0, 4.44089e-16, 0, 0.1, -0.0923578, 0.936826, 0 )
 light_color = Color( 0.980392, 0.956863, 0.862745, 1 )
 light_energy = 2.0
@@ -769,7 +765,7 @@ omni_attenuation = 2.63902
 
 [node name="Cactus" parent="Nightstand" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
-actions = [ 0 ]
+actions = [ 0, 8 ]
 has_pre_name = true
 
 [node name="Cactus" type="MeshInstance" parent="Nightstand/Cactus/Meshes" index="0"]
@@ -780,7 +776,7 @@ material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Nightstand/Cactus/Area" index="0"]
 transform = Transform( 1, 3.55271e-15, 0, -3.33166e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, 0.144587, 0.660908, 0.0578156 )
-shape = SubResource( 20 )
+shape = SubResource( 19 )
 
 [node name="Wardrobe" type="Spatial" parent="."]
 
@@ -875,7 +871,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Wardrobe/StaticBody"]
 transform = Transform( 3.9034, 0, 0, 0, 1, 0, 0, 0, 1, -1.68911, 1.00899, 0.706842 )
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.19292, 0 )
@@ -893,6 +889,7 @@ shadow_enabled = true
 shadow_bias = 1.0
 spot_range = 4096.0
 spot_angle = 5.0
+[connection signal="visibility_changed" from="Door/ActionInterface" to="Door" method="_on_ActionInterface_visibility_changed"]
 [connection signal="animation_finished" from="Curtains/AnimationPlayer" to="Curtains" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Door"]
@@ -905,6 +902,6 @@ spot_angle = 5.0
 
 [editable path="SingleBed"]
 
-[editable path="Nightstand/Lamp"]
+[editable path="Nightstand/BedsideLamp"]
 
 [editable path="Nightstand/Cactus"]

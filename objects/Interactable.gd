@@ -9,6 +9,7 @@ enum ActionType {
 	CLOSE
 	PICK_UP
 	SCAN
+	INVESTIGATE
 }
 
 # List of possible actions to be done with the object
@@ -51,32 +52,20 @@ func _ready():
 				material.emission_texture = material.albedo_texture
 			mesh.mesh.surface_set_material(idx, material)
 
-func _on_ActionInterface_visibility_changed():
-	if $ActionInterface.visible:
-		for item in $ActionInterface/Actions.get_children():
-			var player = item.get_node("AnimationPlayer")
-			var reverse_playback = \
-					$ActionInterface/AnimationPlayer.is_playing() and \
-					$ActionInterface/AnimationPlayer.get_playing_speed() < 0.0
-			if reverse_playback or not $ActionInterface.visible:
-				# Hiding animation already started 
-				# (or even finished), so we stop immediately
-				break
-			player.play("show")
-			yield(get_tree().create_timer(0.2), "timeout")
-			
-func _hide_actions():
-	# Play hiding animations before turning interface invisible
-	var items = $ActionInterface/Actions.get_children()
-	for item in items:
-		if item.modulate.a == 0.0:
-			# Item hasn't even appeared, so avoid playing animation
-			break
-		var player = item.get_node("AnimationPlayer")
-		player.play_backwards("show")
-	$ActionInterface/AnimationPlayer.play_backwards("show")
-	yield($ActionInterface/AnimationPlayer, "animation_finished")
-	$ActionInterface.visible = false
+func _update_actions(idx, value):
+	# Change list of actions by setting index idx to value
+	var old_value = actions[idx]
+	var old_name = ActionType.keys()[old_value].capitalize().replace("_", "")
+	actions[idx] = value
+	
+	# Update interface item
+	var name = ActionType.keys()[value].capitalize().replace("_", "")
+	var item = $ActionInterface/Actions.get_node(old_name)
+	item.name = name
+	item.update()
+	
+	# Refresh the interface
+	$ActionInterface
 
 func _update_probe():
 	# Update ReflectionProbe when lighting changes
@@ -120,33 +109,39 @@ func _process(delta):
 						var s = "OBJECT_" + name.to_upper()
 						var pretty_name = TranslationServer.translate(s)
 						$ActionInterface/Name.text = pretty_name
+						
+						# Do animation to transit to new name / commands
+						$ActionInterface/AnimationPlayer.play_backwards("show")
+						yield($ActionInterface/AnimationPlayer, \
+							"animation_finished")
+						$ActionInterface/AnimationPlayer.play("show")
 					
 				ActionType.OPEN:
 					# Open a curtain, closet, etc
 					$AnimationPlayer.current_animation = "open"
 					$AnimationPlayer.play()
-					actions[0] = ActionType.CLOSE
+					_update_actions(0, ActionType.CLOSE)
 					
 				ActionType.CLOSE:
 					# Close a curtain, closet, etc
 					$AnimationPlayer.current_animation = "close"
 					$AnimationPlayer.play()
-					actions[0] = ActionType.OPEN
+					_update_actions(0, ActionType.OPEN)
 					
 				ActionType.TURN_ON, ActionType.TURN_OFF:
 					# Turn on or off a light source
 					var lights = get_node(linked_lights)
 					lights.visible = not lights.visible
 					if actions[0] == ActionType.TURN_ON:
-						actions[0] = ActionType.TURN_OFF
+						_update_actions(0, ActionType.TURN_OFF)
 					else:
-						actions[0] = ActionType.TURN_ON
+						_update_actions(0, ActionType.TURN_ON)
 					_update_probe()
 	
 	else:
 		if $ActionInterface.visible and \
 				not $ActionInterface/AnimationPlayer.is_playing():
-			_hide_actions()
+			$ActionInterface.hide_actions()
 		energy = 0.0
 		cont = 0
 	

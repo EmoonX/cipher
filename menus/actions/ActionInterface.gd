@@ -1,9 +1,49 @@
 extends VBoxContainer
 
+const Item = preload("res://menus/actions/Item.tscn")
+
 # Initial position x of container
 onready var x_ini = rect_position.x
 
 # --------------------------------------------------------------------------- #
+
+func _ready():
+	# Build list of actions
+	for action in $"..".actions:
+		var item = Item.instance()
+		item.name = $"..".ActionType.keys()[action]
+		item.name = item.name.capitalize().replace("_", "")
+		$Actions.add_child(item)
+
+func _on_ActionInterface_visibility_changed():
+	show_actions()
+
+func show_actions():
+	# Play animations to make interface appear in view
+	if visible:
+		for item in $Actions.get_children():
+			var player = item.get_node("AnimationPlayer")
+			var reverse_playback = $AnimationPlayer.is_playing() and \
+					$AnimationPlayer.get_playing_speed() < 0.0
+			if reverse_playback or not visible:
+				# Hiding animation already started 
+				# (or even finished), so we stop immediately
+				break
+			player.play("show")
+			yield(get_tree().create_timer(0.15), "timeout")
+			
+func hide_actions():
+	# Play hiding animations before turning interface invisible
+	var items = $Actions.get_children()
+	for item in items:
+		if item.modulate.a == 0.0:
+			# Item hasn't even appeared, so avoid playing animation
+			break
+		var player = item.get_node("AnimationPlayer")
+		player.play_backwards("show")
+	$AnimationPlayer.play_backwards("show")
+	yield($AnimationPlayer, "animation_finished")
+	visible = false
 
 func _process(delta):
 	# Position node correctly on screen

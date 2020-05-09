@@ -5,7 +5,7 @@
 [ext_resource path="res://menus/actions/Item.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
-content_margin_left = 100.0
+content_margin_left = 110.0
 content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 0.0
@@ -52,11 +52,11 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[node name="Item" type="Button" groups=[
-"center_on_parent",
-]]
+[node name="Item" type="Button"]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 400.0
 margin_bottom = 36.0
+rect_scale = Vector2( 1e-05, 1e-05 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.94902, 0.815686, 1 )
