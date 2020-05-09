@@ -1,0 +1,68 @@
+[gd_resource type="VisualShader" load_steps=6 format=2]
+
+[sub_resource type="VisualShaderNodeInput" id=1]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "amount"
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 0.12549 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="VisualShaderNodeTexture" id=5]
+output_port_for_preview = 0
+source = 1
+texture = SubResource( 4 )
+
+[resource]
+code = "shader_type canvas_item;
+uniform float amount;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:5
+	vec3 n_out5p0 = vec3(SCREEN_UV, 0.0);
+
+// ScalarUniform:6
+	float n_out6p0 = amount;
+
+// Texture:7
+	vec3 n_out7p0;
+	float n_out7p1;
+	{
+		vec4 _tex_read = textureLod(SCREEN_TEXTURE, n_out5p0.xy, n_out6p0);
+		n_out7p0 = _tex_read.rgb;
+		n_out7p1 = _tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out7p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -689, 81 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 380, 100 )
+nodes/fragment/5/node = SubResource( 1 )
+nodes/fragment/5/position = Vector2( -200, 120 )
+nodes/fragment/6/node = SubResource( 2 )
+nodes/fragment/6/position = Vector2( -180, 220 )
+nodes/fragment/7/node = SubResource( 5 )
+nodes/fragment/7/position = Vector2( 100, 100 )
+nodes/fragment/connections = PoolIntArray( 6, 0, 7, 1, 5, 0, 7, 0, 7, 0, 0, 0, 6, 0, 7, 1, 5, 0, 7, 0, 7, 0, 0, 0 )

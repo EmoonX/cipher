@@ -1,7 +1,5 @@
 extends Spatial
 
-const blur = preload("res://Blur.material")
-
 enum ActionType {
 	EXAMINE
 	OPEN_DOOR
@@ -69,8 +67,8 @@ func _update_actions(idx, value):
 	item.name = name
 	item.update()
 	
-	# Refresh the interface
-	$ActionInterface
+	# TODO: Refresh the interface
+	#$ActionInterface
 
 func _update_probe():
 	# Update ReflectionProbe when lighting changes

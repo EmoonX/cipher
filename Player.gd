@@ -95,6 +95,7 @@ func _process_input(delta):
 	if Input.is_action_just_pressed("flashlight"):
 		$RotationHelper/Flashlight.visible = \
 			not $RotationHelper/Flashlight.visible
+		$RotationHelper/Camera/MotionBlur.visible = false
 	
 	# Capture screen by camera
 	if Input.is_action_just_pressed("camera"):

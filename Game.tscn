@@ -4,12 +4,13 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://laptop/Laptop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menus/Inventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://BlurShader.tres" type="Shader" id=5]
+[ext_resource path="res://shaders/BlurShader.tres" type="Shader" id=5]
 [ext_resource path="res://menus/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://Speech.gd" type="Script" id=8]
 [ext_resource path="res://assets/vignette.png" type="Texture" id=9]
 [ext_resource path="res://assets/Titillium-RegularItalic.otf" type="DynamicFontData" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
