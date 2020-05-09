@@ -18,6 +18,10 @@ export(Array, ActionType) var actions = []
 # If the object should have a simpler pretty name before examining it
 export(bool) var has_pre_name = false
 
+# If the object can be investigated, which node contain its puzzles
+export(NodePath) var puzzle_node_path
+onready var puzzle = get_node(puzzle_node_path)
+
 # In case of being a switch, which node contain lights to be turned on/off
 export(NodePath) var linked_lights
 
@@ -139,8 +143,8 @@ func _process(delta):
 					_update_probe()
 				
 				ActionType.INVESTIGATE:
-					# Switch to puzzle camera mode
-					$Camera.current = true
+					# Switch to puzzle mode
+					puzzle.visible = true
 	
 	else:
 		if $ActionInterface.visible and \

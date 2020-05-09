@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://rooms/bedroom/lamps/Circle.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://rooms/bedroom/window/TexturesCom_WindowsOther0024_M.jpg" type="Texture" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://rooms/bedroom/Wood.material" type="Material" id=49]
 [ext_resource path="res://objects/Window.gd" type="Script" id=50]
 [ext_resource path="res://assets/night.jpg" type="Texture" id=51]
+[ext_resource path="res://puzzles/Puzzle.tscn" type="PackedScene" id=52]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Ceiling"
@@ -435,7 +436,7 @@ extents = Vector3( 0.0778367, 0.0807896, 0.0544887 )
 radiance_size = 0
 panorama = ExtResource( 51 )
 
-[sub_resource type="Environment" id=22]
+[sub_resource type="Environment" id=24]
 resource_local_to_scene = true
 background_mode = 2
 background_sky = SubResource( 21 )
@@ -458,73 +459,6 @@ glow_levels/5 = false
 glow_intensity = 8.0
 glow_strength = 2.0
 adjustment_enabled = true
-
-[sub_resource type="PlaneMesh" id=24]
-
-[sub_resource type="VisualShaderNodeInput" id=25]
-output_port_for_preview = 0
-input_name = "screen_uv"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=26]
-uniform_name = "amount"
-
-[sub_resource type="VisualShaderNodeTexture" id=27]
-output_port_for_preview = 0
-source = 1
-
-[sub_resource type="VisualShader" id=30]
-code = "shader_type spatial;
-render_mode unshaded;
-
-uniform float amount;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// Input:2
-	vec3 n_out2p0 = vec3(SCREEN_UV, 0.0);
-
-// ScalarUniform:3
-	float n_out3p0 = amount;
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = textureLod(SCREEN_TEXTURE, n_out2p0.xy, n_out3p0);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// Output:0
-	ALBEDO = n_out4p0;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -684, 146 )
-flags/unshaded = true
-nodes/fragment/0/position = Vector2( 360, 160 )
-nodes/fragment/2/node = SubResource( 25 )
-nodes/fragment/2/position = Vector2( -120, 140 )
-nodes/fragment/3/node = SubResource( 26 )
-nodes/fragment/3/position = Vector2( -100, 340 )
-nodes/fragment/4/node = SubResource( 27 )
-nodes/fragment/4/position = Vector2( 140, 160 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 0, 0 )
-
-[sub_resource type="ShaderMaterial" id=31]
-shader = SubResource( 30 )
-shader_param/amount = 3.0
 
 [sub_resource type="BoxShape" id=23]
 extents = Vector3( 0.0638071, 1.02991, 0.772358 )
@@ -831,7 +765,8 @@ shape = SubResource( 18 )
 
 [node name="BedsideLamp" parent="Nightstand" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
-actions = [ 3 ]
+actions = [ 3, 8 ]
+puzzle_node_path = NodePath("../Puzzle")
 linked_lights = NodePath("Lights")
 
 [node name="Lamp" type="MeshInstance" parent="Nightstand/BedsideLamp/Meshes" index="0"]
@@ -860,6 +795,7 @@ omni_attenuation = 2.63902
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
 actions = [ 0, 8 ]
 has_pre_name = true
+puzzle_node_path = NodePath("../Puzzle")
 
 [node name="Cactus" type="MeshInstance" parent="Nightstand/Cactus/Meshes" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498034, 0 )
@@ -871,17 +807,10 @@ material/1 = null
 transform = Transform( 1, 3.55271e-15, 0, -3.33166e-21, -4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, 0.144587, 0.660908, 0.0578156 )
 shape = SubResource( 20 )
 
-[node name="Camera" type="Camera" parent="Nightstand/Cactus"]
-transform = Transform( 0.0999881, 0.000405424, 0.00149126, -0.00090966, 0.0934494, 0.0355863, -0.0012493, -0.0355956, 0.0934419, 0.0340944, 0.836554, 0.418175 )
-environment = SubResource( 22 )
-fov = 45.0
-size = 3.5
+[node name="Puzzle" parent="Nightstand" instance=ExtResource( 52 )]
 
-[node name="BlurPlane" type="MeshInstance" parent="Nightstand/Cactus/Camera"]
-transform = Transform( 15.8175, -1.11759e-08, -5.43892e-07, -8.86619e-07, -0.37605, -9.08068, -1.49012e-07, 0.9266, -3.68529, -0.555689, 1.90727, -6.05636 )
-cast_shadow = 0
-mesh = SubResource( 24 )
-material/0 = SubResource( 31 )
+[node name="Camera" parent="Nightstand/Puzzle" index="0"]
+environment = SubResource( 24 )
 
 [node name="Wardrobe" type="Spatial" parent="."]
 
@@ -1011,3 +940,5 @@ spot_angle = 5.0
 [editable path="Nightstand/BedsideLamp"]
 
 [editable path="Nightstand/Cactus"]
+
+[editable path="Nightstand/Puzzle"]
