@@ -18,7 +18,7 @@ export(Array, ActionType) var actions = []
 # If the object should have a simpler pretty name before examining it
 export(bool) var has_pre_name = false
 
-# If the object can be investigated, which node contain its puzzles
+# If the object can be investigated, then which node contain its puzzles
 export(NodePath) var puzzle_node_path
 onready var puzzle = get_node(puzzle_node_path)
 

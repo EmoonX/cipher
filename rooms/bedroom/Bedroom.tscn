@@ -810,6 +810,7 @@ shape = SubResource( 20 )
 [node name="Puzzle" parent="Nightstand" instance=ExtResource( 52 )]
 
 [node name="Camera" parent="Nightstand/Puzzle" index="0"]
+transform = Transform( 0.0999881, 0.000405424, 0.00149126, -0.00090966, 0.0934494, 0.0355863, -0.0012493, -0.0355956, 0.0934419, 0.0325323, 0.837225, 0.404535 )
 environment = SubResource( 24 )
 
 [node name="Wardrobe" type="Spatial" parent="."]
