@@ -1,5 +1,7 @@
 extends Spatial
 
+const blur = preload("res://Blur.material")
+
 enum ActionType {
 	EXAMINE
 	OPEN_DOOR
@@ -77,7 +79,7 @@ func _update_probe():
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	_update_probe()
 
-func _process(delta):	
+func _process(delta):
 	var energy
 	if self == $"/root/Game".active_object:
 		if not $ActionInterface.visible:
@@ -87,6 +89,7 @@ func _process(delta):
 			yield(get_tree(), "idle_frame")
 		$ActionInterface.visible = true
 		
+		# Calculate energy amount
 		energy = abs(cont) / 2
 		cont -= delta * 2
 		if cont < -1.0:
@@ -138,8 +141,8 @@ func _process(delta):
 					_update_probe()
 				
 				ActionType.INVESTIGATE:
-					print("GAME OVER")
-					get_tree().quit()
+					# Switch to puzzle camera mode
+					$Camera.current = true
 	
 	else:
 		if $ActionInterface.visible and \
