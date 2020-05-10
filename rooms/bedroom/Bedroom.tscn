@@ -776,12 +776,15 @@ puzzle_node_path = NodePath("../Puzzle")
 linked_lights = NodePath("Lights")
 
 [node name="Lamp" type="MeshInstance" parent="Nightstand/BedsideLamp/Meshes" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0476167, 0.498034, 0.0620518 )
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0.0476166, 0.498739, 0.0620518 )
 mesh = ExtResource( 29 )
 material/0 = null
 
+[node name="KinematicBody" parent="Nightstand/BedsideLamp" index="2"]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0 )
+
 [node name="CollisionShape" type="CollisionShape" parent="Nightstand/BedsideLamp/KinematicBody" index="0"]
-transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0476167, 0.498034, 0.0620518 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0476167, 0.498737, 0.0620518 )
 shape = SubResource( 19 )
 
 [node name="Lights" type="Spatial" parent="Nightstand/BedsideLamp"]
