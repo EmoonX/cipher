@@ -1,13 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://objects/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://puzzles/Draggable.gd" type="Script" id=2]
 
 [node name="Draggable" instance=ExtResource( 1 )]
-actions = [ 0, 9 ]
-is_puzzle_piece = true
+script = ExtResource( 2 )
 
-[node name="RigidBody" type="RigidBody" parent="." index="2"]
+[node name="KinematicBody" type="KinematicBody" parent="." index="2"]
 input_capture_on_drag = true
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true

@@ -150,6 +150,9 @@ func _process(delta):
 				ActionType.INVESTIGATE:
 					# Switch to puzzle mode
 					puzzle.visible = true
+					
+				ActionType.DRAG:
+					call("_start_drag")
 	
 	else:
 		if $ActionInterface.visible and \
