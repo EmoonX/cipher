@@ -100,7 +100,6 @@ shader_param/amount = 3.0
 
 [node name="Puzzle" type="Spatial"]
 pause_mode = 2
-visible = false
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
@@ -108,6 +107,11 @@ transform = Transform( 0.0999881, 0.000405424, 0.00149126, -0.00090966, 0.093449
 environment = SubResource( 32 )
 fov = 45.0
 size = 3.5
+
+[node name="RayCast" type="RayCast" parent="Camera"]
+transform = Transform( 1, 3.72529e-09, -5.58794e-09, 4.65661e-10, 1, 0, 0, 2.98023e-08, 1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 12 )
 
 [node name="BlurPlane" type="MeshInstance" parent="Camera"]
 transform = Transform( 15.8175, -1.30385e-08, -5.28991e-07, -9.16421e-07, -0.37605, -9.08068, -1.3411e-07, 0.9266, -3.68529, -0.542581, 1.90657, -6.05417 )

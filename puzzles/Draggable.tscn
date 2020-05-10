@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/Interactable.tscn" type="PackedScene" id=1]
+
+[node name="Draggable" instance=ExtResource( 1 )]
+actions = [ 0, 8 ]
+is_puzzle_piece = true
+
+[node name="RigidBody" type="RigidBody" parent="." index="2"]

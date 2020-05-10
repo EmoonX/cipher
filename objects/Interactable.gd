@@ -10,6 +10,7 @@ enum ActionType {
 	PICK_UP
 	SCAN
 	INVESTIGATE
+	DRAG
 }
 
 # List of possible actions to be done with the object
@@ -17,6 +18,10 @@ export(Array, ActionType) var actions = []
 
 # If the object should have a simpler pretty name before examining it
 export(bool) var has_pre_name = false
+
+# If true, then it's only interactable in puzzle mode;
+# if false, only in room mode.
+export(bool) var is_puzzle_piece = false
 
 # If the object can be investigated, then which node contain its puzzles
 export(NodePath) var puzzle_node_path
