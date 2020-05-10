@@ -802,6 +802,7 @@ omni_attenuation = 2.63902
 
 [node name="Cactus" parent="Nightstand" instance=ExtResource( 53 )]
 transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0 )
+actions = [ 0, 9 ]
 has_pre_name = true
 puzzle_node_path = NodePath("../Puzzle")
 

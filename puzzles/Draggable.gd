@@ -26,7 +26,7 @@ func _physics_process(delta):
 	var real_offset = \
 			Vector3(mouse_offset.x / 2000, 0.0, mouse_offset.y / 1500)
 	
-	# Move (or try to) kinmeatic body
+	# Move (or try to) kinematic body
 	var prev_pos = $KinematicBody.translation
 	$KinematicBody.translation += real_offset
 	var collision = $KinematicBody.move_and_collide(Vector3(0, 0, 0))
@@ -38,7 +38,5 @@ func _physics_process(delta):
 			$KinematicBody.translation = prev_pos
 			return
 	
-	# If everything's okay, Move meshes together
+	# If everything's okay, move meshes together
 	$Meshes.transform = $KinematicBody.transform
-	
-	
