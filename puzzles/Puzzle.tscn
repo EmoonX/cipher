@@ -1,35 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/night.jpg" type="Texture" id=1]
 [ext_resource path="res://puzzles/Puzzle.gd" type="Script" id=2]
-
-[sub_resource type="PanoramaSky" id=1]
-radiance_size = 0
-panorama = ExtResource( 1 )
-
-[sub_resource type="Environment" id=2]
-resource_local_to_scene = true
-background_mode = 2
-background_sky = SubResource( 1 )
-background_sky_custom_fov = 90.0
-background_energy = 0.5
-fog_enabled = true
-tonemap_mode = 3
-auto_exposure_scale = 0.01
-ss_reflections_enabled = true
-ssao_radius = 39.0
-ssao_intensity = 128.0
-dof_blur_far_distance = 1.0
-dof_blur_far_transition = 17.25
-dof_blur_far_amount = 0.8
-dof_blur_far_quality = 2
-glow_enabled = true
-glow_levels/1 = true
-glow_levels/2 = true
-glow_levels/5 = false
-glow_intensity = 8.0
-glow_strength = 2.0
-adjustment_enabled = true
 
 [sub_resource type="PlaneMesh" id=3]
 
@@ -83,7 +54,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -684, 146 )
 flags/unshaded = true
 nodes/fragment/0/position = Vector2( 360, 160 )
 nodes/fragment/2/node = SubResource( 4 )
@@ -96,28 +66,29 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = SubResource( 7 )
-shader_param/amount = 3.0
+shader_param/amount = 2.5
 
 [node name="Puzzle" type="Spatial"]
 pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.99988, 0.00405424, 0.0149126, -0.0090966, 0.934494, 0.355863, -0.012493, -0.355956, 0.934419, 0.0340944, 0.836554, 0.418175 )
-environment = SubResource( 2 )
+transform = Transform( 0.999881, 0.00405425, 0.0149126, -0.00909661, 0.934494, 0.355863, -0.012493, -0.355956, 0.934419, 0.0340944, 0.836554, 0.418175 )
 fov = 45.0
 size = 3.5
+far = 1000.0
 
 [node name="ActionRay" type="RayCast" parent="Camera"]
 transform = Transform( 1, 1.44355e-08, -1.86265e-08, 9.31323e-10, 1, 0, 9.31323e-10, 5.96046e-08, 1, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 2, 4, -12 )
 
-[node name="BlurPlane" type="MeshInstance" parent="Camera"]
-transform = Transform( 15.8175, -1.30385e-08, -5.28991e-07, -9.16421e-07, -0.37605, -9.08068, -1.3411e-07, 0.9266, -3.68529, -0.542581, 1.90657, -6.05417 )
+[node name="BlurPlane" type="MeshInstance" parent="."]
+transform = Transform( 15.8156, 0.0122934, -0.0917732, -0.143886, -0.021674, -9.7973, -0.197608, 0.99969, -0.211284, -0.590976, 0.468714, -5.91083 )
 cast_shadow = 0
 mesh = SubResource( 3 )
 material/0 = SubResource( 8 )
 
-[node name="Tween" type="Tween" parent="Camera"]
+[node name="Tween" type="Tween" parent="."]
 [connection signal="visibility_changed" from="." to="." method="_on_Puzzle_visibility_changed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
