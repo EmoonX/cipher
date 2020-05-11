@@ -5,7 +5,7 @@ const default_cursor = preload("res://assets/cursor-default.png")
 # --------------------------------------------------------------------------- #
 
 func _process(delta):
-	# Swap between window and fullscreen modes with ALT + ENTER
+	# Swap between windowed and fullscreen modes with ALT + ENTER
 	if Input.is_key_pressed(KEY_ALT) and Input.is_key_pressed(KEY_ENTER):
 		OS.window_fullscreen = not OS.window_fullscreen
 	

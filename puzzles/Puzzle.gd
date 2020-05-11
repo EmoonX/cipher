@@ -46,8 +46,13 @@ func _process(_delta):
 	var to = $Camera.project_local_ray_normal(mouse_pos)
 	action_ray.cast_to = to * 100
 	
-	# Detect highlighted object by ray collision
+	# Detect highlighted object (or none) by ray collision
 	var object = action_ray.get_collider()
 	if object:
 		object = object.get_parent()
-	$"/root/Game".active_object = object
+		print(object.name)
+		if object is Interactable and \
+				object.is_puzzle_piece and object.puzzle == self:
+			$"/root/Game".active_object = object
+			return
+	$"/root/Game".active_object = null
