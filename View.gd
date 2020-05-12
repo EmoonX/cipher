@@ -1,7 +1,7 @@
 extends Node
 
-const cursor_arrow = preload("res://assets/cursor-arrow.png")
-const cursor_drag = preload("res://assets/cursor-drag.png")
+const cursor_arrow = preload("res://assets/cursor_arrow.png")
+const cursor_drag = preload("res://assets/cursor_drag.png")
 
 # --------------------------------------------------------------------------- #
 
