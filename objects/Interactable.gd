@@ -65,6 +65,8 @@ func _ready():
 				material.emission_texture = material.albedo_texture
 			mesh.mesh.surface_set_material(idx, material)
 
+	set_process_input(false)
+
 func _update_actions(idx, value):
 	# Change list of actions by setting index idx to value
 	var old_value = actions[idx]
@@ -84,7 +86,7 @@ func _update_probe():
 	# Update ReflectionProbe when lighting changes
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
+func _on_AnimationPlayer_animation_finished(anim_name):
 	_update_probe()
 
 func _process(delta):

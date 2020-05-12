@@ -14,6 +14,8 @@ func _ready():
 		item.name = $"..".ActionType.keys()[action]
 		item.name = item.name.capitalize().replace(" ", "")
 		$Actions.add_child(item)
+		
+	set_process_input(false)
 	
 	# Attribute focus neighbours
 #	var k = $Actions.get_child_count()
@@ -42,7 +44,9 @@ func show_actions():
 				break
 			player.play("show")
 			yield(get_tree().create_timer(0.15), "timeout")
-			
+	
+	set_process_input(true)
+
 func hide_actions():
 	# Play hiding animations before turning interface invisible
 	var items = $Actions.get_children()
@@ -55,6 +59,28 @@ func hide_actions():
 	$AnimationPlayer.play_backwards("show")
 	yield($AnimationPlayer, "animation_finished")
 	visible = false
+	
+	set_process_input(false)
+
+func _input(event):
+	# Allow scroll wheel down/up to be used for changing between items
+	if event is InputEventMouseButton and event.pressed:
+		var k = $Actions.get_child_count()
+		var idx
+		for i in range(k):
+			var item = $Actions.get_child(i)
+			if item.has_focus():
+				idx = i
+				break
+		var item
+		match event.button_index:
+			BUTTON_WHEEL_UP:
+				idx -= 1
+			BUTTON_WHEEL_DOWN:
+				idx += 1
+		if idx >= 0 and idx < k:
+			item = $Actions.get_child(idx)
+			item.grab_focus()
 
 func _process(delta):
 	# Position node correctly on screen
