@@ -76,7 +76,6 @@ script = ExtResource( 2 )
 transform = Transform( 0.999881, 0.00405425, 0.0149126, -0.00909661, 0.934494, 0.355863, -0.012493, -0.355956, 0.934419, 0.0340944, 0.836554, 0.418175 )
 fov = 45.0
 size = 3.5
-far = 1000.0
 
 [node name="ActionRay" type="RayCast" parent="Camera"]
 transform = Transform( 1, 1.44355e-08, -1.86265e-08, 9.31323e-10, 1, 0, 9.31323e-10, 5.96046e-08, 1, 0, 0, 0 )

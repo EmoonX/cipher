@@ -13,6 +13,7 @@ func _ready():
 
 func _on_Puzzle_visibility_changed():
 	if visible:
+		$"/root/Game/Speech".pause_mode = PAUSE_MODE_PROCESS
 		get_tree().paused = true
 		$"/root/Game".active_object = null
 		
@@ -29,6 +30,9 @@ func _on_Puzzle_visibility_changed():
 		$Tween.start()
 		yield(get_tree(), "idle_frame")
 		$Camera.current = true
+	
+	else:
+		$"/root/Game/Speech".pause_mode = PAUSE_MODE_STOP
 	
 	$"/root/Game/Player".visible = not visible
 

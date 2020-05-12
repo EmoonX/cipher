@@ -57,6 +57,7 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 
 [node name="Speech" type="Node" parent="."]
+pause_mode = 1
 script = ExtResource( 8 )
 
 [node name="Audio" type="AudioStreamPlayer" parent="Speech"]
@@ -65,7 +66,6 @@ volume_db = 8.0
 [node name="Subtitle" type="RichTextLabel" parent="Speech" groups=[
 "center_on_screen",
 ]]
-pause_mode = 1
 margin_top = 950.0
 margin_right = 1920.0
 margin_bottom = 990.0

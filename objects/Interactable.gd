@@ -109,7 +109,7 @@ func _process(delta):
 				ActionType.EXAMINE:
 					# Examine (get player's flavored info from) the object
 					var examine_text = "OBJECT_" + name.to_upper() + "_EXAMINE"
-					$"/root/Game".display_subtitles(examine_text)
+					$"/root/Game/Speech".display(examine_text)
 					
 					# Upon first examination and if it has a pre-name,
 					# register it and change pretty name

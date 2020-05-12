@@ -30,9 +30,6 @@ func check_and_flag(event):
 		flags.append(event)
 		return true
 
-func display_subtitles(key):
-	$Speech.display(key)
-
 func play_sfx(sfx):
 	# Play requisited audio file
 	var asp = AudioStreamPlayer.new()
@@ -46,10 +43,10 @@ func pause_toggle():
 	_tween_blur(get_tree().paused)
 	if get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		$Speech/Audio.stream_paused = true
+#		$Speech/Audio.stream_paused = true
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		$Speech/Audio.stream_paused = false
+#		$Speech/Audio.stream_paused = false
 
 func _tween_blur(increase):
 	# Do an interpolated (de)blur effect
