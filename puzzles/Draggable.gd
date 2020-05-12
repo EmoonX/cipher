@@ -11,10 +11,12 @@ func _ready():
 
 func _start_drag():
 	set_physics_process(true)
+	Input.set_custom_mouse_cursor(View.cursor_drag)
 	prev_mouse_pos = get_viewport().get_mouse_position()
 
 func _stop_drag():
 	set_physics_process(false)
+	Input.set_custom_mouse_cursor(View.cursor_arrow)
 		
 func _physics_process(delta):
 	# Calculate offset based on mouse position difference

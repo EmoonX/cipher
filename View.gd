@@ -1,6 +1,7 @@
 extends Node
 
-const default_cursor = preload("res://assets/cursor-default.png")
+const cursor_arrow = preload("res://assets/cursor-arrow.png")
+const cursor_drag = preload("res://assets/cursor-drag.png")
 
 # --------------------------------------------------------------------------- #
 
