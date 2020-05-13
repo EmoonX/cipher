@@ -1,5 +1,6 @@
 extends Spatial
 
+# Initial camera values for latter use
 onready var initial_pos = $Camera.translation
 onready var initial_xfm = $Camera.global_transform
 onready var initial_fov = $Camera.fov
@@ -10,26 +11,25 @@ var mouse_pos = Vector2(0, 0)
 # --------------------------------------------------------------------------- #
 
 func _ready():
+	# Don't process anything until in puzzle mode
 	set_process(false)
 	set_process_input(false)
 
 func _on_Puzzle_visibility_changed():
+	# What to be done when changing modes
 	if visible:
 		$"/root/Game/Speech".pause_mode = PAUSE_MODE_PROCESS
 		$"/root/Game".active_object = null
 		_transition_camera(true)
-		
 	else:
 		$"/root/Game/Speech".pause_mode = PAUSE_MODE_STOP
-		$"/root/Game/Player/RotationHelper/Camera".current = true
-		$Camera.global_transform = initial_xfm
-		$Camera.fov = initial_fov
+		$"/root/Game/Player".camera.current = true
 	
 	get_tree().paused = visible
 
 func _transition_camera(is_direct):
 	# Transition smoothly between player and puzzle cameras
-	var player_camera = $"/root/Game/Player/RotationHelper/Camera"
+	var player_camera = $"/root/Game/Player".camera
 	var pos_ini = player_camera.global_transform
 	var pos_end = initial_xfm
 	var fov_ini = player_camera.fov
@@ -57,15 +57,15 @@ func _transition_camera(is_direct):
 			duration, trans_type, ease_type)
 	$Tween.start()
 	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
 	if is_direct:
 		$Camera.current = true
 
 func _on_Tween_tween_completed(_object, _key):
 	var in_puzzle_mode = ($Camera.fov < 50)
-	var mouse_mode = Input.MOUSE_MODE_VISIBLE if in_puzzle_mode \
-			else Input.MOUSE_MODE_CAPTURED
-	Input.set_mouse_mode(mouse_mode)
 	if in_puzzle_mode:
+		# Show mouse and allow taking puzzle input
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		set_process(true)
 		set_process_input(true)
 	visible = in_puzzle_mode
@@ -89,11 +89,15 @@ func _input(event):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("go_back"):
+		# Stop everything and go back to player mode
 		if $Tween.is_active():
 			$Tween.stop_all()
-		_transition_camera(false)
+		$"/root/Game".active_object = null
+		$"/root/Game/Player".zoom_player.seek(0.0, true)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process(false)
 		set_process_input(false)
+		_transition_camera(false)
 		return
 	
 	# Cast ActionRay correctly to mouse position
