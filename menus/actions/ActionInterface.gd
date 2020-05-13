@@ -63,6 +63,9 @@ func hide_actions():
 	set_process_input(false)
 
 func _input(event):
+	if $AnimationPlayer.current_animation == "show":
+		return
+	
 	# Allow scroll wheel down/up to be used for changing between items
 	if event is InputEventMouseButton and event.pressed:
 		var k = $Actions.get_child_count()
