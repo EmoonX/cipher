@@ -90,20 +90,20 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	_update_probe()
 
 func _process(delta):
-	var energy
-	if self == $"/root/Game".active_object:
+	# Calculate energy amount
+	var energy = abs(cont) / 2
+	cont -= delta * 2
+	if cont < -1.0:
+		cont = 1.0
+	
+	if self == $"/root/Game".active_object and \
+			not (puzzle and puzzle.drag_mode):
 		if not $ActionInterface.visible:
 			# Start animations playback one frame before
 			# turning interface visible (so to not render garbage)
 			$ActionInterface/AnimationPlayer.play("show")
 			yield(get_tree(), "idle_frame")
 		$ActionInterface.visible = true
-		
-		# Calculate energy amount
-		energy = abs(cont) / 2
-		cont -= delta * 2
-		if cont < -1.0:
-			cont = 1.0
 		
 		if Input.is_action_just_pressed("ui_accept") or \
 				Input.is_action_just_pressed("action"):
@@ -163,10 +163,11 @@ func _process(delta):
 		if $ActionInterface.visible and \
 				not $ActionInterface/AnimationPlayer.is_playing():
 			$ActionInterface.hide_actions()
-		energy = 0.0
-		cont = 0
+		if not (puzzle and puzzle.drag_mode):
+			energy = 0.0
+			cont = 0
 	
-	# Brigthen up object while examining
+	# Brigthen up object while focusing on it
 	for mesh in get_node("Meshes").get_children():
 		for idx in mesh.mesh.get_surface_count():
 			var material = mesh.mesh.surface_get_material(idx)

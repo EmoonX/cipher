@@ -8,13 +8,13 @@ var prev_mouse_pos
 
 func _ready():
 	# Don't run nothing specific until dragging
-	_stop_drag()
+	stop_drag()
 
 func start_drag():
 	set_physics_process(true)
 	prev_mouse_pos = get_viewport().get_mouse_position()
 
-func _stop_drag():
+func stop_drag():
 	set_physics_process(false)
 
 func _physics_process(_delta):
@@ -25,7 +25,7 @@ func _physics_process(_delta):
 
 	# Calculate real offset based on camera view
 	var real_offset = \
-			Vector3(mouse_offset.x / 2000, 0.0, mouse_offset.y / 1500)
+			Vector3(mouse_offset.x / 3000, 0.0, mouse_offset.y / 2000)
 	
 	# Move (or try to) kinematic body
 	var prev_pos = $KinematicBody.translation
@@ -40,8 +40,8 @@ func _physics_process(_delta):
 			return
 	
 	# If everything's okay, move meshes together
-	$Meshes.transform = $KinematicBody.transform	
+	$Meshes.transform = $KinematicBody.transform
 
 func _process(_delta):
 	if Input.is_action_just_released("left_click"):
-		_stop_drag()
+		stop_drag()

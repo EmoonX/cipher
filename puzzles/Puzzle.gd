@@ -92,16 +92,24 @@ func _input(event):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("go_back"):
-		# Stop everything and go back to player mode
-		if $Tween.is_active():
-			$Tween.stop_all()
-		$"/root/Game".active_object = null
-		$"/root/Game/Player".zoom_player.seek(0.0, true)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		set_process(false)
-		set_process_input(false)
-		_transition_camera(false)
-		return
+		if drag_mode:
+			# Stop drag mode
+			drag_mode = false
+			var object = $"/root/Game".active_object
+			if object:
+				object.stop_drag()
+			Input.set_custom_mouse_cursor(View.cursor_arrow)
+		else:
+			# Stop everything and go back to player mode
+			if $Tween.is_active():
+				$Tween.stop_all()
+			$"/root/Game".active_object = null
+			$"/root/Game/Player".zoom_player.seek(0.0, true)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			set_process(false)
+			set_process_input(false)
+			_transition_camera(false)
+			return
 	
 	if Input.is_action_just_pressed("left_click"):
 		var object = $"/root/Game".active_object
