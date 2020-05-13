@@ -1,4 +1,5 @@
 extends "res://objects/Interactable.gd"
+class_name Draggable
 
 # Previously registered mouse position on screen
 var prev_mouse_pos
@@ -9,16 +10,14 @@ func _ready():
 	# Don't run nothing specific until dragging
 	_stop_drag()
 
-func _start_drag():
+func start_drag():
 	set_physics_process(true)
-	Input.set_custom_mouse_cursor(View.cursor_drag)
 	prev_mouse_pos = get_viewport().get_mouse_position()
 
 func _stop_drag():
 	set_physics_process(false)
-	Input.set_custom_mouse_cursor(View.cursor_arrow)
-		
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	# Calculate offset based on mouse position difference
 	var mouse_pos = get_viewport().get_mouse_position()
 	var mouse_offset = mouse_pos - prev_mouse_pos
@@ -41,4 +40,8 @@ func _physics_process(delta):
 			return
 	
 	# If everything's okay, move meshes together
-	$Meshes.transform = $KinematicBody.transform
+	$Meshes.transform = $KinematicBody.transform	
+
+func _process(_delta):
+	if Input.is_action_just_released("left_click"):
+		_stop_drag()

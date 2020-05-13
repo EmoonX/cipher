@@ -8,6 +8,9 @@ onready var initial_fov = $Camera.fov
 # Position of the mouse on the viewport
 var mouse_pos = Vector2(0, 0)
 
+# If the current action is dragging objects in puzzle
+var drag_mode = false
+
 # --------------------------------------------------------------------------- #
 
 func _ready():
@@ -16,7 +19,7 @@ func _ready():
 	set_process_input(false)
 
 func _on_Puzzle_visibility_changed():
-	# What to be done when changing modes
+	# What to be done when changing game modes
 	if visible:
 		$"/root/Game/Speech".pause_mode = PAUSE_MODE_PROCESS
 		$"/root/Game".active_object = null
@@ -99,6 +102,11 @@ func _process(_delta):
 		set_process_input(false)
 		_transition_camera(false)
 		return
+	
+	if Input.is_action_just_pressed("left_click"):
+		var object = $"/root/Game".active_object
+		if drag_mode and object and object is Draggable:
+			object.start_drag()
 	
 	# Cast ActionRay correctly to mouse position
 	var action_ray = $Camera/ActionRay

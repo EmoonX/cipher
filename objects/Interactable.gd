@@ -155,7 +155,9 @@ func _process(delta):
 					puzzle.visible = true
 					
 				ActionType.DRAG:
-					call("_start_drag")
+					# Switch puzzle to drag mode
+					puzzle.drag_mode = true
+					Input.set_custom_mouse_cursor(View.cursor_drag)
 	
 	else:
 		if $ActionInterface.visible and \
