@@ -1,6 +1,7 @@
 extends Spatial
 
 onready var initial_pos = $Camera.translation
+onready var initial_xfm = $Camera.global_transform
 onready var initial_fov = $Camera.fov
 
 # Position of the mouse on the viewport
@@ -17,10 +18,11 @@ func _on_Puzzle_visibility_changed():
 		$"/root/Game/Speech".pause_mode = PAUSE_MODE_PROCESS
 		$"/root/Game".active_object = null
 		_transition_camera(true)
+		
 	else:
 		$"/root/Game/Speech".pause_mode = PAUSE_MODE_STOP
 		$"/root/Game/Player/RotationHelper/Camera".current = true
-		$Camera.translation = initial_pos
+		$Camera.global_transform = initial_xfm
 		$Camera.fov = initial_fov
 	
 	get_tree().paused = visible
@@ -29,26 +31,21 @@ func _transition_camera(is_direct):
 	# Transition smoothly between player and puzzle cameras
 	var player_camera = $"/root/Game/Player/RotationHelper/Camera"
 	var pos_ini = player_camera.global_transform
-	var pos_end = $Camera.global_transform
+	var pos_end = initial_xfm
 	var fov_ini = player_camera.fov
-	var fov_end = $Camera.fov
+	var fov_end = initial_fov
 	var blur_ini = 0
 	var blur_end = 2.5
 	if not is_direct:
-		var aux = pos_ini
-		pos_ini = pos_end
-		pos_end = aux
-		aux = fov_ini
-		fov_ini = fov_end
-		fov_end = aux
-		aux = blur_ini
-		blur_ini = blur_end
-		blur_end = aux
+		pos_ini = $Camera.global_transform
+		pos_end = player_camera.global_transform
+		fov_ini = initial_fov
+		fov_end = player_camera.fov
+		blur_ini = 2.5
+		blur_end = 0
 	var duration = 2.0
 	var trans_type = Tween.TRANS_EXPO
 	var ease_type = Tween.EASE_IN_OUT
-	print(fov_ini, " ", fov_end)
-	$Tween.reset_all()
 	$Tween.interpolate_property($Camera, \
 			"global_transform", pos_ini, pos_end, \
 			duration, trans_type, ease_type)
@@ -68,8 +65,9 @@ func _on_Tween_tween_completed(_object, _key):
 	var mouse_mode = Input.MOUSE_MODE_VISIBLE if in_puzzle_mode \
 			else Input.MOUSE_MODE_CAPTURED
 	Input.set_mouse_mode(mouse_mode)
-	set_process_input(in_puzzle_mode)
-	set_process(in_puzzle_mode)
+	if in_puzzle_mode:
+		set_process(true)
+		set_process_input(true)
 	visible = in_puzzle_mode
 
 func _input(event):
@@ -91,7 +89,11 @@ func _input(event):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("go_back"):
+		if $Tween.is_active():
+			$Tween.stop_all()
 		_transition_camera(false)
+		set_process(false)
+		set_process_input(false)
 		return
 	
 	# Cast ActionRay correctly to mouse position
