@@ -22,6 +22,10 @@ func _physics_process(_delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var mouse_offset = mouse_pos - prev_mouse_pos
 	prev_mouse_pos = mouse_pos
+	
+	if mouse_offset == Vector2(0, 0):
+		puzzle.snap_to_led()
+		return
 
 	# Calculate real offset based on camera view
 	var real_offset = \
@@ -39,8 +43,9 @@ func _physics_process(_delta):
 			$KinematicBody.translation = prev_pos
 			return
 	
-	# If everything's okay, move meshes together
-	$Meshes.transform = $KinematicBody.transform
+	# If everything's okay, move object together
+	translation += $KinematicBody.translation
+	$KinematicBody.translation = Vector3(0, 0, 0)
 
 func _process(_delta):
 	if Input.is_action_just_released("left_click"):

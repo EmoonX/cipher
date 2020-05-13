@@ -2,20 +2,20 @@
 
 [ext_resource path="res://puzzles/Puzzle.gd" type="Script" id=2]
 
-[sub_resource type="PlaneMesh" id=3]
+[sub_resource type="PlaneMesh" id=1]
 
-[sub_resource type="VisualShaderNodeInput" id=4]
+[sub_resource type="VisualShaderNodeInput" id=2]
 output_port_for_preview = 0
 input_name = "screen_uv"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=5]
+[sub_resource type="VisualShaderNodeScalarUniform" id=3]
 uniform_name = "amount"
 
-[sub_resource type="VisualShaderNodeTexture" id=6]
+[sub_resource type="VisualShaderNodeTexture" id=4]
 output_port_for_preview = 0
 source = 1
 
-[sub_resource type="VisualShader" id=7]
+[sub_resource type="VisualShader" id=5]
 code = "shader_type spatial;
 render_mode unshaded;
 
@@ -56,16 +56,16 @@ void light() {
 "
 flags/unshaded = true
 nodes/fragment/0/position = Vector2( 360, 160 )
-nodes/fragment/2/node = SubResource( 4 )
+nodes/fragment/2/node = SubResource( 2 )
 nodes/fragment/2/position = Vector2( -120, 140 )
-nodes/fragment/3/node = SubResource( 5 )
+nodes/fragment/3/node = SubResource( 3 )
 nodes/fragment/3/position = Vector2( -100, 340 )
-nodes/fragment/4/node = SubResource( 6 )
+nodes/fragment/4/node = SubResource( 4 )
 nodes/fragment/4/position = Vector2( 140, 160 )
 nodes/fragment/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 0, 0 )
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 shader_param/amount = 2.5
 
 [node name="Puzzle" type="Spatial"]
@@ -85,8 +85,8 @@ cast_to = Vector3( 2, 4, -12 )
 [node name="BlurPlane" type="MeshInstance" parent="."]
 transform = Transform( 15.8156, 0.0122934, -0.0917732, -0.143886, -0.021674, -9.7973, -0.197608, 0.99969, -0.211284, -0.590976, 0.468714, -5.91083 )
 cast_shadow = 0
-mesh = SubResource( 3 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="visibility_changed" from="." to="." method="_on_Puzzle_visibility_changed"]
