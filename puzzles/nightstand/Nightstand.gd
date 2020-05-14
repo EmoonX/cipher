@@ -2,23 +2,35 @@ extends "res://puzzles/Puzzle.gd"
 
 const DIST_EPS = 0.02
 
-onready var pos_lamp = $"../BedsideLamp".translation
-onready var pos_cactus = $"../Cactus".translation
+onready var led_pos = {
+	"BedsideLamp": $"../BedsideLamp".translation,
+	"Cactus": $"../Cactus".translation
+}
 
 # -------------------------------------------------------------------------- #
 
 func check_and_snap(object: Draggable):
 	# Check if object is in position to be snapped
 	# If positive, translate it to snap position
-	for pos in [pos_lamp, pos_cactus]:
+	var ok = false
+	for led in $"../LEDs".get_children():
+		var pos = led_pos[led.name]
 		var dist = (object.virtual_pos - pos).length()
 		if dist < DIST_EPS:
 			object.translation = pos
-			return true
-	return false
+			ok = true
+			if led.name != object.name:
+				led.change(true)
+				return true
+			break
+	for led in $"../LEDs".get_children():
+		if led.name != object.name:
+			led.change(false)
+			break
+	return ok
 
 func _is_solved():
 	# Return if objects are in swaped positions
-	var lamp_ok = ($"../BedsideLamp".translation == pos_cactus)
-	var cactus_ok = ($"../Cactus".translation == pos_lamp)
+	var lamp_ok = ($"../BedsideLamp".translation == led_pos["Cactus"])
+	var cactus_ok = ($"../Cactus".translation == led_pos["BedsideLamp"])
 	return (lamp_ok and cactus_ok)
