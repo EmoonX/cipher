@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://puzzles/Puzzle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://puzzles/odd/Image.tscn" type="PackedScene" id=2]
+[ext_resource path="res://puzzles/odd/images/7.jpg" type="Texture" id=4]
+[ext_resource path="res://puzzles/odd/images/6.jpg" type="Texture" id=5]
+[ext_resource path="res://puzzles/odd/images/2.jpg" type="Texture" id=6]
+[ext_resource path="res://puzzles/odd/images/3.jpg" type="Texture" id=7]
+[ext_resource path="res://puzzles/odd/images/4.jpg" type="Texture" id=8]
+[ext_resource path="res://puzzles/odd/images/5.jpg" type="Texture" id=9]
+[ext_resource path="res://puzzles/odd/Image.gd" type="Script" id=11]
+
+[node name="Odd" instance=ExtResource( 1 )]
+
+[node name="1" parent="." index="0" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="1" index="0"]
+margin_left = -96.217
+margin_top = -57.0175
+margin_right = 414.783
+margin_bottom = 156.983
+
+[node name="2" parent="." index="1" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="2" index="0"]
+margin_left = 482.881
+margin_top = -54.5099
+margin_right = 993.881
+margin_bottom = 159.49
+texture = ExtResource( 6 )
+
+[node name="3" parent="." index="2" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="3" index="0"]
+margin_left = -96.7891
+margin_top = 212.401
+margin_right = 414.211
+margin_bottom = 426.401
+texture = ExtResource( 7 )
+
+[node name="4" parent="." index="3" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="4" index="0"]
+margin_left = 483.376
+margin_top = 216.218
+margin_right = 994.376
+margin_bottom = 430.218
+texture = ExtResource( 8 )
+
+[node name="5" parent="." index="4" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="5" index="0"]
+margin_left = -95.1271
+margin_top = 502.047
+margin_right = 415.873
+margin_bottom = 716.047
+texture = ExtResource( 9 )
+
+[node name="6" parent="." index="5" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="6" index="0"]
+margin_left = 481.53
+margin_top = 491.523
+margin_right = 992.53
+margin_bottom = 705.523
+texture = ExtResource( 5 )
+
+[node name="7" parent="." index="6" instance=ExtResource( 2 )]
+script = ExtResource( 11 )
+
+[node name="Image" parent="7" index="0"]
+margin_left = 1070.88
+margin_top = -46.4346
+margin_right = 1581.88
+margin_bottom = 167.565
+texture = ExtResource( 4 )
+
+[editable path="1"]
+
+[editable path="2"]
+
+[editable path="3"]
+
+[editable path="4"]
+
+[editable path="5"]
+
+[editable path="6"]
+
+[editable path="7"]
