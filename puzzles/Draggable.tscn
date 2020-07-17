@@ -19,4 +19,5 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="focus_entered" from="Image" to="." method="_on_Image_focus_entered"]
+[connection signal="mouse_entered" from="Image" to="." method="_on_Image_mouse_entered"]
+[connection signal="mouse_exited" from="Image" to="." method="_on_Image_mouse_exited"]

@@ -13,73 +13,122 @@
 [node name="Odd" instance=ExtResource( 1 )]
 
 [node name="1" parent="." index="0" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="1" index="0"]
-margin_left = -96.217
-margin_top = -57.0175
-margin_right = 414.783
-margin_bottom = 156.983
+anchor_left = 0.055
+anchor_top = 0.088
+anchor_right = 0.055
+anchor_bottom = 0.088
+margin_left = -0.519073
+margin_top = 0.505188
+margin_right = 510.481
+margin_bottom = 214.505
 
 [node name="2" parent="." index="1" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="2" index="0"]
-margin_left = 482.881
-margin_top = -54.5099
-margin_right = 993.881
-margin_bottom = 159.49
+anchor_left = 0.356
+anchor_top = 0.091
+anchor_right = 0.356
+anchor_bottom = 0.091
+margin_left = 0.658691
+margin_top = -0.22718
+margin_right = 511.659
+margin_bottom = 213.773
 texture = ExtResource( 6 )
 
 [node name="3" parent="." index="2" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="3" index="0"]
-margin_left = -96.7891
-margin_top = 212.401
-margin_right = 414.211
-margin_bottom = 426.401
+anchor_left = 0.054
+anchor_top = 0.34
+anchor_right = 0.054
+anchor_bottom = 0.34
+margin_left = 0.828911
+margin_top = -0.117004
+margin_right = 511.829
+margin_bottom = 213.883
 texture = ExtResource( 7 )
 
 [node name="4" parent="." index="3" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="4" index="0"]
-margin_left = 483.376
-margin_top = 216.218
-margin_right = 994.376
-margin_bottom = 430.218
+anchor_left = 0.357
+anchor_top = 0.341
+anchor_right = 0.357
+anchor_bottom = 0.341
+margin_left = -0.766113
+margin_top = 0.500854
+margin_right = 510.234
+margin_bottom = 214.501
 texture = ExtResource( 8 )
 
 [node name="5" parent="." index="4" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="5" index="0"]
-margin_left = -95.1271
-margin_top = 502.047
-margin_right = 415.873
-margin_bottom = 716.047
+anchor_left = 0.055
+anchor_top = 0.606
+anchor_right = 0.055
+anchor_bottom = 0.606
+margin_left = 0.570892
+margin_top = 0.129578
+margin_right = 511.571
+margin_bottom = 214.13
 texture = ExtResource( 9 )
 
 [node name="6" parent="." index="5" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="6" index="0"]
-margin_left = 481.53
-margin_top = 491.523
-margin_right = 992.53
-margin_bottom = 705.523
+anchor_left = 0.356
+anchor_top = 0.596
+anchor_right = 0.356
+anchor_bottom = 0.596
+margin_left = -0.692505
+margin_top = 0.405579
+margin_right = 510.307
+margin_bottom = 214.406
 texture = ExtResource( 5 )
 
 [node name="7" parent="." index="6" instance=ExtResource( 2 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Image" parent="7" index="0"]
-margin_left = 1070.88
-margin_top = -46.4346
-margin_right = 1581.88
-margin_bottom = 167.565
+anchor_left = 0.663
+anchor_top = 0.098
+anchor_right = 0.663
+anchor_bottom = 0.098
+margin_left = -0.787109
+margin_top = 0.288109
+margin_right = 510.213
+margin_bottom = 214.288
 texture = ExtResource( 4 )
+[connection signal="focus_entered" from="1/Image" to="1" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="2/Image" to="2" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="3/Image" to="3" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="4/Image" to="4" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="5/Image" to="5" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="6/Image" to="6" method="_on_Image_focus_entered"]
+[connection signal="focus_entered" from="7/Image" to="7" method="_on_Image_focus_entered"]
 
 [editable path="1"]
 
