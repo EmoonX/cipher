@@ -1,0 +1,209 @@
+(01) ---
+Seriously?
+
+(02) ---
+Too simple. Also, hard to find a suitable format.
+
+(03) ---
+Ditto and ditto.
+
+(04) **
+Binary to ASCII could be keep, but a simple look to a table would be too easy
+Best way could be a simple riddle (like a binary tree of letters) and giving access to given table only *after* clearing the level proper
+
+(05) *
+A magnifying glass to help find small details would be a pretty tool to this level (and to be used further on in the game)
+
+(06) ---
+Too simple, maybe not worth reproducing.
+
+(07) ---
+Interesting but still too simple. Better save it for the threshold level
+
+(08) *
+Slowing down on video player, maybe?
+ASCII conversion part could probably be removed, though.
+
+(09) ****
+A level with great potential. Better yet if we implement the audio version of it.
+Simple piano (not the app) included. Player would need to listen by ear and reproduce the notes by mimicking what is heard. Notes played would appear on a small sheet and with the letters accompanied (for non music people). All is left is for the riddler to find out that the letters form the answer ultimatelly :)
+
+(10) **
+Color picker tool needed for it (and a good introduction to another one).
+A little work and player would need to find out color hexes form the answer one letter at a time, but that's it.
+
+(11) *
+Even though it looks like a Google level, roman numerals should be well known enough for most people
+A simple and easy riddle, might be worth a shot
+
+(12) ***
+Easy and direct to implement. Keyboards are present on every PC and even smartphones
+Just gotta make clear it is a QWERTY one
+
+(13) **
+A pickable up all-years calendar would be a must for this one
+
+(14) **
+Reversing and speeding up on audio player
+
+(15) ---
+Even though a base64 decoder could be interesting, wouldn't it be a giveaway? Too simple yet again
+
+(16) ---
+Google level
+
+(17) ***
+Another nice one.
+Implementation idea: pictures are draggable and movable. Stacking pictures one above the other would add transparency to the stack. The right ones (on any order) would give, as expected, the answer
+
+(18) ***
+Could be maybe the first mansion-interactable level?
+Player would find himself on some floor panels and would have to walk the right steps on the right order following cardinal directions.
+Only problem is that it could be hard work (for me)... Maybe a 2D solution would be a good B plan
+
+(19) **
+Hard work to the translators, but might be worth a shot
+MS Word reference would need to go away, of course
+
+(20) ---
+Google level + HTML thingies, so no
+Googol idea is interesting, though...
+
+(21) ???
+Yet another Google level. Could it be saved?
+Maybe find some correlations between current day continents and Pangea?
+
+(22) **
+Finally, the threshold level
+Should have more than one needed adjustment, lest it would be not complex enough
+
+(23) ***
+With a previously adquired morse translator tool, could be a decent challenge
+
+(24) ???
+TODO
+
+(25) ***
+Nice idea, IF we could find a way to hide the color map adequately
+
+(26) ---
+Yet Another Google Level
+
+(27) ***
+Vigenere is recurring, so it might be worth a shot
+
+(28) ***
+A calculator is a nice tool to have, nonetheless
+Using the right font to simulate calculator digits, we have a good deal
+
+(29) ---
+YAGL
+
+(30) ---
+Format not applicable.
+
+(31) ???
+TODO
+
+(32) ****
+Video player + Caesar's Cipher would probably be a great challenge
+
+(33) **
+Sort of already implemented.
+Easy than it should be since we already start with the tarot cards.
+
+(34) ****
+Also already implemented.
+Challenging if players have to find letters as an extra step after finding the correct positions
+
+(35) ---
+EXIF info? Sadly, too techie
+
+(36) ???
+TODO
+
+(37) ***
+Reverse pigpen Cipher could be an interesting riddle
+This might be the first to need some anagram solver tool, also
+
+(38) ---
+Can't say it really fits or is interesting
+
+(39) ****
+A nice challenge as it combines greek numerals AND periodic table
+Obviously, there should be something about both somewhere...
+
+(40) ???
+Hard to circumvent the techie part
+
+(41) ***
+Simple concept, but not so direct. Maybe use silence as level's music?
+Funny idea: represent hand signals as matchsticks, to further confuse the player
+
+(42) ---
+Techie again
+
+(43) **
+First part could be adapted as another musical level, who knows?
+Second part is kinda funny and could be musically played (together with sheet)
+
+(44) ---
+Too much Google and EXIF
+
+(45) ***
+First part is out of bounds
+Second part could well be conceived as finding the right cards and matching with the figure parts. Fun challenge
+
+(46) ***
+Nice idea for another mansion-interactive level
+How about finding a button that is found in a real room (and only activated after starting the riddle)?
+
+(47) ***
+A fill tool related level. Interesting challenge
+Might think having a proper word as the answer, though
+
+(48) ***
+Could work by having a phone on the level screen
+Keys could flash as the right ones are pressed, revealing the letter(s)
+
+(49) ****
+The main idea that could be extracted from this one is terminal interaction. Kinda to feel like a hacker riddle.
+However, red herrings are out and I'm not sure about the level index part either...
+
+(50) ??? or *****
+Could be a grand multi-part level. Or could be dismembered in several other ones.
+There are some individual ideas in each sub-level, so it might be worth remembering them
+
+(51) ---
+Hard to convey
+
+(52) ???
+English specific. Probably would go out
+
+(53) ***
+Nice challenge, letter parts could be show continuously even
+Reminds me of some old Flash game I played a long time ago...
+
+(54) ***
+A similar idea could be implemented, albeit with just one screen instead of two
+
+(55) ---
+Too. Much. Google.
+
+(56) **
+Could be a nice (and easy) challenge with a previous gathered Pi chart
+
+(57) ---
+Would need some previous googling and the answer is kinda... dumb?
+
+(58) ---
+Good level, but sadly too techie
+
+(59) ---
+Too photoshop-heavy to be implemented
+
+(60) ---
+The last one is too internet inclined to be of use also, sadly
+
+
+
