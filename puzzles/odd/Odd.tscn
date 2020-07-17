@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://puzzles/Puzzle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://puzzles/odd/Image.tscn" type="PackedScene" id=2]
@@ -10,9 +10,23 @@
 [ext_resource path="res://puzzles/odd/images/5.jpg" type="Texture" id=9]
 [ext_resource path="res://puzzles/odd/Image.gd" type="Script" id=11]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.203922, 0.345098, 0.368627, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.866667, 0.321569, 0.321569, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Odd" instance=ExtResource( 1 )]
 
 [node name="1" parent="." index="0" instance=ExtResource( 2 )]
+layer = 1
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -22,12 +36,13 @@ anchor_left = 0.055
 anchor_top = 0.088
 anchor_right = 0.055
 anchor_bottom = 0.088
-margin_left = -0.519073
-margin_top = 0.505188
-margin_right = 510.481
-margin_bottom = 214.505
+margin_left = -2.01736
+margin_top = 3.5018
+margin_right = 508.983
+margin_bottom = 217.502
 
 [node name="2" parent="." index="1" instance=ExtResource( 2 )]
+layer = 2
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -37,13 +52,14 @@ anchor_left = 0.356
 anchor_top = 0.091
 anchor_right = 0.356
 anchor_bottom = 0.091
-margin_left = 0.658691
-margin_top = -0.22718
-margin_right = 511.659
+margin_left = -456.325
+margin_top = -0.227234
+margin_right = 54.6753
 margin_bottom = 213.773
 texture = ExtResource( 6 )
 
 [node name="3" parent="." index="2" instance=ExtResource( 2 )]
+layer = 3
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -53,13 +69,14 @@ anchor_left = 0.054
 anchor_top = 0.34
 anchor_right = 0.054
 anchor_bottom = 0.34
-margin_left = 0.828911
-margin_top = -0.117004
-margin_right = 511.829
-margin_bottom = 213.883
+margin_left = 248.05
+margin_top = -268.314
+margin_right = 759.05
+margin_bottom = -54.3141
 texture = ExtResource( 7 )
 
 [node name="4" parent="." index="3" instance=ExtResource( 2 )]
+layer = 4
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -69,13 +86,14 @@ anchor_left = 0.357
 anchor_top = 0.341
 anchor_right = 0.357
 anchor_bottom = 0.341
-margin_left = -0.766113
-margin_top = 0.500854
-margin_right = 510.234
-margin_bottom = 214.501
+margin_left = -222.516
+margin_top = -273.689
+margin_right = 288.485
+margin_bottom = -59.6892
 texture = ExtResource( 8 )
 
 [node name="5" parent="." index="4" instance=ExtResource( 2 )]
+layer = 5
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -85,13 +103,14 @@ anchor_left = 0.055
 anchor_top = 0.606
 anchor_right = 0.055
 anchor_bottom = 0.606
-margin_left = 0.570892
-margin_top = 0.129578
-margin_right = 511.571
-margin_bottom = 214.13
+margin_left = 484.524
+margin_top = -563.234
+margin_right = 995.524
+margin_bottom = -349.233
 texture = ExtResource( 9 )
 
 [node name="6" parent="." index="5" instance=ExtResource( 2 )]
+layer = 6
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -101,13 +120,14 @@ anchor_left = 0.356
 anchor_top = 0.596
 anchor_right = 0.356
 anchor_bottom = 0.596
-margin_left = -0.692505
-margin_top = 0.405579
-margin_right = 510.307
-margin_bottom = 214.406
+margin_left = 14.2905
+margin_top = -547.975
+margin_right = 525.29
+margin_bottom = -333.974
 texture = ExtResource( 5 )
 
 [node name="7" parent="." index="6" instance=ExtResource( 2 )]
+layer = 7
 offset = Vector2( 0, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 11 )
@@ -117,11 +137,25 @@ anchor_left = 0.663
 anchor_top = 0.098
 anchor_right = 0.663
 anchor_bottom = 0.098
-margin_left = -0.787109
-margin_top = 0.288109
-margin_right = 510.213
-margin_bottom = 214.288
+margin_left = -465.262
+margin_top = -8.7016
+margin_right = 45.7379
+margin_bottom = 205.298
 texture = ExtResource( 4 )
+
+[node name="Slot" type="Panel" parent="." index="7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.5
+margin_top = -107.0
+margin_right = 255.5
+margin_bottom = 107.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="focus_entered" from="1/Image" to="1" method="_on_Image_focus_entered"]
 [connection signal="focus_entered" from="2/Image" to="2" method="_on_Image_focus_entered"]
 [connection signal="focus_entered" from="3/Image" to="3" method="_on_Image_focus_entered"]

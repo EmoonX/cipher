@@ -35,5 +35,4 @@ margin_top = 720.809
 margin_right = -197.633
 margin_bottom = -159.191
 text = "Accept"
-
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]

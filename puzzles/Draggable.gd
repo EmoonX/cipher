@@ -6,7 +6,15 @@ var hovering
 # Offset of initial mouse click
 var click_offset
 
+# Number of canvas layers
+var num_canvas = 0
+
 # --------------------------------------------------------------------------- #
+
+func _ready():
+	for canvas in $"..".get_children():
+		if canvas is CanvasLayer:
+			num_canvas += 1
 
 func _on_Image_mouse_entered():
 	hovering = true
@@ -22,9 +30,12 @@ func _input(event):
 		# Get click offset
 		click_offset = event.position - $Image.rect_position
 		
-		# Put currently dragged image above all others
+		# Position currently dragged image above all others.
+		# Also keep original relative ordering
 		for canvas in $"..".get_children():
-			canvas.layer = 1 if canvas.name == name else 0
+			if canvas is CanvasLayer and canvas.layer > layer:
+				canvas.layer -= 1
+		layer = num_canvas
 	
 	elif event is InputEventMouseMotion:
 		if Input.is_mouse_button_pressed(BUTTON_LEFT):
