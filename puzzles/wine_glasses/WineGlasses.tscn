@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://puzzles/Puzzle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://puzzles/wine_glasses/WineGlasses.gd" type="Script" id=2]
+
+[node name="Puzzle" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Rows" type="VBoxContainer" parent="." index="0"]
+margin_top = 1.68179
+margin_right = 1920.0
+margin_bottom = 1081.68
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Control" parent="Rows" index="0"]
+margin_right = 1920.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="2" type="Control" parent="Rows" index="1"]
+margin_top = 270.0
+margin_right = 1920.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="3" type="Control" parent="Rows" index="2"]
+margin_top = 540.0
+margin_right = 1920.0
+margin_bottom = 806.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="4" type="Control" parent="Rows" index="3"]
+margin_top = 810.0
+margin_right = 1920.0
+margin_bottom = 1079.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
