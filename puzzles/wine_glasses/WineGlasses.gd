@@ -3,6 +3,9 @@ extends "res://puzzles/Puzzle.gd"
 const GlassEmpty = preload("GlassEmpty.tscn")
 const GlassHalf = preload("GlassHalf.tscn")
 
+# Sequence of glasses selected by player
+var player_answer = []
+
 # --------------------------------------------------------------------------- #
 
 func _ready():
@@ -18,7 +21,7 @@ func _ready():
 			else:
 				k = 1 if k == 0 else 0
 			var glass
-			if k == 0:
+			if i == 0 or k == 0:
 				glass = GlassEmpty.instance()
 			else:
 				glass = GlassHalf.instance()
