@@ -10,3 +10,4 @@ margin_bottom = -880.0
 rect_min_size = Vector2( 100, 200 )
 texture = ExtResource( 1 )
 expand = true
+stretch_mode = 5
