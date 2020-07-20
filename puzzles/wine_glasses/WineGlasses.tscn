@@ -10,32 +10,33 @@ script = ExtResource( 2 )
 margin_top = 1.68179
 margin_right = 1920.0
 margin_bottom = 1081.68
+custom_constants/separation = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="1" type="Control" parent="Rows" index="0"]
 margin_right = 1920.0
-margin_bottom = 266.0
+margin_bottom = 239.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="2" type="Control" parent="Rows" index="1"]
-margin_top = 270.0
+margin_top = 279.0
 margin_right = 1920.0
-margin_bottom = 536.0
+margin_bottom = 518.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="3" type="Control" parent="Rows" index="2"]
-margin_top = 540.0
+margin_top = 558.0
 margin_right = 1920.0
-margin_bottom = 806.0
+margin_bottom = 797.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="4" type="Control" parent="Rows" index="3"]
-margin_top = 810.0
+margin_top = 837.0
 margin_right = 1920.0
 margin_bottom = 1079.0
 size_flags_horizontal = 3
