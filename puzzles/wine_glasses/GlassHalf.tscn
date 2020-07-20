@@ -14,4 +14,8 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = "Half"
 [connection signal="focus_entered" from="." to="." method="_on_Glass_focus_entered"]

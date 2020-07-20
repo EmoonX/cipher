@@ -1,5 +1,10 @@
 extends TextureRect
 
+# If the glass is empty or half-full
+export(String, "Empty", "Half") var type
+
+onready var puzzle = $"../../.."
+
 # --------------------------------------------------------------------------- #
 
 func _on_Glass_focus_entered():
@@ -12,4 +17,7 @@ func _on_Glass_focus_entered():
 	
 	# Add glass column index to player answer sequence
 	var j = get_index()
-	$"../../..".player_answer.append(j)
+	puzzle.player_answer.append(j)
+	
+	# Check player's answer
+	puzzle.check_answer()
