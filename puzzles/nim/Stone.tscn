@@ -6,9 +6,9 @@
 [node name="Stone" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1720.0
-margin_bottom = -930.0
-rect_min_size = Vector2( 200, 150 )
+margin_right = -1800.0
+margin_bottom = -990.0
+rect_min_size = Vector2( 120, 90 )
 focus_mode = 1
 texture = ExtResource( 1 )
 expand = true
