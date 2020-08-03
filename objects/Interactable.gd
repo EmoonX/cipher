@@ -163,7 +163,7 @@ func _process(delta):
 		if $ActionInterface.visible and \
 				not $ActionInterface/AnimationPlayer.is_playing():
 			$ActionInterface.hide_actions()
-		if not (puzzle and puzzle.drag_mode):
+		if not puzzle:
 			energy = 0.0
 			cont = 0
 	

@@ -2,14 +2,9 @@ extends "res://puzzles/Puzzle.gd"
 
 const DIST_EPS = 0.02
 
-onready var led_pos = {
-	"BedsideLamp": $"../BedsideLamp".translation,
-	"Cactus": $"../Cactus".translation
-}
-
 # -------------------------------------------------------------------------- #
 
-func check_and_snap(object: Draggable):
+func check_and_snap(object):
 	# Check if object is in position to be snapped
 	# If positive, translate it to snap position
 	var ok = false

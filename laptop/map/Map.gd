@@ -22,9 +22,9 @@ func register_room(room, entry_door=""):
 			if node.name == entry_door:
 				var map_door = node
 				var exit_pos = map_door.rect_position
-				for node in room.get_children():
-					if node.name == entry_door:
-						var door = node
+				for node2 in room.get_children():
+					if node2.name == entry_door:
+						var door = node2
 						var entry_pos = SCALE * \
 								Vector2(door.translation.x, door.translation.z)
 						room_pos = exit_pos + entry_pos
