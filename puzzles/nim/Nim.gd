@@ -5,8 +5,12 @@ const Stone = preload("Stone.tscn")
 # Stones count for each stack
 var stones = []
 
-# Currently selectable stack
+# Currently selectable stack reference
+onready var stack = $Stacks.get_child(0)
+
+# Position of current stack and base stone index
 var cur = 0
+var pos = 0
 
 # If current turn is CPU's turn
 var cpu = false
@@ -30,51 +34,59 @@ func _ready():
 		for i in range(k):
 			var stone = Stone.instance()
 			stack.add_child(stone)
-	
-	_highlight_current()
 
-func _highlight_current():
-	# Glow current stack
-	var stack = $Stacks.get_child(cur)
+func _fade_stones(idx: int):
+	# Highlight and fade currently selected stones starting from index
 	var color = ColorN("lightgoldenrod" if not cpu else "pink")
-	for stone in stack.get_children():
-		stone.modulate = color
+	for j in range(pos, idx + 1):
+		var stone = stack.get_child(j)
+		var tween = Tween.new();
+		var invis = color
+		invis.a = 0.0
+		tween.interpolate_property(stone, "modulate", color, invis, 1.0)
+		add_child(tween)
+		tween.start()
 
 func remove_stones(idx: int):
-	# Remove substack of stones from index to top in current stack
-	var k = stones[cur] - idx - 1
-	var stack = $Stacks.get_child(cur)
-	for j in range(stones[cur] - 1, k - 1, -1):
-		var stone = stack.get_child(j)
-		stack.remove_child(stone)
-	stones[cur] = k
+	# Show planned move for a little bit
+	_fade_stones(idx)
+	yield(get_tree().create_timer(1.0), "timeout")
 	
+	# Remove substack of stones from index to top in current stack
+	for j in range(pos, idx + 1):
+		var stone = stack.get_child(j)
+		stone.focus_mode = Control.FOCUS_NONE
+	pos = idx + 1
+	stones[cur] = stack.get_child_count() - pos
+	
+	# If stack is now empty, make the next one selectable	
+	if stones[cur] == 0:
+		cur += 1
+		pos = 0
+		if cur < stones.size():
+			stack = $Stacks.get_child(cur)
+		else:
+			if cpu:
+				print("YOU DIED")
+			else:
+				print("YOU WIN!")
+			get_tree().quit()
+			return
+			
 	# Change turn
 	cpu = not cpu
 	
-	# If stack is now empty, make the next one selectable
-	if stones[cur] == 0:
-		cur += 1
-	
-	# Highlight current stack
-	_highlight_current()
-	
 	if cpu:
+		# Do CPU thinking and action
 		_cpu_turn()
 
 func _cpu_turn():
-	# Wait a little bit
-	yield(get_tree().create_timer(1.0), "timeout")
-	
 	# If current is last stack, CPU wins immediately
 	if cur == stones.size() - 1:
-		remove_stones(stones[cur] - 1)
-		print("YOU DIED")
-		get_tree().quit()
-	
-	if stones[cur] == 1:
+		remove_stones(stack.get_child_count() - 1)
+	elif stones[cur] == 1:
 		# If just one stone, pick it up
-		remove_stones(0);
+		remove_stones(pos);
 	else:
 		# Check if ahead is an odd-length continuous sequence
 		# of one-stones that ends *before* the last one
@@ -84,10 +96,11 @@ func _cpu_turn():
 				count += 1
 			else:
 				break
-		if count % 2 == 1:
+		if count % 2 == 1 and cur < stones.size() - 2:
 			# If positive, pick up all to avoid losing advantage
-			remove_stones(stones[cur] - 1)
+			# (except if next is last and has just one stone)
+			remove_stones(stack.get_child_count() - 1)
 		else:
 			# General case: just pick up all minus the bottom one
-			remove_stones(stones[cur] - 2)
+			remove_stones(stack.get_child_count() - 2)
 		
