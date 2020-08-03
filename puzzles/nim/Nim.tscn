@@ -25,6 +25,7 @@ margin_right = 264.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 2
 
 [node name="2" type="VBoxContainer" parent="Stacks" index="1"]
@@ -33,6 +34,7 @@ margin_right = 628.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 2
 
 [node name="3" type="VBoxContainer" parent="Stacks" index="2"]
@@ -41,6 +43,7 @@ margin_right = 992.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 2
 
 [node name="4" type="VBoxContainer" parent="Stacks" index="3"]
@@ -49,6 +52,7 @@ margin_right = 1356.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 2
 
 [node name="5" type="VBoxContainer" parent="Stacks" index="4"]
@@ -57,4 +61,5 @@ margin_right = 1720.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 2

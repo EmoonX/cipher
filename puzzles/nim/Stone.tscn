@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://puzzles/nim/stone.png" type="Texture" id=1]
+[ext_resource path="res://puzzles/nim/Stone.gd" type="Script" id=2]
 
 [node name="Stone" type="TextureRect"]
 anchor_right = 1.0
@@ -8,9 +9,12 @@ anchor_bottom = 1.0
 margin_right = -1720.0
 margin_bottom = -930.0
 rect_min_size = Vector2( 200, 150 )
+focus_mode = 1
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="focus_entered" from="." to="." method="_on_Stone_focus_entered"]
