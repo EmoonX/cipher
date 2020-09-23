@@ -11,6 +11,9 @@ func _on_Piece_focus_entered():
 		# Middle piece can't be moved
 		return
 	
+	# Revert glow
+	modulate = Color(1.0, 1.0, 1.0)
+	
 	# Move piece on click, if adjacent to a blank position
 	var x0 = $"../..".x0
 	var y0 = $"../..".y0
@@ -49,3 +52,9 @@ func _on_Piece_focus_entered():
 	
 	# Allow piece to be clicked again immediately
 	release_focus()
+
+func _on_Piece_mouse_entered():
+	modulate = Color(1.6, 1.6, 1.6)
+
+func _on_Piece_mouse_exited():
+	modulate = Color(1.0, 1.0, 1.0)
