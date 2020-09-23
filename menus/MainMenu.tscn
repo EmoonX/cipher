@@ -65,7 +65,7 @@ flat = true
 [node name="Continue" type="Button" parent="Items"]
 margin_top = 216.0
 margin_right = 954.0
-margin_bottom = 428.0
+margin_bottom = 429.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
@@ -78,9 +78,9 @@ text = "MENU_CONTINUE"
 flat = true
 
 [node name="Options" type="Button" parent="Items"]
-margin_top = 432.0
+margin_top = 433.0
 margin_right = 954.0
-margin_bottom = 644.0
+margin_bottom = 646.0
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 size_flags_horizontal = 3
@@ -92,9 +92,9 @@ text = "MENU_OPTIONS"
 flat = true
 
 [node name="MusicRoom" type="Button" parent="Items"]
-margin_top = 648.0
+margin_top = 650.0
 margin_right = 954.0
-margin_bottom = 860.0
+margin_bottom = 863.0
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Quit")
 size_flags_horizontal = 3
@@ -106,7 +106,7 @@ text = "MENU_MUSICROOM"
 flat = true
 
 [node name="Quit" type="Button" parent="Items"]
-margin_top = 864.0
+margin_top = 867.0
 margin_right = 954.0
 margin_bottom = 1080.0
 focus_neighbour_top = NodePath("../Options")
