@@ -53,8 +53,10 @@ func calculate_sums():
 			for i in range(3):
 				sum += grid[i][2-i]
 		
-		# Change text
+		# Change text (special color for right sum)
 		node.text = str(sum)
+		node.set("custom_colors/font_color",
+				ColorN("green" if (sum == 15) else "white"))
 		
 		# Add sum to set
 		sums[sum] = true
