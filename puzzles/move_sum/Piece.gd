@@ -17,9 +17,20 @@ func _on_Piece_focus_entered():
 	var pos_list = [[x-1, y], [x+1, y], [x, y-1], [x, y+1]]
 	for pos in pos_list:
 		if pos[0] == x0 and pos[1] == y0:
-			# Reposition piece
-			rect_position.x = rect_size.x * (x0 - 1)
-			rect_position.y = rect_size.y * (y0 - 1)
+			# Smootly reposition piece
+			var tween = Tween.new()
+			add_child(tween)
+			if x0 != x:
+				tween.interpolate_property(self, "rect_position:x",
+						null, rect_size.x * (x0 - 1), 0.1,
+						Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			else:
+				tween.interpolate_property(self, "rect_position:y",
+						null, rect_size.y * (y0 - 1), 0.1,
+						Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			tween.start()
+			yield(tween, "tween_completed")
+			remove_child(tween)
 			
 			# Update grid matrix
 			$"../..".grid[y-1][x-1] = 5 if (x == 2 and y == 2) else 0
