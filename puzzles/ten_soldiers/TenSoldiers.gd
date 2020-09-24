@@ -15,14 +15,15 @@ func _draw():
 	soldiers.sort_custom(CustomSorter, "sort_by_x")
 	
 	# Iterate through all soldiers
+	var count = 0
 	for i in range(len(soldiers)):
 		var soldier = soldiers[i]
-		var used = []
 		var size = soldier.get_node("Image").rect_size
 		var pos1 = soldier.offset + soldier.get_node("Image").rect_position
 		pos1 += size / 2
 		
 		# Soldiers to the right of selected one
+		var used = []
 		for j in range(i+1, len(soldiers)):
 			var other = soldiers[j]
 			var pos2 = other.offset + other.get_node("Image").rect_position
@@ -48,7 +49,7 @@ func _draw():
 				dy = pos2.y - pos1.y
 				var beta = atan2(dy, dx)
 				
-				# If angle is below a certain threshold, then OK
+				# If diff between angles is below a certain threshold, then OK
 				if abs(beta - alpha) < 0.05:
 					line.append(another)
 					if len(line) == 4:
@@ -56,6 +57,7 @@ func _draw():
 			
 			if len(line) == 4:
 				# If line is formed, draw lines between soldiers in sequence
+				count += 1
 				for l in range(3):
 					var pos3 = line[l].offset + \
 							line[l].get_node("Image").rect_position
@@ -65,6 +67,10 @@ func _draw():
 					pos4 += size / 2
 					draw_line(pos3, pos4, ColorN("crimson"), 5.0)
 					used.append(line[l+1])
+	
+	if count == 5:
+		# If all lines are formed, you win!
+		get_tree().quit()
 
 func _process(delta):
 	update()
