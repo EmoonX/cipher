@@ -6,6 +6,8 @@
 [ext_resource path="res://puzzles/move_sum/Sum.tscn" type="PackedScene" id=4]
 
 [node name="MoveSum" instance=ExtResource( 1 )]
+margin_right = 1920.0
+margin_bottom = 1080.0
 script = ExtResource( 3 )
 
 [node name="Sums" type="Control" parent="." index="0"]

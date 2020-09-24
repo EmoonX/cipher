@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cipher"
-run/main_scene="res://menus/MainMenu.tscn"
+run/main_scene="res://puzzles/move_sum/MoveSum.tscn"
 config/custom_user_dir_name="res://user/"
 config/icon="res://icon.png"
 
