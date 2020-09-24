@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://puzzles/ten_soldiers/TenSoldiers.gd" type="Script" id=1]
+[ext_resource path="res://puzzles/ten_soldiers/Soldier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://puzzles/Puzzle.tscn" type="PackedScene" id=4]
+
+[node name="TenSoldiers" instance=ExtResource( 4 )]
+script = ExtResource( 1 )
+
+[node name="Soldier" parent="." index="0" instance=ExtResource( 2 )]
+offset = Vector2( 710, 440 )
+transform = Transform2D( 1, 0, 0, 1, 710, 440 )
+
+[node name="Soldier2" parent="." index="1" instance=ExtResource( 2 )]
+offset = Vector2( 810, 440 )
+transform = Transform2D( 1, 0, 0, 1, 810, 440 )
+
+[node name="Soldier3" parent="." index="2" instance=ExtResource( 2 )]
+offset = Vector2( 910, 440 )
+transform = Transform2D( 1, 0, 0, 1, 910, 440 )
+
+[node name="Soldier4" parent="." index="3" instance=ExtResource( 2 )]
+offset = Vector2( 1010, 440 )
+transform = Transform2D( 1, 0, 0, 1, 1010, 440 )
+
+[node name="Soldier5" parent="." index="4" instance=ExtResource( 2 )]
+offset = Vector2( 1110, 440 )
+transform = Transform2D( 1, 0, 0, 1, 1110, 440 )
+
+[node name="Soldier6" parent="." index="5" instance=ExtResource( 2 )]
+offset = Vector2( 710, 540 )
+transform = Transform2D( 1, 0, 0, 1, 710, 540 )
+
+[node name="Soldier7" parent="." index="6" instance=ExtResource( 2 )]
+offset = Vector2( 810, 540 )
+transform = Transform2D( 1, 0, 0, 1, 810, 540 )
+
+[node name="Soldier8" parent="." index="7" instance=ExtResource( 2 )]
+offset = Vector2( 910, 540 )
+transform = Transform2D( 1, 0, 0, 1, 910, 540 )
+
+[node name="Soldier9" parent="." index="8" instance=ExtResource( 2 )]
+offset = Vector2( 1010, 540 )
+transform = Transform2D( 1, 0, 0, 1, 1010, 540 )
+
+[node name="Soldier10" parent="." index="9" instance=ExtResource( 2 )]
+offset = Vector2( 1110, 540 )
+transform = Transform2D( 1, 0, 0, 1, 1110, 540 )

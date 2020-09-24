@@ -2,6 +2,9 @@
 
 [ext_resource path="res://puzzles/Puzzle.gd" type="Script" id=2]
 
-[node name="Puzzle" type="Node"]
+[node name="Puzzle" type="Control"]
 pause_mode = 2
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

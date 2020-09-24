@@ -20,7 +20,7 @@ func _on_Piece_focus_entered():
 	var pos_list = [[x-1, y], [x+1, y], [x, y-1], [x, y+1]]
 	for pos in pos_list:
 		if pos[0] == x0 and pos[1] == y0:
-			# Smootly reposition piece
+			# Smoothly reposition piece
 			var tween = Tween.new()
 			add_child(tween)
 			if x0 != x:
