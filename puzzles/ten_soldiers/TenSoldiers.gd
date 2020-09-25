@@ -16,6 +16,7 @@ func _draw():
 	
 	# Iterate through all soldiers
 	var count = 0
+	var good = {}
 	for i in range(len(soldiers)):
 		var soldier = soldiers[i]
 		var size = soldier.get_node("Image").rect_size
@@ -58,6 +59,7 @@ func _draw():
 			if len(line) == 4:
 				# If line is formed, draw lines between soldiers in sequence
 				count += 1
+				good[line[0]] = true
 				for l in range(3):
 					var pos3 = line[l].offset + \
 							line[l].get_node("Image").rect_position
@@ -67,9 +69,10 @@ func _draw():
 					pos4 += size / 2
 					draw_line(pos3, pos4, ColorN("crimson"), 5.0)
 					used.append(line[l+1])
+					good[line[l+1]] = true
 	
-	if count == 5:
-		# If all lines are formed, you win!
+	if count == 5 and len(good) == 10:
+		# If all lines are formed and all soldiers used, you win!
 		get_tree().quit()
 
 func _process(delta):

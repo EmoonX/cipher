@@ -4,6 +4,8 @@
 [ext_resource path="res://puzzles/nim/Nim.gd" type="Script" id=2]
 
 [node name="Nim" instance=ExtResource( 1 )]
+margin_right = 1920.0
+margin_bottom = 1080.0
 script = ExtResource( 2 )
 
 [node name="Stacks" type="HBoxContainer" parent="." index="0"]
@@ -30,7 +32,7 @@ alignment = 2
 
 [node name="2" type="VBoxContainer" parent="Stacks" index="1"]
 margin_left = 222.0
-margin_right = 384.0
+margin_right = 385.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -38,8 +40,8 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="3" type="VBoxContainer" parent="Stacks" index="2"]
-margin_left = 444.0
-margin_right = 606.0
+margin_left = 445.0
+margin_right = 607.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -47,8 +49,8 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="4" type="VBoxContainer" parent="Stacks" index="3"]
-margin_left = 666.0
-margin_right = 828.0
+margin_left = 667.0
+margin_right = 830.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -56,8 +58,8 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="5" type="VBoxContainer" parent="Stacks" index="4"]
-margin_left = 888.0
-margin_right = 1050.0
+margin_left = 890.0
+margin_right = 1052.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -65,8 +67,8 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="6" type="VBoxContainer" parent="Stacks" index="5"]
-margin_left = 1110.0
-margin_right = 1272.0
+margin_left = 1112.0
+margin_right = 1275.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -74,8 +76,8 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="7" type="VBoxContainer" parent="Stacks" index="6"]
-margin_left = 1332.0
-margin_right = 1494.0
+margin_left = 1335.0
+margin_right = 1497.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -83,7 +85,7 @@ custom_constants/separation = 5
 alignment = 2
 
 [node name="8" type="VBoxContainer" parent="Stacks" index="7"]
-margin_left = 1554.0
+margin_left = 1557.0
 margin_right = 1720.0
 margin_bottom = 900.0
 size_flags_horizontal = 3
