@@ -1,5 +1,7 @@
 extends TextureRect
 
+const DY = 40
+
 # Measuring cup's capacity
 export(int) var capacity
 
@@ -7,7 +9,8 @@ export(int) var capacity
 export(int) var oil
 export(int) var water
 
-const DY = 40
+# If cup is currently selected
+var selected = false
 
 # --------------------------------------------------------------------------- #
 
@@ -26,3 +29,23 @@ func _ready():
 	$Oil.texture.region.size.y = oil_y
 	$Oil.rect_size.y = oil_y
 	$Oil.rect_position.y = rect_size.y - (water_y + oil_y)
+
+func _draw():
+	if selected:
+		# Draw circle upon selection
+		var color = ColorN("crimson")
+		color.a = 0.5
+		draw_circle(rect_size / 2, rect_size.x / 2, color)
+
+func _on_Cup_gui_input(event):
+	if event is InputEventMouseButton and \
+			event.pressed and event.button_index == BUTTON_LEFT:
+		var action = false
+		for cup in $"..".get_children():
+			if cup != self and cup.selected:
+				action = true
+				break;
+		if not action:
+			# Select/unselect
+			selected = not selected
+			update()
