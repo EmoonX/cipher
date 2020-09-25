@@ -18,7 +18,8 @@ func _ready():
 	# Resize cup according to capacity
 	margin_top = -(capacity * DY)
 	
-	# Resize initial fluids
+	# Resize initial fluids (wait a frame to not screw drawing)
+	yield(get_tree(), "idle_frame")
 	change_fluids()
 	
 func change_fluids():
@@ -27,12 +28,28 @@ func change_fluids():
 	$Water.texture.region.size.y = water_y
 	$Water.rect_size.y = water_y
 	$Water.rect_position.y = rect_size.y - water_y
+	if water:
+		# Adjust amount label
+		$Water/Amount/Label.visible = true
+		$Water/Amount/Label.text = str(water)
+		$Water/Amount/Label.rect_position = $Water.rect_global_position + \
+				($Water.rect_size / 2) - ($Water/Amount/Label.rect_size / 2)
+	else:
+		$Water/Amount/Label.visible = false
 	
 	# Resize and move oil texture
 	var oil_y = oil * DY
 	$Oil.texture.region.size.y = oil_y
 	$Oil.rect_size.y = oil_y
 	$Oil.rect_position.y = rect_size.y - (water_y + oil_y)
+	if oil:
+		# Adjust amount label
+		$Oil/Amount/Label.visible = true
+		$Oil/Amount/Label.text = str(oil)
+		$Oil/Amount/Label.rect_position = $Oil.rect_global_position + \
+				($Oil.rect_size / 2) - ($Oil/Amount/Label.rect_size / 2)
+	else:
+		$Oil/Amount/Label.visible = false
 
 func _draw():
 	if selected:
