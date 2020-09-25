@@ -44,3 +44,5 @@ margin_top = -400.0
 margin_right = 0.0
 margin_bottom = 0.0
 capacity = 7
+oil = 2
+water = 3
