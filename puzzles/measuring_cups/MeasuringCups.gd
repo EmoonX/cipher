@@ -69,11 +69,30 @@ class Problem:
 
 func _ready():
 	# Search for solutions in a huge amount of base states (problems)
-	for k in range(1e4):
-		var p = Problem.new()
-		for i in range(3):
-			var oil = randi() % (Vertex.capacity[i] + 1)
-			var water = randi() % (Vertex.capacity[i] - oil + 1)
-			p.root.oil.append(oil)
-			p.root.water.append(water)
-		p.solve(11, 50)
+#	for k in range(1e4):
+#		var p = Problem.new()
+#		for i in range(3):
+#			var oil = randi() % (Vertex.capacity[i] + 1)
+#			var water = randi() % (Vertex.capacity[i] - oil + 1)
+#			p.root.oil.append(oil)
+#			p.root.water.append(water)
+#		p.solve(11, 50)
+	
+	# Load random game info from games file
+	var file = File.new()
+	file.open("res://puzzles/measuring_cups/games/easy.txt", File.READ)
+	var k = randi() % 10
+	for i in range(0, k):
+		file.get_line()
+	var line = file.get_line()
+	var aux = line.split("; ")
+	var oil = str2var(aux[0])
+	var water = str2var(aux[1])
+	var min_moves = int(aux[2])
+	
+	# Prepare measuring cups' initial fluids
+	for i in range(3):
+		var cup = $Cups.get_child(i)
+		cup.oil = oil[i]
+		cup.water = water[i]
+		cup.change_fluids()

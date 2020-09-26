@@ -17,11 +17,7 @@ var selected = false
 func _ready():
 	# Resize cup according to capacity
 	margin_top = -(capacity * DY)
-	
-	# Resize initial fluids (wait a frame to not screw drawing)
-	yield(get_tree(), "idle_frame")
-	change_fluids()
-	
+
 func change_fluids():
 	# Resize water texture
 	var water_y = water * DY
