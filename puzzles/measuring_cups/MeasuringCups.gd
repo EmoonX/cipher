@@ -106,3 +106,6 @@ func restart():
 		cup.oil = oil_ini[i]
 		cup.water = water_ini[i]
 		cup.change_fluids()
+	
+	# Reset moves counter
+	$Moves/Counter.text = "0"

@@ -69,6 +69,10 @@ func _pour_from(cup):
 		# Redraw fluids
 		cup.change_fluids()
 		change_fluids()
+		
+		# Increment moves counter
+		$"../../Moves/Counter".text = \
+				str(int($"../../Moves/Counter".text) + 1)
 
 func _on_Cup_gui_input(event):
 	if event is InputEventMouseButton and \
