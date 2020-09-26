@@ -86,7 +86,7 @@ func _ready():
 	
 	# Load random game info from games file
 	var file = File.new()
-	file.open("res://puzzles/measuring_cups/games/medium.txt", File.READ)
+	file.open("res://puzzles/measuring_cups/games/easy.txt", File.READ)
 	var k = randi() % 10
 	for i in range(0, k):
 		file.get_line()
@@ -109,3 +109,12 @@ func restart():
 	
 	# Reset moves counter
 	$Moves/Counter.text = "0"
+
+func check_answer():
+	# Check if there's no cup with both oil and water
+	for cup in $Cups.get_children():
+		if cup.oil > 0 and cup.water > 0:
+			return
+	
+	# You win :)
+	get_tree().quit()

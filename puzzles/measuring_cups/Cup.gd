@@ -73,6 +73,9 @@ func _pour_from(cup):
 		# Increment moves counter
 		$"../../Moves/Counter".text = \
 				str(int($"../../Moves/Counter".text) + 1)
+		
+		# Check if game is solved
+		$"../..".check_answer()
 
 func _on_Cup_gui_input(event):
 	if event is InputEventMouseButton and \
