@@ -3,7 +3,7 @@ extends Node
 const Slot = preload("res://puzzles/scramble/Slot.tscn")
 const Piece = preload("res://puzzles/scramble/Piece.tscn")
 
-const image = preload("res://user/files/images/zephyra.jpg")
+const image = preload("res://user/files/image/zephyra.jpg")
 
 # Size of grid
 export(int) var height = 5
@@ -39,8 +39,8 @@ func _ready():
 		for j in range(width-1, -1, -1):
 			var x = (1400 * (randi() % 2)) + randi() % 300
 			var y = randi() % 900
-			Util.move(grid[i][j], "rect_position", Vector2(x, y))
-			Util.move(grid[i][j], "rect_rotation", (randi() % 16) * 360 / 16)
+			#Util.move(grid[i][j], "rect_position", Vector2(x, y))
+			#Util.move(grid[i][j], "rect_rotation", (randi() % 16) * 360 / 16)
 			yield(get_tree().create_timer(0.1), "timeout")
 
 func _is_solved():

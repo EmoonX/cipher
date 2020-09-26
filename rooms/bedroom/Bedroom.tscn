@@ -48,8 +48,9 @@
 [ext_resource path="res://shaders/BlurShader.tres" type="Shader" id=48]
 [ext_resource path="res://rooms/bedroom/Wood.material" type="Material" id=49]
 [ext_resource path="res://objects/Window.gd" type="Script" id=50]
-[ext_resource path="res://puzzles/nightstand/Nightstand.tscn" type="PackedScene" id=51]
-[ext_resource path="res://puzzles/nightstand/LED.tscn" type="PackedScene" id=52]
+[ext_resource path="res://etc/nightstand/Nightstand.tscn" type="PackedScene" id=51]
+[ext_resource path="res://etc/nightstand/LED.tscn" type="PackedScene" id=52]
+
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Ceiling"
