@@ -1,5 +1,9 @@
 extends "res://puzzles/Puzzle.gd"
 
+# Initial amounts of fluids
+var oil_ini = []
+var water_ini = []
+
 # --------------------------------------------------------------------------- #
 
 class Vertex:
@@ -67,6 +71,8 @@ class Problem:
 					visited[[u.oil, u.water]] = true
 					queue.push_back(u)
 
+# --------------------------------------------------------------------------- #
+
 func _ready():
 	# Search for solutions in a huge amount of base states (problems)
 #	for k in range(1e4):
@@ -80,19 +86,23 @@ func _ready():
 	
 	# Load random game info from games file
 	var file = File.new()
-	file.open("res://puzzles/measuring_cups/games/easy.txt", File.READ)
+	file.open("res://puzzles/measuring_cups/games/medium.txt", File.READ)
 	var k = randi() % 10
 	for i in range(0, k):
 		file.get_line()
 	var line = file.get_line()
 	var aux = line.split("; ")
-	var oil = str2var(aux[0])
-	var water = str2var(aux[1])
+	oil_ini = str2var(aux[0])
+	water_ini = str2var(aux[1])
 	var min_moves = int(aux[2])
 	
 	# Prepare measuring cups' initial fluids
+	restart()
+		
+func restart():
+	# Change fluid amounts on cups
 	for i in range(3):
 		var cup = $Cups.get_child(i)
-		cup.oil = oil[i]
-		cup.water = water[i]
+		cup.oil = oil_ini[i]
+		cup.water = water_ini[i]
 		cup.change_fluids()

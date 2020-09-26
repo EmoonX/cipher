@@ -1,7 +1,6 @@
-extends Control
+extends Button
 
 # --------------------------------------------------------------------------- #
 
-func _ready():
-	# Easy randomizer for all puzzles :)
-	randomize()
+func _on_Restart_pressed():
+	$"..".restart()
